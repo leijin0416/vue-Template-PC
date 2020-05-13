@@ -19,3 +19,45 @@ CDN 的全称是 Content Delivery Network，即**内容分发网络**。CDN 是�
 #### CDN 存在的意义：为了不让网络拥塞成为互联网发展的障碍。
 
 [CDN意义](https://juejin.im/post/5d1385b25188253dc975b577)
+
+
+---
+
+## Swiper 轮播
+
+[Swiper 地址](https://www.swiper.com.cn/)
+
+```js
+
+- （1）下载包
+
+npm install swiper vue-awesome-swiper --s
+
+- （2）main.js 全局引入
+
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+import 'swiper/css/swiper.css';
+Vue.use(VueAwesomeSwiper);
+
+- （3）处理不同分辨率的盒子
+
+swiperOption: {
+    breakpoints: { 
+        //当宽度大于等于320
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 10
+        },
+        //当宽度大于等于480
+        480: { 
+            slidesPerView: 2,
+            spaceBetween: 30
+        },
+        1020: { 
+            slidesPerView: 3, // 盒子数量
+            spaceBetween: 30  // 间距
+        }
+    }
+},
+
+```

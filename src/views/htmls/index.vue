@@ -1,251 +1,350 @@
 <template>
     <div class="page">
-        <div class="m-navbar">
+        <div class="v-navbar">
             <v-nav 
                 :navDataList="navDataList"
                 :navDataListHf="navDataListHf" />
         </div>
-        <div class="m-banner-top">
-            <img src="@/assets/img/hk/banner.png" alt="banner.png" class="img-box">
-			<div class="m-banner-text">
-                <Row type="flex" justify="center" align="middle" class="code-row-bg">
-                    <Col :xs="24" :md="10" >
-                        <div class="wow bounceInLeft">
-                            <div class="img-box">
-                                <img src="@/assets/img/hk/logo_lg.png" alt="banner.png" class="img">
-                            </div>
-                            <h4 class="font-h4" >{{$t('homePage_001')}}</h4>
-                            <div class="v-ahover">
-                                <!-- <a href="#" target="_blank" rel="" class="ahover">Chinese White paper</a> -->
-                                <a href="https://woopay.app/woopay.pdf" target="_blank" rel="" class="ahover">English White paper</a>
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <div class="m-introduce-box">
-			<div class="m-iduce-text">
-                <Row type="flex" justify="center" align="middle" class="code-row-bg">
-                    <Col :xs="24" :lg="24" :xl="13" >
-                        <div class="wow bounceInUp">
-                            <h4 class="font-h4" >{{$t('homePage_002')}}</h4>
-                            <div class="text-ct">
-                                <img src="@/assets/img/hk/icon-iduce_ct.png" alt="banner.png" class="img">
-                                <h4 class="font-h4">
-                                    <p>{{$t('homePage_003')}}</p>
-                                    <p style="padding-top: 15px;">{{$t('homePage_004')}}</p>
+        <div class="v-mian-box">
+            <div class="v-banner-top">
+                <div class="v-img-box">
+                    <img :src="bannerTop" alt="banner.jpg" class="v-img">
+                </div>
+                <div class="v-text-box">
+                    <div class="v-container">
+                        <Row>
+                            <Col :xs="24" :md="24" :lg="24" :xl="12">
+                                <h2 class="v-h2">{{$t('homePage_001')}}</h2>
+                                <h2 class="v-h2">{{$t('homePage_002')}}</h2>
+                                <div class="v-ahover">
+                                    <a href="http://d.firim.ink/pau6" class="v-href up-shaking" target="_target">
+                                        <img src="@/assets/img/hk/android.png" alt="icon.jpg" class="v-img">
+                                    </a>
+                                    <a href="http://d.firim.ink/ew96" class="v-href" target="_target">
+                                        <img src="@/assets/img/hk/ios.png" alt="icon.jpg" class="v-img">
+                                    </a>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+            </div>
+            <div class="v-item-container" :style="{backgroundImage: 'url(' + imgBg + ')'}">
+                <!-- 介绍 video -->
+                <div class="v-video-box">
+                    <div class="v-container">
+                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
+                            <Col :xs="24" :md="14" :lg="14" :xl="14">
+                                <div class="v-item-box">
+                                    <h3 class="v-h3-max color-ft-gy">- introduce</h3>
+                                    <div class="v-icon-box">
+                                        <img src="@/assets/img/hk/logo-min.png" alt="icon.png" class="v-img">
+                                        <p class="v-text">{{$t('homePage_003')}}</p>
+                                    </div>
+                                    <h4 class="v-h4">
+                                        {{$t('homePage_004')}}
+                                    </h4>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="10" :lg="10" :xl="10">
+                                <v-videoplayer />
+                            </Col>
+                            <Col :xs="24" :md="8" :lg="8" :xl="6" v-for="item in videoData" :key="item.id">
+                                <div class="v-item-list">
+                                    <div class="v-img-box">
+                                        <img v-lazy="item.url" alt="icon.png" class="v-img">
+                                    </div>
+                                    <div class="v-text-box">
+                                        <h3 class="v-h3">{{item.title}}</h3>
+                                        <p class="v-text">{{item.text}}</p>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+                <!-- 优势特点 advantages -->
+                <div class="v-advantages-box">
+                    <div class="v-container">
+                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
+                            <Col :xs="24" :md="7" :lg="6" :xl="5">
+                                <div class="v-item-box">
+                                    <h3 class="v-h3-max color-ft-gy">- advantage</h3>
+                                    <div class="v-icon-box">
+                                        <img src="@/assets/img/hk/logo-min.png" alt="icon.png" class="v-img">
+                                        <p class="v-text">{{$t('homePage_011')}}</p>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="7" :lg="6" :xl="5">
+                                <div class="v-item-list">
+                                    <div class="v-img-box">
+                                        <img v-lazy="require('@/assets/img/hk/i-advantages-1.png')" alt="icon.png" class="v-img">
+                                    </div>
+                                    <div class="v-text-box">
+                                        <h3 class="v-h3">{{$t('homePage_012')}}</h3>
+                                        <p class="v-text">{{$t('homePage_013')}}</p>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="7" :lg="6" :xl="5">
+                                <div class="v-item-list">
+                                    <div class="v-img-box">
+                                        <img v-lazy="require('@/assets/img/hk/i-advantages-2.png')" alt="icon.png" class="v-img">
+                                    </div>
+                                    <div class="v-text-box">
+                                        <h3 class="v-h3">{{$t('homePage_014')}}</h3>
+                                        <p class="v-text">{{$t('homePage_015')}}</p>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
+                            <Col :xs="24" :md="7" :lg="6" :xl="5" v-for="item in advantagesData" :key="item.id">
+                                <div class="v-item-list">
+                                    <div class="v-img-box">
+                                        <img :src="item.url" alt="icon.png" class="v-img">
+                                    </div>
+                                    <div class="v-text-box">
+                                        <h3 class="v-h3">{{item.title}}</h3>
+                                        <p class="v-text">{{item.text}}</p>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+                <!-- 共识 consensus -->
+                <div class="v-consensus-box">
+                    <div class="v-container">
+                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
+                            <Col :xs="24" :md="10" :lg="10" :xl="10">
+                                <div class="v-img-lf">
+                                    <img v-lazy="require('@/assets/img/hk/i-consensus.png')" alt="icon.png" class="v-img">
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="13" :lg="12" :xl="10">
+                                <div class="v-item-box">
+                                    <div class="v-img-box">
+                                        <img src="@/assets/img/hk/i-consensus-1.png" alt="icon.png" class="v-img">
+                                    </div>
+                                    <div class="v-text-box">
+                                        <h3 class="v-h3">{{$t('homePage_022')}}</h3>
+                                        <p class="v-text">{{$t('homePage_023')}}</p>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+                <div class="v-consensus-box">
+                    <div class="v-container">
+                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
+                            <Col :xs="24" :md="13" :lg="12" :xl="10">
+                                <div class="v-item-box">
+                                    <div class="v-img-box">
+                                        <img src="@/assets/img/hk/i-help-1.png" alt="icon.png" class="v-img">
+                                    </div>
+                                    <div class="v-text-box">
+                                        <h3 class="v-h3">{{$t('homePage_022')}}</h3>
+                                        <p class="v-text">{{$t('homePage_023')}}</p>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="10" :lg="10" :xl="10">
+                                <div class="v-img-lf">
+                                    <img v-lazy="require('@/assets/img/hk/i-help.png')" alt="icon.png" class="v-img">
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+            </div>
+            <!-- 特点 -->
+            <div class="v-technical-box">
+                <div class="v-container">
+                    <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
+                        <Col :xs="24" :md="10" :lg="10" :xl="10">
+                            <div class="v-item-box">
+                                <h3 class="v-h3-max color-ft-gy">- introduce</h3>
+                                <div class="v-icon-box">
+                                    <img src="@/assets/img/hk/logo-min.png" alt="icon.png" class="v-img">
+                                    <p class="v-text">{{$t('homePage_026')}}</p>
+                                </div>
+                                <h4 class="v-h4" style="">
+                                    {{$t('homePage_027')}}
                                 </h4>
                             </div>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块1 -->
-        <div class="m-introduce-box m-repeat" id="CBLstd">
-			<div class="v-container m-iduce-text">
-                <Row type="flex" justify="space-between" class="code-row-bg">
-					<h4 class="font-h4 font-title" >{{$t('homePage_005')}}</h4>
-                    <Col :xs="24"  :lg="24" :xl="8" v-for="item in advantageData" :key='item.id' class="wow bounceInUp">
-                        <div class="text-ct">
-                            <img v-lazy="item.url" alt="banner.png" class="img">
-                            <h4 class="font-h4">
-                                <p>{{item.title}}</p>
-                                <p>{{item.text}}</p>
-                            </h4>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块2 -特点 -->
-        <div class="m-introduce-box m-repeat m-ecology" id="TOPtrait">
-			<div class="v-container m-iduce-text">
-                <Row type="flex" justify="space-between" class="code-row-bg">
-					<h4 class="font-h4 font-title" >{{$t('homePage_018')}}</h4>
-                    <Col :xs="24"  :lg="24" :xl="8" v-for="item in ecologyData" :key='item.id' class="wow bounceInRight">
-                        <div class="text-ct">
-                            <div class="m-list">
-                                <img :src="item.url" alt="banner.png" class="m-img">
-                                <h4 class="font-h4">
-                                    <p>{{item.title}}</p>
-                                    <p>{{item.text}}</p>
-                                </h4>
+                        </Col>
+                        <Col :xs="24" :md="13" :lg="13" :xl="8" class-name="v-technical-abs">
+                            <div class="v-technical-list">
+                                <div class="v-item">
+                                    <img src="@/assets/img/hk/i-technical-1.png" alt="icon.png" class="v-img">
+                                    <p class="v-text">
+                                        {{$t('homePage_028')}}
+                                    </p>
+                                </div>
+                                <div class="v-item">
+                                    <img src="@/assets/img/hk/i-technical-2.png" alt="icon.png" class="v-img">
+                                    <p class="v-text">
+                                        {{$t('homePage_029')}}
+                                    </p>
+                                </div>
+                                <div class="v-item">
+                                    <img src="@/assets/img/hk/i-technical-3.png" alt="icon.png" class="v-img">
+                                    <p class="v-text">
+                                        {{$t('homePage_030')}}
+                                    </p>
+                                </div>
+                                <div class="v-item">
+                                    <img src="@/assets/img/hk/i-technical-4.png" alt="icon.png" class="v-img">
+                                    <p class="v-text">
+                                        {{$t('homePage_031')}}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块3 -应用 -->
-        <div class="m-introduce-box m-repeat">
-			<div class="v-container m-iduce-text">
-                <Row type="flex" justify="space-between" class="code-row-bg">
-					<h4 class="font-h4 font-title" >{{$t('homePage_025')}}</h4>
-                    <Col :xs="24" :lg="24" :xl="6" v-for="(item, index) in otherData" :key='index' class="wow bounceInLeft">
-                        <div class="text-ct">
-                            <img :src="item.url" alt="banner.png" class="img">
-                            <h4 class="font-h4">
-                                <p>{{item.title}}</p>
-                                <p>{{item.text}}</p>
-                            </h4>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块4 -体系 -->
-        <div class="m-introduce-box m-repeat v-page-bgcolor v-introduce-size" id="CBLstd">
-			<div class="v-container m-iduce-text">
-                <Row type="flex" justify="space-between" class="code-row-bg">
-					<h4 class="font-h4 font-title" >{{$t('homePage_034')}}</h4>
-                    <Col :xs="24" :lg="24" :xl="6" v-for="item in advantageSizeData" :key='item.id' class="wow bounceInUp">
-                        <div class="text-ct">
-                            <img :src="item.url" alt="banner.png" class="img">
-                            <h4 class="font-h4">
-                                <p>{{item.title}}</p>
-                                <p>{{item.text}}</p>
-                            </h4>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块5 -发展计划 -->
-        <div class="m-introduce-box m-repeat m-ecology m-apply" id="TOPdplan">
-			<div class="m-iduce-text">
-                <Row type="flex" justify="center" align="middle" class="code-row-bg" :gutter="30">
-					<h4 class="font-h4 font-title" >{{$t('homePage_043')}}</h4>
-                    <Col :xs="10" :lg="10" :xl="5" class="wow bounceInLeft">
-                        <div class="text-ct">
-                            <img src="@/assets/img/hk/icon-apply_lf.png" alt="banner.png" class="m-img">
-                        </div>
-                    </Col>
-                    <Col :xs="24" :lg="24" :xl="9" class="wow bounceInRight">
-                        <div class="text-ct">
-					        <h4 class="font-h4" >{{$t('homePage_044')}}</h4>
-                            <p class="font-text">{{$t('homePage_045')}}</p>
-					        <h4 class="font-h4" >{{$t('homePage_046')}}</h4>
-                            <p class="font-text">{{$t('homePage_047')}}</p>
-                            <p class="font-text">{{$t('homePage_048')}}</p>
-                            <p class="font-text">{{$t('homePage_049')}}</p>
-                            <p class="font-text">{{$t('homePage_050')}}</p>
-                            <p class="font-text">{{$t('homePage_051')}}</p>
-					        <h4 class="font-h4" >{{$t('homePage_052')}}</h4>
-                            <p class="font-text">{{$t('homePage_053')}}</p>
-					        <h4 class="font-h4" >{{$t('homePage_054')}}</h4>
-                            <p class="font-text">{{$t('homePage_055')}}</p>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块6 -->
-        <div class="m-introduce-box m-repeat v-page-bgcolor v-introduce-size" id="CBLstd">
-			<div class="v-container m-iduce-text">
-                <Row type="flex" justify="space-between" class="code-row-bg">
-					<h4 class="font-h4 font-title" >{{$t('homePage_056')}}</h4>
-                    <Col :xs="24" :lg="24" :xl="6" v-for="item in sixSizeData" :key='item.id' class="wow bounceInUp">
-                        <div class="text-ct">
-                            <img :src="item.url" alt="banner.png" class="img">
-                            <h4 class="font-h4">
-                                <p>{{item.title}}</p>
-                                <p>{{item.text}}</p>
-                            </h4>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块7 -->
-        <div class="m-introduce-box m-repeat" id="CBLsfz" ref="CBLstm">
-			<div class="m-iduce-text">
-                <Row type="flex" justify="center" align="middle" class="code-row-bg" :gutter="20">
-					<h4 class="font-h4 font-title" >{{$t('homePage_065')}}</h4>
-                    <Col :xs="24" :lg="20" :xl="10" class="wow bounceInUp">
-                        <div class="text-ct">
-                            <img src="@/assets/img/hk/banner-team.png" alt="banner.png" class="img-t" v-if="valLocale === 'zh-CN'">
-                            <img src="@/assets/img/hk/banner-teamEn.png" alt="banner.png" class="img-t" v-else>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块8 -团队 -->
-        <div class="m-introduce-box m-repeat m-ecology m-team" id="TOPteam">
-			<div class="v-container m-iduce-text">
-                <h4 class="font-h4 font-title" >{{$t('homePage_066')}}</h4>
-                <p class="font-text">{{$t('homePage_067')}}</p>
-                <Row type="flex" justify="space-between" class="code-row-bg">
-                    <Col  :xs="24" :lg="24" :xl="8" v-for="item in teamData" :key='item.id' class="wow bounceInUp">
-                        <div class="text-ct">
-                            <div class="m-list">
-                                <img v-lazy="item.url" alt="banner.png" class="m-img">
-                                <h4 class="font-h4">
-                                    <p>{{item.title}}</p>
-                                    <p>{{item.text}}</p>
-                                </h4>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
+            <!-- 团队介绍 -->
+            <div class="v-about-box">
+                <div class="v-container">
+                    <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
+                        <Col :xs="24" :md="8" :lg="8" :xl="7">
+                            <div class="v-item-box effect">
+                                <div class="v-img-box">
+                                    <img v-lazy="require('@/assets/img/hk/i-about-1.png')" alt="icon.png" class="v-img">
+                                </div>
+                                <h2 class="v-h2">{{$t('homePage_032')}}</h2>
                             </div>
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块9 -->
-        <!-- <div class="m-introduce-box m-repeat" id="CBLsfz" >
-			<div class="m-iduce-text">
-                <Row type="flex" justify="center" align="middle" class="code-row-bg" :gutter="20">
-					<h4 class="font-h4 font-title" >{{$t('homePage_074')}}</h4>
-                    <Col :xs="24" :lg="24" :xl="16" class="wow bounceInUp">
-                        <div class="text-ct">
-                            <img src="@/assets/img/hk/banner-max.png" alt="banner.png" class="img-t">
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div> -->
-        <!-- 模块9 -->
-        <div class="m-introduce-box m-repeat" id="CBLsfz" ref="CBLstm">
-			<div class="m-iduce-text">
-                <Row type="flex" justify="center" align="middle" class="code-row-bg" :gutter="20">
-					<h4 class="font-h4 font-title" >{{$t('homePage_082')}}</h4>
-                    <Col :xs="24" :lg="20" :xl="10" class="wow bounceInUp">
-                        <div class="text-ct">
-                            <v-videoplayer />
-                            <!-- <v-vueamap /> -->
-                        </div>
-                    </Col>
-                </Row>
-			</div>
-        </div>
-        <!-- 模块10 -新闻 -->
-        <div class="m-introduce-box m-repeat v-news-box v-page-bgcolor" id="TOPnews">
-			<div class="v-container m-iduce-text">
-                <Row type="flex" justify="space-between" class="code-row-bg">
-					<h4 class="font-h4 font-title" >{{$t('homePage_075')}}</h4>
-                    <Col :xs="24" :lg="6" :xl="6" v-for="(item, index) in newsListData" :key='index' class="wow bounceInLeft">
-                        <a class="text-ct v-text-main" href="#" target="_target">
-                            <div class="v-img-box">
-                                <img :src="item.url" alt="banner.png" class="v-img">
+                        </Col>
+                        <Col :xs="24" :md="8" :lg="8" :xl="7">
+                            <div class="v-item-box">
+                                <div class="v-img-box">
+                                    <img v-lazy="require('@/assets/img/hk/i-about-2.png')" alt="icon.png" class="v-img">
+                                </div>
+                                <div class="v-text-box">
+                                    <h3 class="v-title">{{$t('homePage_033')}}</h3>
+                                    <h3 class="v-title">{{$t('homePage_034')}}</h3>
+                                    <p class="v-text">{{$t('homePage_035')}}</p>
+                                </div>
                             </div>
-                            <h1 class="font-h1 ellipsis-xs">
-                                {{item.title}}
-                            </h1>
-                        </a>
-                    </Col>
-                </Row>
-			</div>
+                        </Col>
+                        <Col :xs="24" :md="8" :lg="8" :xl="7">
+                            <div class="v-item-box">
+                                <div class="v-img-box">
+                                    <img v-lazy="require('@/assets/img/hk/i-about-3.png')" alt="icon.png" class="v-img">
+                                </div>
+                                <div class="v-text-box">
+                                    <h3 class="v-title">{{$t('homePage_036')}}</h3>
+                                    <h3 class="v-title">{{$t('homePage_037')}}</h3>
+                                    <p class="v-text">{{$t('homePage_038')}}</p>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
+                        <Col :xs="24" :md="8" :lg="8" :xl="7" v-for="item in aboutData" :key="item.id">
+                            <div class="v-item-box">
+                                <div class="v-img-box">
+                                    <img v-lazy="item.url" alt="icon.png" class="v-img">
+                                </div>
+                                <div class="v-text-box">
+                                    <h3 class="v-title">{{item.name}}</h3>
+                                    <h3 class="v-title">{{item.title}}</h3>
+                                    <p class="v-text">{{item.text}}</p>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
+            <div class="v-plan-box" :style="{backgroundImage: 'url(' + imgPlanBg + ')'}">
+                <div class="v-container">
+                    <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
+                        <Col :xs="24" :md="10" :lg="10" :xl="10">
+                            <div class="v-item-box">
+                                <h3 class="v-h3-max color-ft-gy">- The development of</h3>
+                                <div class="v-icon-box">
+                                    <img src="@/assets/img/hk/logo-min.png" alt="icon.png" class="v-img">
+                                    <p class="v-text">{{$t('homePage_048')}}</p>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col :xs="24" :md="24" :lg="24" :xl="24">
+                            <div class="v-swiper">
+                                <swiper :options="swiperOption">
+                                　　<swiper-slide v-for="item in swiperData" :key="item.id">
+                                        <img :src="item.url" alt="icon.png" class="v-img">
+                                        <p class="v-text">{{item.text}}</p>
+                                    </swiper-slide>
+                                　　 <div class="swiper-pagination" slot="pagination"></div>
+                                </swiper>
+                                <img src="@/assets/img/hk/i-plan.png" alt="icon.png" class="v-img-ft" >
+                            </div>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
+        </div>
+        <!-- 页脚 -->
+        <div class="v-footer-box">
+            <div class="v-footer-top" :style="{backgroundImage: 'url(' + imgFooterBg + ')'}">
+                <h3 class="v-title">{{$t('homePage_049')}}</h3>
+                <div class="v-cooperate-box">
+                    <div class="v-container">
+                        <Row type="flex" justify="center" class="code-row-bg">
+                            <Col :xs="24" :md="20" :lg="20" :xl="20">
+                                <div class="v-item-box">
+                                    <p class="v-text">{{$t('homePage_050')}}</p>
+                                    <div class="v-img-box">
+                                        <div class="v-img-list" v-for="item in copteFooterData" :key="item.id">
+                                            <img :src="item.url" alt="icon.png" class="v-img">
+                                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+            </div>
+            <div class="v-footer-ft">
+                <div class="v-container">
+                    <Row type="flex" justify="center" class="code-row-bg" :gutter="30">
+                        <Col :xs="24" :md="20" :lg="20" :xl="20">
+                            <div class="v-icon-box">
+                                <img src="@/assets/img/hk/logo-white.png" alt="icon.png" class="v-img">
+                            </div>
+                            <div class="v-item-list">
+                                <div class="v-text">
+                                    <a href="" class="v-ahover">{{$t('naviGation_001')}}</a>
+                                </div>
+                                <div class="v-text">
+                                    <a href="" class="v-ahover">{{$t('naviGation_002')}}</a>
+                                </div>
+                                <div class="v-text">
+                                    <a href="" class="v-ahover">{{$t('naviGation_003')}}</a>
+                                </div>
+                                <div class="v-text">
+                                    <a href="" class="v-ahover">{{$t('naviGation_004')}}</a>
+                                </div>
+                            </div>
+                            <p class="v-item-time">@2020 nai-china.net</p>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import { WOW } from 'wowjs'
-import { setStore, getStore } from '@/common/localUtil'
-import NavBar from "@/components/NavBar"
-import videoPlayer from "@/components/videoPlayer/videoPlayer"
-import vueAmap from "@/components/vueAmap/vueAmap"
+import { WOW } from 'wowjs';
+import { setStore, getStore } from '@/common/localUtil';
+import NavBar from "@/components/NavBar";
+import videoPlayer from "@/components/videoPlayer/videoPlayer";
+import vueAmap from "@/components/vueAmap/vueAmap";
 
 export default {
     data() {
@@ -259,251 +358,200 @@ export default {
 				},
 				{
 					name: this.$t('naviGation_002'),
-					herf: "#TOPtrait"
+					herf: "#advantages"
 				},
 				{
 					name: this.$t('naviGation_003'),
-					herf: "#TOPdplan"
+					herf: "#technical"
 				},
 				{
 					name: this.$t('naviGation_004'),
-					herf: "#TOPteam"
-				},
-				{
-					name: this.$t('naviGation_005'),
-					herf: "#TOPnews"
+					herf: "#about"
 				}
             ],
-            advantageData: [
+            bannerTop: require('@/assets/img/hk/i-banner-top.png'),
+            imgBg: require('@/assets/img/hk/i-banner-maxbg.png'),
+            videoData: [
                 {
                     id: 1,
-                    url: require('@/assets/img/hk/icon-ad_1.png'),
-                    title: this.$t('homePage_006'),
-                    text: this.$t('homePage_007')
+                    url: require('@/assets/img/hk/i-base.png'),
+                    title: this.$t('homePage_005'),
+                    text: this.$t('homePage_006')
                 },
                 {
                     id: 2,
-                    url: require('@/assets/img/hk/icon-ad_2.png'),
-                    title: this.$t('homePage_008'),
-                    text: this.$t('homePage_009')
+                    url: require('@/assets/img/hk/i-base-1.png'),
+                    title: this.$t('homePage_007'),
+                    text: this.$t('homePage_008')
                 },
                 {
                     id: 3,
-                    url: require('@/assets/img/hk/icon-ad_3.png'),
-                    title: this.$t('homePage_010'),
-                    text: this.$t('homePage_011')
-                },
+                    url: require('@/assets/img/hk/i-base-2.png'),
+                    title: this.$t('homePage_009'),
+                    text: this.$t('homePage_010')
+                }
+            ],
+            advantagesData: [
                 {
-                    id: 4,
-                    url: require('@/assets/img/hk/icon-ad_4.png'),
-                    title: this.$t('homePage_012'),
-                    text: this.$t('homePage_013')
-                },
-                {
-                    id: 5,
-                    url: require('@/assets/img/hk/icon-ad_4.png'),
-                    title: this.$t('homePage_014'),
-                    text: this.$t('homePage_015')
-                },
-                {
-                    id: 6,
-                    url: require('@/assets/img/hk/icon-ad_4.png'),
+                    id: 1,
+                    url: require('@/assets/img/hk/i-advantages-3.png'),
                     title: this.$t('homePage_016'),
                     text: this.$t('homePage_017')
+                },
+                {
+                    id: 2,
+                    url: require('@/assets/img/hk/i-advantages-4.png'),
+                    title: this.$t('homePage_018'),
+                    text: this.$t('homePage_019')
+                },
+                {
+                    id: 3,
+                    url: require('@/assets/img/hk/i-advantages-5.png'),
+                    title: this.$t('homePage_020'),
+                    text: this.$t('homePage_021')
                 }
             ],
-            ecologyData: [
+            aboutData: [
                 {
                     id: 1,
-                    url: require('@/assets/img/hk/icon-ecology_2.png'),
-                    title: this.$t('homePage_019'),
-                    text: this.$t('homePage_020')
+                    url: require('@/assets/img/hk/i-about-3.png'),
+                    name: this.$t('homePage_039'),
+                    title: this.$t('homePage_040'),
+                    text: this.$t('homePage_041')
                 },
                 {
                     id: 2,
-                    url: require('@/assets/img/hk/icon-ecology_1.png'),
-                    title: this.$t('homePage_021'),
-                    text: this.$t('homePage_022')
+                    url: require('@/assets/img/hk/i-about-4.png'),
+                    name: this.$t('homePage_042'),
+                    title: this.$t('homePage_043'),
+                    text: this.$t('homePage_044')
                 },
                 {
                     id: 3,
-                    url: require('@/assets/img/hk/icon-ecology_2.png'),
-                    title: this.$t('homePage_023'),
-                    text: this.$t('homePage_024')
-                },
-            ],
-            otherData: [
-                {
-                    id: 1,
-                    url: require('@/assets/img/hk/icon-other_1.png'),
-                    title: this.$t('homePage_026'),
-                    text: this.$t('homePage_027')
-                },
-                {
-                    id: 2,
-                    url: require('@/assets/img/hk/icon-other_2.png'),
-                    title: this.$t('homePage_028'),
-                    text: this.$t('homePage_029')
-                },
-                {
-                    id: 3,
-                    url: require('@/assets/img/hk/icon-other_3.png'),
-                    title: this.$t('homePage_030'),
-                    text: this.$t('homePage_031')
-                },
-                {
-                    id: 4,
-                    url: require('@/assets/img/hk/icon-other_4.png'),
-                    title: this.$t('homePage_032'),
-                    text: this.$t('homePage_033')
+                    url: require('@/assets/img/hk/i-about-5.png'),
+                    name: this.$t('homePage_045'),
+                    title: this.$t('homePage_046'),
+                    text: this.$t('homePage_047')
                 }
             ],
-            advantageSizeData: [
+            imgFooterBg: require('@/assets/img/hk/i-footer-bg.png'),
+            copteFooterData: [
                 {
                     id: 1,
-                    url: require('@/assets/img/hk/icon-ad_1.png'),
-                    title: this.$t('homePage_035'),
-                    text: this.$t('homePage_036')
+                    url: require('@/assets/img/hk/i-footer-1.png')
                 },
                 {
                     id: 2,
-                    url: require('@/assets/img/hk/icon-ad_2.png'),
-                    title: this.$t('homePage_037'),
-                    text: this.$t('homePage_038')
+                    url: require('@/assets/img/hk/i-footer-2.png')
                 },
                 {
                     id: 3,
-                    url: require('@/assets/img/hk/icon-ad_3.png'),
-                    title: this.$t('homePage_039'),
-                    text: this.$t('homePage_040')
+                    url: require('@/assets/img/hk/i-footer-3.png')
                 },
                 {
                     id: 4,
-                    url: require('@/assets/img/hk/icon-ad_4.png'),
-                    title: this.$t('homePage_041'),
-                    text: this.$t('homePage_042')
-                },
-            ],
-            sixSizeData: [
-                {
-                    id: 1,
-                    url: require('@/assets/img/hk/icon-ad_1.png'),
-                    title: this.$t('homePage_057'),
-                    text: this.$t('homePage_058')
-                },
-                {
-                    id: 2,
-                    url: require('@/assets/img/hk/icon-ad_2.png'),
-                    title: this.$t('homePage_059'),
-                    text: this.$t('homePage_060')
-                },
-                {
-                    id: 3,
-                    url: require('@/assets/img/hk/icon-ad_3.png'),
-                    title: this.$t('homePage_061'),
-                    text: this.$t('homePage_062')
-                },
-                {
-                    id: 4,
-                    url: require('@/assets/img/hk/icon-ad_4.png'),
-                    title: this.$t('homePage_063'),
-                    text: this.$t('homePage_064')
-                }
-            ],
-            teamData: [
-                {
-                    id: 1,
-                    url: require('@/assets/img/hk/icon-team_1.png'),
-                    title: this.$t('homePage_068'),
-                    text: this.$t('homePage_069')
-                },
-                {
-                    id: 2,
-                    url: require('@/assets/img/hk/icon-team_2.png'),
-                    title: this.$t('homePage_070'),
-                    text: this.$t('homePage_071')
-                },
-                {
-                    id: 3,
-                    url: require('@/assets/img/hk/icon-team_3.png'),
-                    title: this.$t('homePage_072'),
-                    text: this.$t('homePage_073')
-                },
-                {
-                    id: 4,
-                    url: require('@/assets/img/hk/icon-team_4.png'),
-                    title: this.$t('homePage_076'),
-                    text: this.$t('homePage_077')
+                    url: require('@/assets/img/hk/i-footer-4.png')
                 },
                 {
                     id: 5,
-                    url: require('@/assets/img/hk/icon-team_5.png'),
-                    title: this.$t('homePage_078'),
-                    text: this.$t('homePage_079')
+                    url: require('@/assets/img/hk/i-footer-5.png')
                 },
                 {
                     id: 6,
-                    url: require('@/assets/img/hk/icon-team_6.png'),
-                    title: this.$t('homePage_080'),
-                    text: this.$t('homePage_081')
-                }
-            ],
-            newsListData: [
-                {
-                    id: 1,
-                    url: require('@/assets/img/hk/logo.png'),
-                    title: this.$t('homePage_026'),
-                    text: this.$t('homePage_027')
-                },
-                {
-                    id: 2,
-                    url: require('@/assets/img/hk/logo.png'),
-                    title: this.$t('homePage_028'),
-                    text: this.$t('homePage_029')
-                },
-                {
-                    id: 3,
-                    url: require('@/assets/img/hk/logo.png'),
-                    title: this.$t('homePage_030'),
-                    text: this.$t('homePage_031')
-                },
-                {
-                    id: 4,
-                    url: require('@/assets/img/hk/logo.png'),
-                    title: this.$t('homePage_032'),
-                    text: this.$t('homePage_033')
-                },
-                {
-                    id: 5,
-                    url: require('@/assets/img/hk/logo.png'),
-                    title: this.$t('homePage_032'),
-                    text: this.$t('homePage_033')
-                },
-                {
-                    id: 6,
-                    url: require('@/assets/img/hk/logo.png'),
-                    title: this.$t('homePage_032'),
-                    text: this.$t('homePage_033')
+                    url: require('@/assets/img/hk/i-footer-6.png')
                 },
                 {
                     id: 7,
-                    url: require('@/assets/img/hk/logo.png'),
-                    title: this.$t('homePage_032'),
-                    text: this.$t('homePage_033')
+                    url: require('@/assets/img/hk/i-footer-7.png')
                 },
                 {
                     id: 8,
-                    url: require('@/assets/img/hk/logo.png'),
-                    title: this.$t('homePage_032'),
-                    text: this.$t('homePage_033')
+                    url: require('@/assets/img/hk/i-footer-8.png')
                 }
-            ]
+            ],
+            swiperOption: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                centeredSlides: true,
+            　　pagination: {
+            　　　　el: '.swiper-pagination',
+            　　　　clickable: true // 允许点击小圆点跳转
+            　　},
+                breakpoints: { 
+                    //当宽度大于等于320
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10
+                    },
+                    //当宽度大于等于480
+                    480: { 
+                        slidesPerView: 2,
+                        spaceBetween: 30
+                    },
+                    1020: { 
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                    }
+                }
+            },
+            swiperData: [
+                {
+                    id: 1,
+                    url: require('@/assets/img/hk/i-slide-1.png'),
+                    text: this.$t('homePage_051')
+                },
+                {
+                    id: 2,
+                    url: require('@/assets/img/hk/i-slide-2.png'),
+                    text: this.$t('homePage_052')
+                },
+                {
+                    id: 3,
+                    url: require('@/assets/img/hk/i-slide-3.png'),
+                    text: this.$t('homePage_053')
+                },
+                {
+                    id: 4,
+                    url: require('@/assets/img/hk/i-slide-4.png'),
+                    text: this.$t('homePage_054')
+                },
+                {
+                    id: 5,
+                    url: require('@/assets/img/hk/i-slide-5.png'),
+                    text: this.$t('homePage_055')
+                },
+                {
+                    id: 6,
+                    url: require('@/assets/img/hk/i-slide-6.png'),
+                    text: this.$t('homePage_056')
+                },
+                {
+                    id: 7,
+                    url: require('@/assets/img/hk/i-slide-7.png'),
+                    text: this.$t('homePage_057')
+                },
+                {
+                    id: 8,
+                    url: require('@/assets/img/hk/i-slide-8.png'),
+                    text: this.$t('homePage_058')
+                },
+                {
+                    id: 9,
+                    url: require('@/assets/img/hk/i-slide-7.png'),
+                    text: this.$t('homePage_059')
+                },
+                {
+                    id: 10,
+                    url: require('@/assets/img/hk/i-slide-8.png'),
+                    text: this.$t('homePage_060')
+                }
+            ],
+            imgPlanBg: require('@/assets/img/hk/i-plan-bg.png')
         }
     },
     components: {
 		'v-nav': NavBar,
-		'v-videoplayer': videoPlayer,
-		'v-vueamap': vueAmap
+		'v-videoplayer': videoPlayer
     },
     //监听属性 类似于data概念
     computed: {},
@@ -515,10 +563,10 @@ export default {
             let _that=this;
         },
 		onHomeLocale() {
-			let that = this
+			let _that = this
 			let name = getStore('localeCut')
 			if (name) {
-				that.valLocale = name
+				_that.valLocale = name
 			}
 			// console.log(name);
 		}
@@ -542,261 +590,639 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/*
- * @import url(); 引入公共css类
- */
+/** @import url(); 引入公共css类*/
 .v-page-bgcolor {background-color: #f9f9f9 !important;}
-.m-navbar {
-    /deep/.nav-box .nav-content {
-        box-shadow: 0 4px 6px #222;
-        background-color: #101010;
-    }
-}
-.m-banner-top {
-    position: relative;
-    padding-top: 60px;
-    .v-ahover {
-        .ahover {
-            position: relative;
-            z-index: 9;
-            display: block;
-            margin: 30px auto 0;
+/deep/.swiper-container {
+    height: 270px;
+    .swiper-slide {
+        position: relative;
+        cursor: pointer; 
+        transition: all .3s linear; 
+        transform: scale(.8);
+        .v-text {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            width: 280px;
             text-align: center;
-            padding: 10px 15px;
-            font-size: 16px;
-            color: #333 !important;
-            &::before {
-                content: ' ';
-                z-index: -1;
-                position: absolute;
-                left: 50%;
-                top: 0;
-                bottom: 0;
-                transform: translateX(-50%);
-                display: block;
-                width: 200px;
-                border-radius: 50px;
-                box-shadow: 0 4px 6px #999;
-                overflow: hidden;
-                background-color: #fff;
-            }
+            font-size: 14px;
+            transform: translateX(-50%);
         }
-    }
-    .m-banner-text {
-        width: 100%;
-        @include tb;
-        .img-box, .font-h4 {
-            padding: 10px 0;
-            text-align: center;
-        }
-        .font-h4 {
-            font-size: 24px;
-            font-weight: bold;
+        &:nth-child(odd) .v-text {
             color: #fff;
         }
-    }
-}
-.m-introduce-box {
-    padding: 70px 0;
-    color: #fff;
-    background-color: #1c1d36;
-    .m-iduce-text {
-        padding: 0 20px;
-        .font-h4 {
-            padding-bottom: 20px;
-            font-size: 32px;
-            text-align: center;
-        }
-        .text-ct {
-            position: relative;
-            padding: 80px 0 30px;
-            margin: 0 15px;
-            .font-h4 {
-                min-height: 235px;
-                padding: 60px 100px;
-                font-size: 16px;
-                border-radius: 10px;
-                box-shadow: 5px 5px 2px rgba(137, 141, 169, .2);
-                color: #333;
-                background-color: #fff;
-            }
-            .img {
-                top: 40px;
-                width: 70px;
-                height: 75px;
-                @include lr;
-            }
+        &:nth-child(even) .v-text {
+            color: $color-body-c;
         }
     }
+    .swiper-slide-active {transform: scale(1);}
 }
-// 模块1
-.m-repeat {
-    color: #333;
-    background-color: #fff;
-    .m-iduce-text {
-        .font-title {
-            width: 100%;
+/deep/.swiper-pagination-bullet-active {background: $color-body-c;}
+
+.page {
+    .v-navbar {
+        padding-bottom: 75px;
+    }
+    .v-mian-box {
+        .v-h3-max {
+            font-size: 18px;
             font-weight: bold;
+            letter-spacing: 3px;
         }
-        .text-ct {
-            .font-h4 {
-                min-height: 272px;
-                padding: 60px 20px;
-                font-size: 12px;
-                box-shadow: 0 4px 6px rgba(137, 141, 169, .2);
-                color: #999;
-                p {
-                    padding: 10px 0;
-                    &:nth-child(1) {
-                        font-size: 14px;
-                        font-weight: bold;
-                        color: #333;
-                    }
-                }
+        .v-icon-box {
+            margin: 15px 0 30px 0;
+            font-size: 0;
+            .v-img, .v-text {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 18px;
+                font-weight: bold;
+                line-height: 1;
             }
-        }
-    }
-}
-.v-introduce-size .m-iduce-text .text-ct .font-h4 {
-    min-height: 308px;
-}
-.m-ecology {
-    color: #fff;
-    background-color: #1c1d36;
-    .m-iduce-text {
-        .text-ct {
-            padding: 80px 0 30px;
-            .m-list {
-                padding: 20px;
-                border-radius: 10px;
-                text-align: left;
-                background-color: #fff;
-            }
-            .font-h4 {
-                min-height: 180px;
-                padding: 10px 0;
-                border-radius: 10px;
-                box-shadow: none;
-                text-align: left;
-            }
-            .m-img {
+            .v-img {
                 width: 50px;
                 height: 50px;
             }
-        }
-    }
-}
-// 模块5
-.m-apply {
-    .m-iduce-text {
-        .text-ct {
-            font-size: 14px;
-            padding-left: 15px;
-            padding-right: 15px;
-            .m-img {
-                width: 100%;
-                height: auto;
-            }
-            .font-h4 {
-                min-height: auto;
-                padding: 5px 15px;
-                font-size: 18px;
-                font-weight: bold;
+            .v-text {
+                padding: 10px 25px;
+                margin: 0 10px;
+                border-radius: 50px;
                 color: #fff;
-                background-color: transparent;
-            }
-            .font-text {
-                padding: 5px 15px 0;
-                color: #888;
+                box-shadow: 0 5px 8px rgba(0, 199, 117, .3);
+                background-color: $color-body-c;
             }
         }
-    }
-}
-.m-team {
-    .m-iduce-text {
-        margin: auto;
-        .font-text {
-            max-width: 700px;
-            margin: auto;
-            padding: 15px;
-            font-size: 14px;
-            text-align: center;
-            white-space:pre-wrap;
-            word-wrap:break-word;
-        }
-        .text-ct {
-            .m-img {
-                display: block;
-                width: 140px;
-                height: 140px;
-                margin: auto;
+        .v-banner-top {
+            position: relative;
+            .v-img-box {
+                line-height: 0;
+                .v-img {
+                    min-height: 400px;
+                }
             }
-            .font-h4 {
-                min-height: 208px;
-                text-align: center;
-                p {
-                    color: #999;
-                    &:nth-child(1) {
-                        color: $color-body-c;
+            .v-text-box {
+                position: absolute;
+                top: 22%;
+                left: 0;
+                right: 0;
+                .v-h2 {
+                    padding-bottom: 10px;
+                    font-size: 36px;
+                    color: $color-body-c;
+                }
+                .v-ahover {
+                    font-size: 0;
+                    .v-href {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 30px;
+                        margin-top: 50px;
+                        line-height: 0;
+                        border-radius: 5px;
+                        transition: all .3s linear;
+                        &:nth-child(1) {
+                            box-shadow: 0 5px 8px rgba(102, 181, 155, .4);
+                        }
+                        &:nth-child(2):hover {
+                            box-shadow: 0 5px 8px rgba(202, 200, 200, 0.4);
+                        }
+                        &:hover {
+                            transform: translateY(5px);
+                        }
+                        .v-img {
+                            width: 170px;
+                        }
                     }
                 }
             }
         }
-    }
-}
-.v-news-box {
-    .m-iduce-text {
-        margin: auto;
-        .font-title {padding-bottom: 50px;}
-        .text-ct {
-            display: block;
-            padding: 15px;
-            margin-top: 30px;
+        .v-item-container {
+            min-height: 400px;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position-y: 160px;
             background-color: #fff;
-            .v-img-box {
+            .v-video-box {
+                padding: 50px 0;
+                .v-item-box {
+                    .v-h4 {
+                        padding: 5px 200px 15px 0;
+                        font-size: 16px;
+                        color: $color-gray-bg;
+                    }
+                }
+                /deep/.video-player-box {
+                    overflow: hidden;
+                    border-radius: 15px;
+                }
+                .v-item-list {
+                    margin-top: 100px;
+                    overflow: hidden;
+                    border-radius: 20px;
+                    box-shadow: 0 8px 10px rgba(196, 217, 237, 0.41);
+                    background-color: #fff;
+                    transition: all .3s linear;
+                    &:hover {
+                        transform: translateY(10px);
+                        .v-img {
+                            animation: scaleDraw 4s ease-in-out infinite;
+                        }
+                    }
+                    .v-img-box {
+                        position: relative;
+                        height: 168px;
+                        line-height: 0;
+                        overflow: hidden;
+                        background-color: #ddd;
+                        .v-img {
+                            @include ct();
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                    .v-text-box {
+                        padding: 15px;
+                        .v-h3 {
+                            padding: 5px 0 15px 0;
+                            text-align: center;
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: #66b59b;
+                        }
+                        .v-text {
+                            min-height: 105px;
+                            color: $color-gray-bg;
+                        }
+                    }
+                }
+            }
+            .v-advantages-box {
+                padding: 60px 0;
+                .v-item-list {
+                    margin-bottom: 40px;
+                    &:hover {
+                        .v-text-box .v-h3 {
+                            transform: translateX(35%);
+                            &::after {
+                                width: 50%;
+                            }
+                        }
+                    }
+                    .v-img-box {
+                        line-height: 0;
+                        .v-img {
+                            display: block;
+                            width: 60px;
+                            height: 60px;
+                        }
+                    }
+                    .v-text-box {
+                        min-height: 200px;
+                        padding: 10px 0;
+                        color: $color-gray-bg;
+                        .v-h3 {
+                            position: relative;
+                            padding: 5px 0 15px;
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: #333;
+                            transition: all .8s ease-in-out;
+                            &::after {
+                                content: ' ';
+                                position: absolute;
+                                left: 0;
+                                display: block;
+                                width: 40px;
+                                height: 8px;
+                                border-bottom: 2px solid $color-body-c;
+                                transition: all .5s linear;
+                            }
+                        }
+                    }
+                }
+            }
+            .v-consensus-box {
+                padding: 60px 0;
+                .v-img-lf, .v-img-box {
+                    display: block;
+                    line-height: 0;
+                    overflow: hidden;
+                }
+                .v-img-lf {
+                    .v-img {
+                        height: auto;
+                    }
+                }
+                .v-item-box {
+                    padding-top: 15px;
+                    .v-img-box {
+                        width: 70px;
+                        height: 70px;
+                    }
+                    .v-text-box {
+                        .v-h3 {
+                            padding: 15px 0;
+                            font-size: 28px;
+                            color: #155038;
+                        }
+                        .v-text  {
+                            padding-top: 20px;
+                            font-size: 16px;
+                            color: $color-gray-bg;
+                        }
+                    }
+                }
+            }
+        }
+        .v-technical-box {
+            position: relative;
+            padding: 80px 0;
+            background-color: #ecfbf6;
+            .v-item-box {
+                .v-h4 {
+                    padding-bottom: 30px;
+                    color: #155038;
+                }
+            }
+            .v-technical-abs {
+                position: relative;
+                .v-technical-list {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    padding: 30px;
+                    font-size: 0;
+                    border-radius: 30px;
+                    box-shadow: 0 10px 15px rgba(0, 199, 117, .4);
+                    background: $color-body-c;
+                    .v-item {
+                        position: relative;
+                        display: inline-block;
+                        width: 50%;
+                        height: 174px;
+                        box-sizing: border-box;
+                        padding: 20px;
+                        vertical-align: middle;
+                        font-size: 14px;
+                        text-align: center;
+                        color: #fff;
+                        &:nth-child(1), &:last-child {
+                            position: relative;
+                            &::before {
+                                content: ' ';
+                                position: absolute;
+                                left: 0;
+                                right: 0;
+                                display: block;
+                                height: 3px;
+                            }
+                            &::after {
+                                content: ' ';
+                                position: absolute;
+                                bottom: 0;
+                                top: 0;
+                                display: block;
+                                width: 3px;
+                            }
+                        }
+                        &:nth-child(1) {
+                            &::before {
+                                bottom: 0;
+                                border-bottom: 1px solid #fff;
+                            }
+                            &::after {
+                                right: 0;
+                                border-right: 1px solid #fff;
+                            }
+                        }
+                        &:last-child {
+                            &::before {
+                                top: -1px;
+                                border-top: 1px solid #fff;
+                            }
+                            &::after {
+                                left: -1px;
+                                border-left: 1px solid #fff;
+                            }
+                        }
+                        .v-img {
+                            display: block;
+                            width: 50px;
+                            height: 50px;
+                            margin: 10px auto;
+                        }
+                        .v-text {
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+        }
+        .v-about-box {
+            padding: 150px 0;
+            .v-item-box {
+                position: relative;
+                margin: 20px 0;
+                &:hover {
+                    animation: upAnimation 1s ease-in infinite normal;
+                    cursor: pointer;
+                }
+                .v-img-box {
+                    height: 240px;
+                    line-height: 0;
+                }
+                .v-h2 {
+                    position: absolute;
+                    top: 105px;
+                    left: 25px;
+                    display: block;
+                    line-height: 1.25;
+                    font-size: 40px;
+                    font-weight: bold;
+                    color: #fff;
+                }
+                .v-text-box {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 60px 120px 0 15px;
+                    font-size: 12px;
+                    color: #fff;
+                    .v-title {
+                        padding-bottom: 5px;
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .v-plan-box {
+            padding: 100px 0 60px;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: center top;
+            .v-swiper {
+                padding: 50px 0;
+                .v-img {
+                    height: auto;
+                }
+                .v-img-ft {
+                    display: block;
+                    width: 45px;
+                    margin: 40px auto 0;
+                }
+            }
+        }
+    }
+    .v-footer-box {
+        min-height: 800px;
+        background: #222734;
+        .v-footer-top {
+            position: relative;
+            height: 560px;
+            box-sizing: border-box;
+            padding-top: 50px;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: cover;
+            background-color: #00C775;
+            .v-title {
                 display: block;
-                width: auto;
-                height: 140px;
-                margin: auto;
-                overflow: hidden;
+                width: 230px;
+                padding: 10px;
+                margin: 50px auto;
+                font-size: 18px;
                 text-align: center;
+                font-weight: bold;
+                border-radius: 50px;
+                color: $color-body-c;
+                background-color: #fff;
             }
-            .font-h1 {
-                min-height: auto;
-                padding-top: 15px;
-                font-size: 20px;
-                color: #666;
+            .v-cooperate-box {
+                z-index: 1;
+                position: absolute;
+                top: 260px;
+                left: 0;
+                right: 0;
+                .v-item-box {
+                    padding: 50px;
+                    border-radius: 15px;
+                    background-color: #fff;
+                    .v-text {
+                        padding: 30px 70px 0;
+                        font-size: 16px;
+                        color: $color-gray-bg;
+                    }
+                    .v-img-box {
+                        font-size: 0;
+                        .v-img-list {
+                            display: inline-block;
+                            width: 25%;
+                            box-sizing: border-box;
+                            padding: 0 15px;
+                            margin-top: 40px;
+                            vertical-align: middle;
+                            background-color: #fff;
+                            .v-img {
+                                box-shadow: 0 0 20px rgba(221, 221, 221, 0.3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .v-footer-ft {
+            padding: 160px 0 50px;
+            font-size: 0;
+            .v-icon-box, .v-item-list {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 30px 0;
+            }
+            .v-item-list {
+                margin-left: 80px;
+                .v-text {
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding: 0 40px;
+                    font-size: 14px;
+                    border-right: 1px solid #707070;
+                    &:last-child {border: none;}
+                    .v-ahover {
+                        color: #fff !important;
+                    }
+                }
+            }
+            .v-item-time {
+                display: block;
+                padding-top: 30px;
+                font-size: 14px;
                 text-align: center;
+                border-top: 1px solid #707070;
+                color: #fff;
             }
         }
     }
-
 }
-//小于1024
+
+// 小于1024
 @media only screen and (max-width: 1024px) {
-    .m-banner-top {
-        > .img-box {height: 340px;object-fit: cover;}
-        .m-banner-text .img-box {
-            width: 150px;
-            margin: auto;
-        }
-        .m-banner-text .font-h4 {font-size: 18px;}
-    }
-    .m-team {
-        .m-iduce-text {
-            width: 100%;
-            margin: auto;
-        }
-    }
-    .m-introduce-box {
-        .m-iduce-text .text-ct {
-            margin: 15px auto;
-            .font-h4 {
-                padding-left: 15px;
-                padding-right: 15px;
+.page {
+    .v-mian-box {
+        .v-banner-top {
+            .v-img-box {
+                .v-img {
+                    width: auto;
+                    object-fit: cover;
+                }
+            }
+            .v-text-box {
+                .v-ahover {
+                    .v-href {
+                        margin-right: 40px;
+                        margin-top: 30px;
+                    }
+                }
             }
         }
-
+        .v-item-container {
+            .v-video-box {
+                .v-item-box {
+                    .v-h4 {
+                        padding-right: 20px;
+                    }
+                }
+            }
+        }
+        .v-technical-box {
+            .v-technical-abs {
+                position: relative;
+                .v-technical-list {
+                    position: inherit;
+                    top: inherit;
+                    right: inherit;
+                    left: inherit;
+                    padding: 30px 15px;
+                }
+            }
+        }
+        .v-about-box {
+            padding: 30px 0;
+            .effect:after, .effect:before {left: 12px;}
+            .v-item-box {
+                .v-text-box .v-title {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .v-footer-box {
+        .v-footer-top {
+            height: 460px;
+            .v-cooperate-box {
+                .v-item-box {
+                    padding: 20px;
+                    .v-text {
+                        padding: 30px;
+                    }
+                }
+            }
+        }
+        .v-footer-ft {
+            padding-top: 200px;
+            .v-icon-box, .v-item-list {
+                display: block;
+                padding: 15px 0 30px;
+            }
+            .v-icon-box {
+                width: 298px;
+            }
+            .v-item-list {
+                margin-left: 0;
+                .v-text {padding: 0 15px;}
+            }
+        }
+    }
+}
+}
+@media only screen and (max-width: 414px) {
+    /deep/.swiper-container {
+        // height: 240px;
+        .swiper-slide {
+            transform: scale(1);
+            .v-text {
+                width: 260px;
+                font-size: 12px;
+            }
+        }
+    }
+    .page {
+        .v-mian-box {
+            .v-banner-top {
+                .v-text-box {
+                    top: 12%;
+                    .v-h2 {font-size: 18px;}
+                }
+            }
+            .v-item-container {
+                .v-video-box {
+                    .v-item-box {
+                        .v-h4 {
+                            padding-right: 0;
+                        }
+                    }
+                    .v-item-list {
+                        margin-top: 30px;
+                    }
+                }
+                .v-advantages-box {
+                    padding: 20px 0;
+                    .v-item-list {
+                        margin-bottom: 15px;
+                        .v-text-box {
+                            min-height: auto;
+                        }
+                    }
+                }
+                .v-consensus-box {
+                    padding: 20px 0;
+                    .v-img-lf {
+                        margin: 15px 0;
+                    }
+                }
+            }
+            .v-technical-box {
+                padding: 20px 0;
+            }
+            .v-about-box {
+                .effect:after, .effect:before {bottom: 2px;left: 14px;}
+            }
+            .v-plan-box {
+                padding: 50px 0;
+                .v-swiper {
+                    padding: 30px 0;
+                }
+            }
+            
+        }
+    }
+}
+@media only screen and (max-width: 375px) {
+    .page {
+        .v-mian-box {
+            .v-about-box {
+                .effect:after, .effect:before {bottom: 25px;}
+                .v-item-box {
+                    .v-h2 {
+                        font-size: 32px;
+                    }
+                }
+            }
+            
+        }
     }
 }
 </style>

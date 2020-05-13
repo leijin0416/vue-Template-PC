@@ -2,7 +2,6 @@
 	<div id="app" class="g-content-box">
 		<Layout>
 			<router-view v-wechat-title="$route.meta.title" />
-			<v-footer />
     		<BackTop></BackTop>
 		</Layout>
 	</div>
@@ -10,12 +9,11 @@
 
 <script>
 import Layout from "@/layouts"
-import FooterBox from "@/components/FooterBox"
+
 export default {
 	name: "App",
 	components: {
 		Layout,
-		'v-footer': FooterBox,
 	},
 	data() {
 		return {
@@ -27,5 +25,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	
 </style>

@@ -8,18 +8,23 @@ import filters from './filters';
 import VueWechatTitle from 'vue-wechat-title';
 import VideoPlayer from 'vue-video-player';
 import VueLazyLoad from 'vue-lazyload';
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+
 
 // import iView from 'iview';
-// import animated from 'animate.css' 
-// import DrawerLayout from 'vue-drawer-layout'
+// import animated from 'animate.css';
+// import DrawerLayout from 'vue-drawer-layout';
 
+import 'swiper/css/swiper.css';
 import "./style/reset.scss";
+import "./style/animation.scss";
 import "./style/common.scss";
 import 'iview/dist/styles/iview.css';
 
 // require('video.js/dist/video-js.css');
 require('vue-video-player/src/custom-theme.css');
 
+Vue.use(VueAwesomeSwiper);
 Vue.use(VueLazyLoad, {
     preLoad: 1.3,
     attempt: 1,
@@ -30,8 +35,8 @@ Vue.use(VueLazyLoad, {
 Vue.use(VideoPlayer);
 Vue.use(VueWechatTitle);
 // Vue.use(iView);
-// Vue.use(DrawerLayout)
-// Vue.use(animated)
+// Vue.use(DrawerLayout);
+// Vue.use(animated);
 
 Vue.config.productionTip = false;
 

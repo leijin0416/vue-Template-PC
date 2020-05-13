@@ -29,7 +29,7 @@
                     }
                 ],
                 hls: true,
-                poster: require('@/assets/img/hk/logo_lg.png'), 
+                poster: require('@/assets/img/hk/logo-white.png'), 
                 width: document.documentElement.clientWidth, 
                 notSupportedMessage: '此视频暂无法播放，请稍后再试',
                 controlBar: {

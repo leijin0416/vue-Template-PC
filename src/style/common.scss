@@ -2,8 +2,8 @@
  * 	【公共样式库】
  * 	 头部banner、字体粗细、字体间距、flex垂直居中
  * */
- body, html {
-	font-size: $font-size-mini !important;
+body, html {
+	font-size: 14px !important;
 }
 
 /*
@@ -28,7 +28,6 @@ input::-webkit-inner-spin-button{
 input[type="number"]{
     -moz-appearance: textfield !important;
 }
-
 a {color: $color-body-c !important;}
 a:hover {color: transparent;text-decoration: none;}
 img {height: 100%;vertical-align: top;}
@@ -50,7 +49,6 @@ img {height: 100%;vertical-align: top;}
     display: block !important;
     animation: showPanel .6s ease-in-out 1 forwards;
 }
-
 @keyframes showPanel{
     from{
         opacity: 0;
@@ -61,7 +59,6 @@ img {height: 100%;vertical-align: top;}
         transform: translateX(0px);
     }
 }
-
 .slide-fade-enter-active {
     transition: all .3s ease-in-out;
 }
@@ -73,11 +70,12 @@ img {height: 100%;vertical-align: top;}
     transform: translateX(380px);
     opacity: 0;
 }
+
 //------------ END ------------
 
 // 主体色
 .color-body-c {color: $color-body-c;}
-.color-font-gy {color: $color-desc;}
+.color-ft-gy {color: $color-gray;}
 
 .margin {margin: 0 auto;}
 .padg-font-sm {padding: 15px 0;}
@@ -141,6 +139,8 @@ img {height: 100%;vertical-align: top;}
     background: linear-gradient(to right,  #2a7aff 0%,#f7618b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a7aff', endColorstr='#f7618b',GradientType=1 ); /* IE6-9 */
 }
+
+
 // 弹性布局
 .weui-flex {
     @include flex(row, nowrap);
@@ -166,6 +166,7 @@ img {height: 100%;vertical-align: top;}
 @media only screen and (max-width: 1040px) {
 	.page .v-container {
         width: auto;
+        margin: 0 15px;
     }
 }
 
@@ -178,7 +179,7 @@ img {height: 100%;vertical-align: top;}
 
 /*定义滚动条轨道 内阴影+圆角*/
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0);
+    // -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0);
     border-radius: 10px;
     background-color: #F5F5F5;
 }
@@ -186,7 +187,7 @@ img {height: 100%;vertical-align: top;}
 /*定义滑块 内阴影+圆角*/
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: $color-body-c;
 }
 

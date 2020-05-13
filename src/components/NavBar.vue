@@ -10,9 +10,9 @@
 							</div>
 							<div class="v-nav-list" v-if="orIPhone == true">
 								<ul class="m-navbar-list" v-if="navDataList == true" >
-									<!-- 导航栏
-									*    router-link :to="" - 也，页面间的路由跳转
-									* 	 a 做锚点、跳外链等 -->
+									<!-- 导航栏 -navDataList
+									 * router-link :to="" - 也，页面间的路由跳转
+									 * a 做锚点、跳外链等 -->
 									<li v-for="(item , index) in navDataList" :index="index" >
 										<router-link tag="a" :to="item.herf">
 											<span class="navbar-text">{{item.name}}</span>
@@ -26,15 +26,11 @@
 										</a>
 									</li>
 									<li>
-										<!-- <RadioGroup @on-change="onLocaleClick" v-model="valLocale" type="button">
-											<Radio label="zh-CN">CN</Radio>
-											<Radio label="en-US">EN</Radio>
-										</RadioGroup> -->
-										<div class="m-switch-box">
+										<div class="v-switch-box">
 											<Dropdown trigger="click" @on-click="onLocaleClick">
 												<a href="javascript:void(0)">
 													<Icon type="md-globe" />
-													<span>{{valLocale === 'en-US'　?　'EN'　:　'CN'　}}</span>
+													<span>{{ valLocale === 'en-US'　?　'EN'　:　'CN'　}}</span>
 													<Icon type="ios-arrow-down" />
 												</a>
 												<DropdownMenu slot="list">
@@ -43,10 +39,15 @@
 												</DropdownMenu>
 											</Dropdown>
 										</div>
+										<div class="v-switch-box">
+                                            <a href="https://nai-china.net/GreenPlanet_cn.pdf" class="v-ahover" target="_target" v-if="valLocale === 'en-US'" download="GreenPlanet_cn" >{{$t('naviGation_005')}}</a>
+                                            <a href="https://nai-china.net/GreenPlanet_en.pdf" class="v-ahover" target="_target" v-else  download="GreenPlanet_en">{{$t('naviGation_005')}}</a>
+										</div>
 									</li>
 								</ul>
 							</div>
 							<div class="icon-box" v-else>
+                                <!-- 横杠 -->
 								<div class="nav-icon-3" @click="onDrawerClick">
 									<span></span>
 									<span></span>
@@ -67,9 +68,9 @@
 							<img class="img" src="@/assets/img/hk/logo.png" alt="logo.png">
 						</div>
 						<ul class="m-navbar-list" v-if="navDataList == true" >
-							<!-- 导航栏
-							*    router-link :to="" - 也，页面间的路由跳转
-							* 	 a 做锚点、跳外链等 -->
+                            <!-- 导航栏 -navDataList
+                                * router-link :to="" - 也，页面间的路由跳转
+                                * a 做锚点、跳外链等 -->
 							<li v-for="(item , index) in navDataList" :index="index" >
 								<router-link tag="a" :to="item.herf">
 									<span class="navbar-text">{{item.name}}</span>
@@ -83,10 +84,6 @@
 								</a>
 							</li>
 							<li style="padding-top: 15px;">
-								<!-- <RadioGroup @on-change="onLocaleClick" v-model="valLocale" type="button">
-									<Radio label="zh-CN">CN</Radio>
-									<Radio label="en-US">EN</Radio>
-								</RadioGroup> -->
 								<Menu @on-select="onLocaleClick">
 									<Submenu name="1">
 										<template slot="title">
@@ -108,8 +105,8 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { setStore, getStore } from '@/common/localUtil'
+import Vue from 'vue';
+import { sessionData } from '@/filters/local';
 	
 export default {
 	name: "navs",
@@ -129,11 +126,10 @@ export default {
 	},
 	data() {
 		return {
-			valLocale: 'en-US',
+			valLocale: 'zh-CN',
 			orIPhone: true,
 			valueDrawer: false,
-			navIndexs: null,
-			UserImg: require('@/assets/img/hk/banner.png'),
+			navIndexs: null
 		}
 	},
 	//页面初始化
@@ -170,25 +166,25 @@ export default {
 		onIPhone() {
 			let _that = this;
 			//location.reload();
-			if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+			if(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
 				_that.orIPhone = false;
-				//console.log('手机');
+				console.log('手机');
 				//window.location.href = 'https://www.baidu.com'
 			} else {
 				_that.orIPhone = true;
-				//console.log('PC');
+				console.log('PC');
 				//window.location.href = 'https://www.sohu.com'
 			}
 		},
 		onLocaleClick (val) {
-			setStore('localeCut', val);
+			sessionData('set', 'localeCut', val);
 			location.reload();
 		},
 		onHomeLocale() {
-			let that = this
-			let name = getStore('localeCut')
+			let that = this;
+			let name = sessionData('get', 'localeCut');
 			if (name) {
-				that.valLocale = name
+				that.valLocale = name;
 			}
 			//console.log(name);
 		}
@@ -212,6 +208,7 @@ export default {
 	font-weight: bold;
 	box-shadow: none;
 }
+// 横杠
 .nav-icon-3 {
     width: 35px;
     height: 30px;
@@ -220,7 +217,7 @@ export default {
     cursor: pointer;
 	display: inline-block;
 	span {
-		background-color: #fff;
+		background-color: $color-body-c;
 		position: absolute;
 		border-radius: 2px;
 		transition: .3s cubic-bezier(.8, .5, .2, 1.4);
@@ -248,16 +245,13 @@ export default {
 	}
 }
 // 中英切换
-.m-switch-box {
-	// position: absolute;
-	// top: 50%;
-	// right: 0;
-	// transform: translateY(-50%);
+.v-switch-box {
+    display: inline-block;
 	/deep/.ivu-dropdown {
 		text-align: center;
 		.ivu-dropdown-rel {
 			a {
-				color: #eee !important;
+				color:#5c7b83 !important;
 			}
 			span {
 				display: inline-block;
@@ -265,7 +259,20 @@ export default {
 				font-size: 14px;
 			}
 		}
-	}
+    }
+    .v-ahover {
+        display: block;
+        padding: 6px 20px;
+        margin-left: 15px;
+        border-radius: 8px;
+        font-size: 12px !important;
+        color: #fff !important;
+        background-color: $color-body-c;
+        transition: all .3s linear;
+        &:hover {
+            box-shadow: 0 4px 6px #ddd;
+        }
+    }
 }
 
 .nav-box {
@@ -293,7 +300,7 @@ export default {
 		//logo
 		.logo-box {
 			left: 0;
-			width: 65px;
+			width: 165px;
 			box-sizing: content-box;
 			padding-left: 1.25rem;
 			overflow: hidden;
@@ -304,29 +311,31 @@ export default {
 		}
 		//导航栏内容
 		.m-navbar-list {
+            position: relative;
 			padding-left: $lg-pd-c;
 			font-size: 0;
-			text-align: right;
-			>li {
+			> li {
 				display: inline-block;
-				padding: 0 1.6rem;
 				vertical-align: middle;
+                padding: 0 30px;
+                &:last-child {
+                    @include tb();
+                    right: 15px;
+                }
 				a {
 					display: block; 
 					font-size: 16px;
 					&:hover {
-						span {
-							color: #55A0FF;
-						}
-						
+						span {color: $color-body-c;}
 					}
 				}
-			}
+            }
+            // 文字
 			.navbar-text {
 				position: relative;
 				display: block;
 				padding: 25px 0;
-				color: $color-white;
+                color: #5c7b83 !important;
 				&::before {
 					content: ' ';
 					position: absolute;
@@ -339,9 +348,7 @@ export default {
 					transform: translateX(-50%);
 					transition: all .3s linear;
 				}
-				// &:hover::before {
-				// 	width: 75%;
-				// }
+				&:hover::before {width: 75%;}
 			}
 			.dropdowns {
 				position: relative;
