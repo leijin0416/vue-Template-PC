@@ -1,5 +1,7 @@
 ## 前端优化
 
+[Animate css动画](http://www.jq22.com/yanshi819)
+
 ### 1、gzip 压缩：
 
 [压缩实践](https://juejin.im/post/5eb2243e51882555d8457833#heading-12)
@@ -25,7 +27,7 @@ CDN 的全称是 Content Delivery Network，即**内容分发网络**。CDN 是�
 
 ## Swiper 轮播
 
-[Swiper 地址](https://www.swiper.com.cn/)
+[Swiper 地址](https://www.swiper.com.cn/) | [breakpoints API](https://www.swiper.com.cn/api/parameters/289.html)
 
 ```js
 
