@@ -1,7 +1,15 @@
+const webpack = require("webpack");
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
+
+const os = require('os');
+const HappyPack = require("happypack");
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+
+// 分析打包时间
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 
 function resolve(dir) { return path.join(__dirname, dir) }
 
@@ -79,7 +87,20 @@ module.exports = {
             // 生产环境或本地需要cdn时，才注入cdn
             if (isProduction || devNeedCdn) args[0].cdn = cdn;
             return args
-        });
+        })
+
+        config
+        .plugin('speed-measure-webpack-plugin')
+        .use(SpeedMeasurePlugin)
+        .end()
+        
+        const jsRule = config.module.rule('js');
+        jsRule.uses.clear();
+        //把对.js 的文件处理交给id为 babel 的 HappyPack 的实例执行
+        jsRule.use('happypack/loader?id=babel', 'thread-loader')
+            .loader('happypack/loader?id=babel')
+            .end();
+
     },
     transpileDependencies: [
         'biyi-admin',
@@ -113,6 +134,12 @@ module.exports = {
                     },
                     test: /.js$/g,
                     sourceMap: false
+                }),
+                new HappyPack({
+                    id: 'babel',
+                    loaders: ['babel-loader?cacheDirectory=true'],
+                    threadPool: happyThreadPool,
+                    verbose: true
                 }),
                 // 压缩提示
                 new BundleAnalyzerPlugin()

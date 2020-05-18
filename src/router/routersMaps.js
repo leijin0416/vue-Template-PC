@@ -15,13 +15,19 @@ const getComponentMAx = (name, component) => () =>
 
 export const constantRouterMaps = [
     {
+        path: '/',
+        name: 'index',
+        component: getComponentMin('htmls', 'index'),
+        meta: { title: 'Green Planet' }
+    },
+    {
         path: '/index',
         name: 'index',
         component: getComponentMin('htmls', 'index'),
-        meta: { title: '首页' }
+        meta: { title: 'Green Planet' }
     },
     {
         path: '*',
-        redirect: '/index'
+        redirect: '/'
     }
 ]
