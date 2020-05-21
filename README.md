@@ -1,6 +1,6 @@
 ## 前端优化
 
-[Animate css动画](http://www.jq22.com/yanshi819)
+[Animate css动画](http://www.jq22.com/yanshi819) | [掘金-‘正则’等工具函数](https://juejin.im/post/5e6cf42bf265da57397e3694)
 
 ### 1、gzip 压缩：
 

@@ -78,28 +78,29 @@ module.exports = {
             .set('assets', resolve('src/assets/img'))
             .set('components', resolve('src/components'))
 
-        if (isDev === 'production') {
-            config.plugins.delete('prefetch')
-            config.plugins.delete('preload')
-        }
+        config
+            .plugin('speed-measure-webpack-plugin')
+            .use(SpeedMeasurePlugin)
+            .end()
 
         config.plugin('html').tap(args => {
-            // 生产环境或本地需要cdn时，才注入cdn
+            // 生产环境 或 本地 需要cdn时，才注入cdn
             if (isProduction || devNeedCdn) args[0].cdn = cdn;
             return args
         })
 
-        config
-        .plugin('speed-measure-webpack-plugin')
-        .use(SpeedMeasurePlugin)
-        .end()
-        
-        const jsRule = config.module.rule('js');
-        jsRule.uses.clear();
-        //把对.js 的文件处理交给id为 babel 的 HappyPack 的实例执行
-        jsRule.use('happypack/loader?id=babel', 'thread-loader')
-            .loader('happypack/loader?id=babel')
-            .end();
+        // 上产环境时
+        if (isDev === 'production') {
+            config.plugins.delete('prefetch');
+            config.plugins.delete('preload');
+
+            const jsRule = config.module.rule('js');
+            jsRule.uses.clear();
+            //把对.js 的文件处理交给id为 babel 的 HappyPack 的实例执行
+            jsRule.use('happypack/loader?id=babel', 'thread-loader')
+                .loader('happypack/loader?id=babel')
+                .end();
+        }
 
     },
     transpileDependencies: [
@@ -141,7 +142,7 @@ module.exports = {
                     threadPool: happyThreadPool,
                     verbose: true
                 }),
-                // 压缩提示
+                // 体积压缩提示
                 new BundleAnalyzerPlugin()
             )
         }
