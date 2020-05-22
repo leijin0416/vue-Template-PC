@@ -41,7 +41,6 @@ const cdn = {
         'https://lib.baomitu.com/vue-router/3.0.1/vue-router.min.js',
         'https://lib.baomitu.com/vuex/3.0.1/vuex.min.js',
         'https://lib.baomitu.com/axios/0.18.0/axios.min.js',
-        'https://lib.baomitu.com/axios/0.18.0/axios.min.js',
         'https://lib.baomitu.com/video.js/7.7.5/video.min.js',
         'https://lib.baomitu.com/vue-i18n/8.3.2/vue-i18n.min.js',
         'https://lib.baomitu.com/iview/3.5.4/iview.js'

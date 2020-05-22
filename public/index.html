@@ -10,6 +10,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="MobileOptimized" content="width">
     <meta name="HandheldFriendly" content="true">
+    <title></title>
+    <meta name="keywords" content="绿色星球">
+    <meta name="description"
+        content="绿色星球（www.nai-china.net）打造以技术与沙漠实体经济产业结合，创建出一套全生态的全球化绿色沙漠公益区块链体系。">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <!-- 使用CDN的CSS文件 -->
     <% for (var i in htmlWebpackPlugin.options.cdn &&
@@ -17,12 +21,10 @@
     <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet" />
     <% } %>
     <!-- 使用CDN的CSS文件 -->
-    <title></title>
 </head>
 
 <body>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
     <!-- 使用CDN的JS文件 -->
     <% for (var i in htmlWebpackPlugin.options.cdn &&
             htmlWebpackPlugin.options.cdn.js) { %>
