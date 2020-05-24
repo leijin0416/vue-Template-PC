@@ -1,6 +1,6 @@
 ## 前端优化
 
-[Animate css动画](http://www.jq22.com/yanshi819) | [掘金-‘正则’等工具函数](https://juejin.im/post/5e6cf42bf265da57397e3694)
+[Animate css动画](http://www.jq22.com/yanshi819) | [掘金-‘正则’等工具函数](https://juejin.im/post/5e6cf42bf265da57397e3694) | [集合-快速处理数组](https://juejin.im/post/5ec90f72e51d45785225a2c8)
 
 ### 1、gzip 压缩：
 
@@ -42,6 +42,8 @@ CDN 的全称是 Content Delivery Network，即**内容分发网络**。CDN 是�
 ### 5、ParallelUglifyPlugin 压缩
 
 自带的JS压缩插件是单线程执行的，而 webpack-parallel-uglify-plugin 可以并行的执行
+
+### 6、vue-lazyload 图片懒加载
 
 ---
 
