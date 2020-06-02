@@ -5,6 +5,7 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
+        "mock": "json-server --watch mock/db.js --m mock/post-to-get.js",
         "analyz": "vue-cli-service build --report"
     },
     "dependencies": {
@@ -38,6 +39,7 @@
         "@vue/cli-service": "^3.2.0",
         "compression-webpack-plugin": "^3.1.0",
         "happypack": "^5.0.1",
+        "mockjs": "^1.1.0",
         "node-sass": "^4.9.0",
         "sass-loader": "^7.0.1",
         "script-loader": "^0.7.2",

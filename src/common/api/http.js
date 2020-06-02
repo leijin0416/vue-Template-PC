@@ -17,14 +17,14 @@ axios.defaults = {
  *     config.data.hash = md5((new Date()).valueOf() + config.data.func);
  */
 axios.interceptors.request.use( config => {
-    const token = getStore('hasSessionToken')
+    const token = getStore('hasSessionToken');
 
-    token && (config.headers.token = token)
+    token && (config.headers.token = token);
     config.data = {
         data: CryptoJS.Encrypt(JSON.stringify(config.data))
     }
 
-    return config
+    return config;
 }, error => {
 
     return Promise.reject(error);
@@ -36,11 +36,11 @@ axios.interceptors.request.use( config => {
  *     getRealJsonData -去掉双引号，转化json格式
  */
 axios.interceptors.response.use( response => {
-    response.data = getRealJsonData(CryptoJS.Decrypt(response.data.data))
+    response.data = getRealJsonData(CryptoJS.Decrypt(response.data.data));
     // console.log(response.data.code);
     if (response.data.code === 600) {
-        removeStore('hasSessionToken')
-        removeStore('navbarName')
+        removeStore('hasSessionToken');
+        removeStore('navbarName');
 
         Notice.error({
             title: '系统提示',
@@ -49,7 +49,7 @@ axios.interceptors.response.use( response => {
         });
     }
     
-    return response
+    return response;
 }, error => {
     // 拦截http状态码
     const status = error.response.status;
@@ -61,13 +61,13 @@ axios.interceptors.response.use( response => {
                     duration: 3000,
                     message: '请求出错'
                 });
-                break
+                break;
             case 400:
                 Toast({
                     duration: 3000,
                     message: '请求出错'
                 });
-                break
+                break;
             case 401:
                 Toast({
                     duration: 3000,
@@ -77,34 +77,34 @@ axios.interceptors.response.use( response => {
                     removeStore('hasSessionToken');
                     window.location.reload();
                 }, 1000)
-                return
+                break;
             case 403:
                 Toast({
                     duration: 3000,
                     message: '拒绝访问'
                 });
-                break
+                break;
             case 404:
                 Toast({
                     duration: 3000,
                     message: '请求错误，未找到该资源'
                 });
-                break
+                break;
             case 500:
                 Toast({
                     duration: 3000,
                     message: '服务端错误'
                 });
-                break
+                break;
         }
-        return status >= 200 && status < 300
+        return status >= 200 && status < 300;
     } else {
         Toast({
             duration: 3000,
             message: '小主网络开小差啦，稍后再试'
         });
     }
-    return Promise.reject(error.response)
+    return Promise.reject(error.response);
 })
 
 
