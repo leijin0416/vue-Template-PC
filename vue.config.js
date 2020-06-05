@@ -90,7 +90,6 @@ module.exports = {
             .use(SpeedMeasurePlugin)
             .end()
 
-        // 上产环境时
         if (isDev === 'production') {
             config.plugins.delete('prefetch');
             config.plugins.delete('preload');
