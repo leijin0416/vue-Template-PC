@@ -21,11 +21,14 @@
 								</ul>
 								<ul class="m-navbar-list" v-else>
 									<li v-for="(item , index) in navDataListHf" :index="index" >
-										<a :href="item.herf" :class="{onactive : index === navIndexs}">
-											<span class="navbar-text"  @click="onShowClick(index)">{{item.name}}</span>
+										<a 
+                                            :href="item.herf" 
+                                            :class="{onactive : index === navIndexs}">
+											<span class="navbar-text">{{item.name}}</span>
 										</a>
 									</li>
-									<li>
+                                    <li></li>
+									<!-- <li>
 										<div class="v-switch-box">
 											<Dropdown trigger="click" @on-click="onLocaleClick">
 												<a href="javascript:void(0)">
@@ -43,7 +46,7 @@
                                             <a href="https://nai-china.net/GreenPlanet_cn.pdf" class="v-ahover" target="_target" v-if="valLocale === 'en-US'" download="GreenPlanet_cn" >{{$t('naviGation_005')}}</a>
                                             <a href="https://nai-china.net/GreenPlanet_en.pdf" class="v-ahover" target="_target" v-else  download="GreenPlanet_en">{{$t('naviGation_005')}}</a>
 										</div>
-									</li>
+									</li> -->
 								</ul>
 							</div>
 							<div class="icon-box" v-else>
@@ -83,7 +86,8 @@
 									<span class="navbar-text"  @click="onShowClick(index)">{{item.name}}</span>
 								</a>
 							</li>
-							<li style="padding-top: 15px;">
+                            <li></li>
+							<!-- <li style="padding-top: 15px;">
 								<Menu @on-select="onLocaleClick">
 									<Submenu name="1">
 										<template slot="title">
@@ -94,7 +98,7 @@
 										<MenuItem name="en-US">EN</MenuItem>
 									</Submenu>
 								</Menu>
-							</li>
+							</li> -->
 						</ul>
 					</Col>
 				</Row>
@@ -187,7 +191,7 @@ export default {
 				that.valLocale = name;
 			}
 			//console.log(name);
-		}
+        }
 	},
 	destroyed () {
 
@@ -284,7 +288,7 @@ export default {
 		left: 0;
 		right: 0;
 		z-index: 99;
-		//background-color: $color-white;
+        background-color: #fff;
 	}
 	.container-wd {
 		.m-row {
@@ -302,18 +306,16 @@ export default {
 			left: 0;
 			width: 165px;
 			box-sizing: content-box;
-			padding-left: 1.25rem;
+			padding-left: 20px;
 			overflow: hidden;
 			line-height: 0;
-			.img {
-				width: 100%;
-			}
 		}
 		//导航栏内容
 		.m-navbar-list {
             position: relative;
 			padding-left: $lg-pd-c;
 			font-size: 0;
+            text-align: right;
 			> li {
 				display: inline-block;
 				vertical-align: middle;
@@ -410,5 +412,11 @@ export default {
 			padding: 0;
 		}
 	}
+}
+
+@media only screen and (max-width: 480px) {
+    img {
+        width: auto;
+    }
 }
 </style>

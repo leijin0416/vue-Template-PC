@@ -10,6 +10,7 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 // 分析打包时间
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 function resolve(dir) { return path.join(__dirname, dir) }
 
@@ -72,6 +73,13 @@ module.exports = {
         proxy: isDevCS
     },
     chainWebpack: (config) => {
+        // ============注入cdn start============
+        config.plugin('html').tap(args => {
+            // 生产环境或本地需要cdn时，才注入cdn
+            if (isProduction || devNeedCdn) args[0].cdn = cdn;
+            return args
+        });
+        // ============注入cdn end==============
         config.resolve.alias
             .set('@', resolve('src'))
             .set('assets', resolve('src/assets/img'))
@@ -82,23 +90,19 @@ module.exports = {
             .use(SpeedMeasurePlugin)
             .end()
 
-        config.plugin('html').tap(args => {
-            // 生产环境 或 本地 需要cdn时，才注入cdn
-            if (isProduction || devNeedCdn) args[0].cdn = cdn;
-            return args
-        })
-
         // 上产环境时
         if (isDev === 'production') {
             config.plugins.delete('prefetch');
             config.plugins.delete('preload');
 
+            // ============happypack start============
             const jsRule = config.module.rule('js');
             jsRule.uses.clear();
             //把对.js 的文件处理交给id为 babel 的 HappyPack 的实例执行
             jsRule.use('happypack/loader?id=babel', 'thread-loader')
                 .loader('happypack/loader?id=babel')
                 .end();
+            // ============happypack end==============
         }
 
     },
@@ -142,7 +146,9 @@ module.exports = {
                     verbose: true
                 }),
                 // 体积压缩提示
-                new BundleAnalyzerPlugin()
+                new BundleAnalyzerPlugin(),
+                // 打包进度显示
+                new ProgressBarPlugin()
             )
         }
     },

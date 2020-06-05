@@ -3,7 +3,8 @@
  * 	 头部banner、字体粗细、字体间距、flex垂直居中
  * */
 body, html {
-	font-size: 14px !important;
+    font-size: 14px !important;
+    color: #343434 !important;
 }
 
 /*
@@ -30,7 +31,7 @@ input[type="number"]{
 }
 a {color: $color-body-c !important;}
 a:hover {color: transparent;text-decoration: none;}
-img {height: 100%;vertical-align: top;}
+img {vertical-align: top;}
 
 //按钮
 .ivu-btn {

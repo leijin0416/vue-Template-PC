@@ -25,11 +25,11 @@
                 sources: [
                     {
                         type: 'video/mp4', 
-                        src: require('@/assets/img/video.mp4')
+                        //src: require('@/assets/img/video.mp4')
                     }
                 ],
                 hls: true,
-                poster: require('@/assets/img/hk/logo-white.png'), 
+                poster: require('@/assets/img/hk/logo.png'), 
                 width: document.documentElement.clientWidth, 
                 notSupportedMessage: '此视频暂无法播放，请稍后再试',
                 controlBar: {

@@ -18,13 +18,13 @@ export const constantRouterMaps = [
         path: '/',
         name: 'index',
         component: getComponentMin('htmls', 'index'),
-        meta: { title: 'Green Planet' }
+        meta: { title: '蓝鲸创服' }
     },
     {
         path: '/index',
         name: 'index',
         component: getComponentMin('htmls', 'index'),
-        meta: { title: 'Green Planet' }
+        meta: { title: '蓝鲸创服' }
     },
     {
         path: '*',

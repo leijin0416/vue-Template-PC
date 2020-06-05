@@ -10,297 +10,345 @@
                 <div class="v-img-box">
                     <img :src="bannerTop" alt="banner.jpg" class="v-img">
                 </div>
-                <div class="v-text-box">
-                    <div class="v-container">
-                        <Row>
-                            <Col :xs="24" :md="24" :lg="24" :xl="12">
-                                <h2 class="v-h2">{{$t('homePage_001')}}</h2>
-                                <h2 class="v-h2">{{$t('homePage_002')}}</h2>
-                                <div class="v-ahover">
-                                    <a href="http://d.firim.ink/pau6" class="v-href up-shaking" target="_target">
-                                        <img src="@/assets/img/hk/android.png" alt="icon.jpg" class="v-img">
-                                    </a>
-                                    <a href="http://d.firim.ink/ew96" class="v-href" target="_target">
-                                        <img src="@/assets/img/hk/ios.png" alt="icon.jpg" class="v-img">
-                                    </a>
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
             </div>
-            <div class="v-item-container" :style="{backgroundImage: 'url(' + imgBg + ')'}">
-                <!-- 介绍 video -->
-                <div class="v-video-box">
-                    <div class="v-container">
-                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
-                            <Col :xs="24" :md="14" :lg="14" :xl="14">
-                                <div class="v-item-box">
-                                    <h3 class="v-h3-max color-ft-gy">- introduce</h3>
-                                    <div class="v-icon-box">
-                                        <img src="@/assets/img/hk/logo-min.png" alt="icon.png" class="v-img">
-                                        <p class="v-text">{{$t('homePage_003')}}</p>
-                                    </div>
-                                    <h4 class="v-h4">
-                                        {{$t('homePage_004')}}
-                                    </h4>
-                                </div>
-                            </Col>
-                            <Col :xs="24" :md="10" :lg="10" :xl="10">
-                                <v-videoplayer />
-                            </Col>
-                            <Col :xs="24" :md="8" :lg="8" :xl="6" v-for="item in videoData" :key="item.id">
-                                <div class="v-item-list">
-                                    <div class="v-img-box">
-                                        <img v-lazy="item.url" alt="icon.png" class="v-img">
-                                    </div>
-                                    <div class="v-text-box">
-                                        <h3 class="v-h3">{{item.title}}</h3>
-                                        <p class="v-text">{{item.text}}</p>
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
-                <!-- 优势特点 advantages -->
-                <div class="v-advantages-box">
-                    <div class="v-container">
-                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
-                            <Col :xs="24" :md="7" :lg="6" :xl="5">
-                                <div class="v-item-box">
-                                    <h3 class="v-h3-max color-ft-gy">- advantage</h3>
-                                    <div class="v-icon-box">
-                                        <img src="@/assets/img/hk/logo-min.png" alt="icon.png" class="v-img">
-                                        <p class="v-text">{{$t('homePage_011')}}</p>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col :xs="24" :md="7" :lg="6" :xl="5">
-                                <div class="v-item-list">
-                                    <div class="v-img-box">
-                                        <img v-lazy="require('@/assets/img/hk/i-advantages-1.png')" alt="icon.png" class="v-img">
-                                    </div>
-                                    <div class="v-text-box">
-                                        <h3 class="v-h3">{{$t('homePage_012')}}</h3>
-                                        <p class="v-text">{{$t('homePage_013')}}</p>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col :xs="24" :md="7" :lg="6" :xl="5">
-                                <div class="v-item-list">
-                                    <div class="v-img-box">
-                                        <img v-lazy="require('@/assets/img/hk/i-advantages-2.png')" alt="icon.png" class="v-img">
-                                    </div>
-                                    <div class="v-text-box">
-                                        <h3 class="v-h3">{{$t('homePage_014')}}</h3>
-                                        <p class="v-text">{{$t('homePage_015')}}</p>
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
-                            <Col :xs="24" :md="7" :lg="6" :xl="5" v-for="item in advantagesData" :key="item.id">
-                                <div class="v-item-list">
-                                    <div class="v-img-box">
-                                        <img :src="item.url" alt="icon.png" class="v-img">
-                                    </div>
-                                    <div class="v-text-box">
-                                        <h3 class="v-h3">{{item.title}}</h3>
-                                        <p class="v-text">{{item.text}}</p>
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
-                <!-- 共识 consensus -->
-                <div class="v-consensus-box">
-                    <div class="v-container">
-                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
-                            <Col :xs="24" :md="10" :lg="10" :xl="10">
-                                <div class="v-img-lf">
-                                    <img v-lazy="require('@/assets/img/hk/i-consensus.png')" alt="icon.png" class="v-img">
-                                </div>
-                            </Col>
-                            <Col :xs="24" :md="13" :lg="12" :xl="10">
-                                <div class="v-item-box">
-                                    <div class="v-img-box">
-                                        <img src="@/assets/img/hk/i-consensus-1.png" alt="icon.png" class="v-img">
-                                    </div>
-                                    <div class="v-text-box">
-                                        <h3 class="v-h3">{{$t('homePage_022')}}</h3>
-                                        <p class="v-text">{{$t('homePage_023')}}</p>
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
-                <div class="v-consensus-box">
-                    <div class="v-container">
-                        <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
-                            <Col :xs="24" :md="13" :lg="12" :xl="10">
-                                <div class="v-item-box">
-                                    <div class="v-img-box">
-                                        <img src="@/assets/img/hk/i-help-1.png" alt="icon.png" class="v-img">
-                                    </div>
-                                    <div class="v-text-box">
-                                        <h3 class="v-h3">{{$t('homePage_022')}}</h3>
-                                        <p class="v-text">{{$t('homePage_023')}}</p>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col :xs="24" :md="10" :lg="10" :xl="10">
-                                <div class="v-img-lf">
-                                    <img v-lazy="require('@/assets/img/hk/i-help.png')" alt="icon.png" class="v-img">
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
-            </div>
-            <!-- 特点 -->
-            <div class="v-technical-box">
+            <!-- 团队服务 -->
+            <div class="v-service-box">
                 <div class="v-container">
-                    <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
-                        <Col :xs="24" :md="10" :lg="10" :xl="10">
-                            <div class="v-item-box">
-                                <h3 class="v-h3-max color-ft-gy">- introduce</h3>
-                                <div class="v-icon-box">
-                                    <img src="@/assets/img/hk/logo-min.png" alt="icon.png" class="v-img">
-                                    <p class="v-text">{{$t('homePage_026')}}</p>
-                                </div>
-                                <h4 class="v-h4" style="">
-                                    {{$t('homePage_027')}}
-                                </h4>
+                    <h2 class="v-h2-max" :style="{backgroundImage: 'url(' + serviceBg + ')'}">
+                        <span>蓝鲸地推服务团队</span>
+                    </h2>
+                    <Row type="flex" justify="center" class="code-row-bg">
+                        <Col :xs="24" :md="16" :lg="16" :xl="14">
+                            <h3 class="v-h3">
+                                <p>专供</p>
+                                <p>天猫，淘宝，JD商城，拼多多</p>
+                            </h3>
+                            <div class="v-icon-box">
+                                <img src="@/assets/img/hk/i-service-icon01.png" alt="icon.png" class="v-img">
+                                <img src="@/assets/img/hk/i-service-icon02.png" alt="icon.png" class="v-img">
+                                <img src="@/assets/img/hk/i-service-icon03.png" alt="icon.png" class="v-img">
+                                <img src="@/assets/img/hk/i-service-icon04.png" alt="icon.png" class="v-img">
                             </div>
-                        </Col>
-                        <Col :xs="24" :md="13" :lg="13" :xl="8" class-name="v-technical-abs">
-                            <div class="v-technical-list">
-                                <div class="v-item">
-                                    <img src="@/assets/img/hk/i-technical-1.png" alt="icon.png" class="v-img">
-                                    <p class="v-text">
-                                        {{$t('homePage_028')}}
-                                    </p>
-                                </div>
-                                <div class="v-item">
-                                    <img src="@/assets/img/hk/i-technical-2.png" alt="icon.png" class="v-img">
-                                    <p class="v-text">
-                                        {{$t('homePage_029')}}
-                                    </p>
-                                </div>
-                                <div class="v-item">
-                                    <img src="@/assets/img/hk/i-technical-3.png" alt="icon.png" class="v-img">
-                                    <p class="v-text">
-                                        {{$t('homePage_030')}}
-                                    </p>
-                                </div>
-                                <div class="v-item">
-                                    <img src="@/assets/img/hk/i-technical-4.png" alt="icon.png" class="v-img">
-                                    <p class="v-text">
-                                        {{$t('homePage_031')}}
-                                    </p>
-                                </div>
+                            <div class="v-text-list">
+                                <p class="v-text">
+                                    <img src="@/assets/img/hk/i-service-icon05.png" alt="icon.png" class="v-img">
+                                    拥有 <span>10+</span> 年经验天猫群店玩家
+                                </p>
+                                <p class="v-text">
+                                    <img src="@/assets/img/hk/i-service-icon05.png" alt="icon.png" class="v-img">
+                                    严格把控操作环节，保证有效地推补单真实有权重
+                                </p>
+                                <p class="v-text">
+                                    <img src="@/assets/img/hk/i-service-icon05.png" alt="icon.png" class="v-img">
+                                    拥有全国 <span>130+</span> 城市一单一个地区 拒绝关联
+                                </p>
+                                <p class="v-text">
+                                    <img src="@/assets/img/hk/i-service-icon05.png" alt="icon.png" class="v-img">
+                                    根据把宝贝属性定制目标客户人群，超精准标签
+                                </p>
+                                <p class="v-text">
+                                    <img src="@/assets/img/hk/i-service-icon05.png" alt="icon.png" class="v-img">
+                                    降权，扣分，跑单 一律赔付
+                                </p>
                             </div>
                         </Col>
                     </Row>
                 </div>
-            </div>
-            <!-- 团队介绍 -->
-            <div class="v-about-box">
-                <div class="v-container">
-                    <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
-                        <Col :xs="24" :md="8" :lg="8" :xl="7">
-                            <div class="v-item-box effect">
-                                <div class="v-img-box">
-                                    <img v-lazy="require('@/assets/img/hk/i-about-1.png')" alt="icon.png" class="v-img">
-                                </div>
-                                <h2 class="v-h2">{{$t('homePage_032')}}</h2>
-                            </div>
-                        </Col>
-                        <Col :xs="24" :md="8" :lg="8" :xl="7">
-                            <div class="v-item-box">
-                                <div class="v-img-box">
-                                    <img v-lazy="require('@/assets/img/hk/i-about-2.png')" alt="icon.png" class="v-img">
-                                </div>
-                                <div class="v-text-box">
-                                    <h3 class="v-title">{{$t('homePage_033')}}</h3>
-                                    <h3 class="v-title">{{$t('homePage_034')}}</h3>
-                                    <p class="v-text">{{$t('homePage_035')}}</p>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col :xs="24" :md="8" :lg="8" :xl="7">
-                            <div class="v-item-box">
-                                <div class="v-img-box">
-                                    <img v-lazy="require('@/assets/img/hk/i-about-3.png')" alt="icon.png" class="v-img">
-                                </div>
-                                <div class="v-text-box">
-                                    <h3 class="v-title">{{$t('homePage_036')}}</h3>
-                                    <h3 class="v-title">{{$t('homePage_037')}}</h3>
-                                    <p class="v-text">{{$t('homePage_038')}}</p>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
-                        <Col :xs="24" :md="8" :lg="8" :xl="7" v-for="item in aboutData" :key="item.id">
-                            <div class="v-item-box">
-                                <div class="v-img-box">
-                                    <img v-lazy="item.url" alt="icon.png" class="v-img">
-                                </div>
-                                <div class="v-text-box">
-                                    <h3 class="v-title">{{item.name}}</h3>
-                                    <h3 class="v-title">{{item.title}}</h3>
-                                    <p class="v-text">{{item.text}}</p>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
+                <div class="v-text-ft">
+                    <h2 class="v-h2-ft wow bounceInUp" data-wow-delay="0.1s">真实实体公司运作 <span>“恭迎上门洽谈”</span></h2>
+                    <h2 class="v-h2-ft wow bounceInUp" data-wow-delay="0.15s">不是小团队，不是小作坊，公司真实可查 保障资金安全问题</h2>
                 </div>
             </div>
-            <div class="v-plan-box" :style="{backgroundImage: 'url(' + imgPlanBg + ')'}">
+            <!-- 服务业务 -->
+            <div class="v-business-box" id="business" name="business">
                 <div class="v-container">
-                    <Row type="flex" justify="space-between" class="code-row-bg" :gutter="30">
-                        <Col :xs="24" :md="10" :lg="10" :xl="10">
-                            <div class="v-item-box">
-                                <h3 class="v-h3-max color-ft-gy">- The development of</h3>
-                                <div class="v-icon-box">
-                                    <img src="@/assets/img/hk/logo-min.png" alt="icon.png" class="v-img">
-                                    <p class="v-text">{{$t('homePage_048')}}</p>
-                                </div>
-                            </div>
-                        </Col>
+                    <h2 class="v-h2-max" :style="{backgroundImage: 'url(' + businessBg + ')'}">
+                        <span>业务服务</span>
+                    </h2>
+                    <Row type="flex" justify="center" class="code-row-bg" :gutter="30">
                         <Col :xs="24" :md="24" :lg="24" :xl="24">
-                            <div class="v-swiper">
-                                <swiper :options="swiperOption">
-                                　　<swiper-slide v-for="item in swiperData" :key="item.id">
-                                        <img :src="item.url" alt="icon.png" class="v-img">
-                                        <p class="v-text">{{item.text}}</p>
-                                    </swiper-slide>
-                                　　 <div class="swiper-pagination" slot="pagination"></div>
-                                </swiper>
-                                <img src="@/assets/img/hk/i-plan.png" alt="icon.png" class="v-img-ft" >
+                            <h3 class="v-h3 wow bounceInLeft" data-wow-delay="0.1s">
+                                <p>什么是地推补单？</p>
+                                <p>我们联合线下店铺或与当地门店及摆摊合作，通过零售方式将线下优质流量客户引导到您店铺上进行成交，相当于您在全国各地雇佣了一批业务团队，在全国各地以促销手段给您店铺进行补单，以此帮您打造店铺宝贝爆款，权重高，快速见效。</p>
+                            </h3>
+                            <h3 class="v-h3 wow bounceInLeft" data-wow-delay="0.1s">这种补单方式是迄今为止</h3>
+                        </Col>
+                        <Col :xs="24" :md="7" :lg="7" :xl="6">
+                            <div class="v-business-list wow bounceInRight" data-wow-delay="0.1s">
+                                <div class="v-item">
+                                    <img src="@/assets/img/hk/i-business01.png" alt="business.png" class="v-img">
+                                    <p>最安全的补单</p>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col :xs="24" :md="7" :lg="7" :xl="6">
+                            <div class="v-business-list wow bounceInRight" data-wow-delay="0.15s">
+                                <div class="v-item">
+                                    <img src="@/assets/img/hk/i-business02.png" alt="business.png" class="v-img">
+                                    <p>最快打造爆款</p>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col :xs="24" :md="7" :lg="7" :xl="6">
+                            <div class="v-business-list wow bounceInRight" data-wow-delay="0.2s">
+                                <div class="v-item">
+                                    <img src="@/assets/img/hk/i-business03.png" alt="business.png" class="v-img">
+                                    <p>最高效的方式</p>
+                                </div>
                             </div>
                         </Col>
                     </Row>
                 </div>
-            </div>
-        </div>
-        <!-- 页脚 -->
-        <div class="v-footer-box">
-            <div class="v-footer-top" :style="{backgroundImage: 'url(' + imgFooterBg + ')'}">
-                <h3 class="v-title">{{$t('homePage_049')}}</h3>
-                <div class="v-cooperate-box">
+                <div class="v-text-ft">
                     <div class="v-container">
+                        <Row type="flex" justify="center" class="code-row-bg" :gutter="30">
+                            <Col :xs="24" :md="24" :lg="24" :xl="24">
+                                <img src="@/assets/img/hk/i-business-bg.png" alt="business.png" class="v-img">
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+            </div>
+            <!-- 服务优势 -->
+            <div class="v-advantage-box" id="advantage">
+                <div class="v-container">
+                    <Row type="flex" justify="space-between" align="middle" class="code-row-bg">
+                        <Col :xs="24" :md="10" :lg="10" :xl="10">
+                            <div class="v-img-box wow bounceInLeft" data-wow-delay="0.1s">
+                                <img v-lazy="require('@/assets/img/hk/i-advantage01.png')" alt="business.png" class="v-img">
+                            </div>
+                        </Col>
+                        <Col :xs="24" :md="10" :lg="10" :xl="10">
+                            <div class="v-img-box wow bounceInRight" data-wow-delay="0.1s">
+                                <img v-lazy="require('@/assets/img/hk/i-advantage02.png')" alt="business.png" class="v-img">
+                            </div>
+                        </Col>
+                    </Row>
+                    <h2 class="v-h2-max" :style="{backgroundImage: 'url(' + advantageBg + ')'}">
+                        <span>服务优势</span>
+                    </h2>
+                    <h2 class="v-title wow bounceInLeft" data-wow-delay="0.1s">地推团队那么多凭什么选择我们</h2>
+                    <Row type="flex" justify="center" class="code-row-bg" :gutter="30">
+                        <Col :xs="24" :md="6" :lg="6" :xl="5">
+                            <div class="v-advantage-list wow bounceInRight" data-wow-delay="0.1s">
+                                <img src="@/assets/img/hk/i-advantage03.png" alt="business.png" class="v-img">
+                                <p>拒绝诈骗团队</p>
+                            </div>
+                        </Col>
+                        <Col :xs="24" :md="6" :lg="6" :xl="5">
+                            <div class="v-advantage-list wow bounceInRight" data-wow-delay="0.15s">
+                                <img src="@/assets/img/hk/i-advantage04.png" alt="business.png" class="v-img">
+                                <p>拒绝虚假地推</p>
+                            </div>
+                        </Col>
+                        <Col :xs="24" :md="6" :lg="6" :xl="5">
+                            <div class="v-advantage-list wow bounceInRight" data-wow-delay="0.2s">
+                                <img src="@/assets/img/hk/i-advantage05.png" alt="business.png" class="v-img">
+                                <p>拒绝违规操作</p>
+                            </div>
+                        </Col>
+                        <Col :xs="24" :md="6" :lg="6" :xl="5">
+                            <div class="v-advantage-list wow bounceInRight" data-wow-delay="0.25s">
+                                <img src="@/assets/img/hk/i-advantage06.png" alt="business.png" class="v-img">
+                                <p>拒绝中介团队</p>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row type="flex" justify="center" class="code-row-bg">
+                        <Col :xs="24" :md="24" :lg="24" :xl="20">
+                            <div class="v-text-list wow bounceInUp" data-wow-delay="0.1s">
+                                <h3 class="v-h3">本金安全保障</h3>
+                                <p>‘我们真实公司方式运作可上门洽谈签署合作协议保障商家本金的安全’</p>
+                            </div>
+                            <div class="v-text-list wow bounceInUp" data-wow-delay="0.15s">
+                                <h3 class="v-h3">风控技术优势</h3>
+                                <p>根据 3.0风控稽查系统 定制操作流程及分散模式保障客户违规安全问题</p>
+                            </div>
+                            <div class="v-text-list wow bounceInUp" data-wow-delay="0.2s">
+                                <h3 class="v-h3">地推价格优势</h3>
+                                <p>完全地推团队源头价格，全网性价比最高，拥有专业服务团队助您迅速打造爆款</p>
+                            </div>
+                            <div class="v-text-list wow bounceInUp" data-wow-delay="0.25s">
+                                <h3 class="v-h3">地推服务优势</h3>
+                                <p>拥有专业一流团队，满足商家个性化补单计划需求，24小时在线售后团队实时响应</p>
+                            </div>
+                        </Col>
+                    </Row>
+                    <h2 class="v-title">恭迎上门洽谈，自有9年稀有类目天猫店</h2>
+                </div>
+            </div>
+            <!-- 关于我们 -->
+            <div class="v-about-box" id="about">
+                <div class="v-container">
+                    <h2 class="v-h2-max" :style="{backgroundImage: 'url(' + advantageBg + ')'}">
+                        <span>关于我们</span>
+                    </h2>
+                    <div class="v-item-center">
+                        <Row type="flex" justify="center" align="middle" class="code-row-bg">
+                            <Col :xs="24" :md="14" :lg="14" :xl="12">
+                                <div class="v-img-right wow bounceInLeft" data-wow-delay="0.1s">
+                                    <div class="v-info">
+                                        <h3 class="v-h3">蓝鲸地推团队</h3>
+                                        <p>蓝鲸地推团队，是一家10+年电商运营公司旗下自有多家TOP店铺，依据多年电商运营经验打造专业地推补单服务公司现在已拥有130+城市及地区资源，并根据  3.0风控稽查系统 打造真实买家购物模型 百分百权重最高，百分百最安全，我们购物模型会随着更大电商平台发展而升级改变，为店铺持续高效补单服务体系。</p>
+                                    </div>
+                                </div>
+                                <div class="v-img-right wow bounceInLeft" data-wow-delay="0.15s">
+                                    <img v-lazy="require('@/assets/img/hk/i-about01.png')" alt="business.png" class="v-img">
+                                </div>
+                                <div class="v-img-right wow bounceInLeft" data-wow-delay="0.1s">
+                                    <img v-lazy="require('@/assets/img/hk/i-about02.png')" alt="business.png" class="v-img">
+                                </div>
+                                <div class="v-img-right wow bounceInLeft" data-wow-delay="0.15s">
+                                    <img v-lazy="require('@/assets/img/hk/i-about03.png')" alt="business.png" class="v-img">
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="7" :lg="7" :xl="6">
+                                <div class="v-img-left wow bounceInRight" data-wow-delay="0.1s">
+                                    <img v-lazy="require('@/assets/img/hk/i-about-left.png')" alt="business.png" class="v-img">
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="21" :lg="21" :xl="18">
+                                <div class="v-img-left wow bounceInLeft" data-wow-delay="0.1s">
+                                    <img v-lazy="require('@/assets/img/hk/i-about04.png')" alt="business.png" class="v-img">
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row type="flex" justify="center" align="middle" class="code-row-bg">
+                            <Col :xs="24" :md="7" :lg="7" :xl="6">
+                                <div class="v-img-ft wow bounceInLeft" data-wow-delay="0.1s">
+                                    <div class="v-text">
+                                        <p>真实地推团队</p>
+                                        <p>团队照片</p>
+                                        <p>做地推我们是认真，选择我们拒绝走弯路</p>
+                                    </div>
+                                </div>
+                                <div class="v-img-ft wow bounceInLeft" data-wow-delay="0.15s">
+                                    <div class="v-info">
+                                        <img v-lazy="require('@/assets/img/hk/i-about05.png')" alt="business.png" class="v-img">
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="7" :lg="7" :xl="6">
+                                <div class="v-img-ft wow bounceInLeft" data-wow-delay="0.2s">
+                                    <div class="v-info">
+                                        <img v-lazy="require('@/assets/img/hk/i-about06.png')" alt="business.png" class="v-img">
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="7" :lg="7" :xl="6">
+                                <div class="v-img-ft wow bounceInLeft" data-wow-delay="0.25s">
+                                    <div class="v-info">
+                                        <img v-lazy="require('@/assets/img/hk/i-about07.png')" alt="business.png" class="v-img">
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row type="flex" justify="center" align="middle" class="code-row-bg">
+                            <Col :xs="24" :md="7" :lg="7" :xl="6">
+                                <div class="v-img-ft wow bounceInRight" data-wow-delay="0.1s">
+                                    <div class="v-info">
+                                        <img v-lazy="require('@/assets/img/hk/i-about08.png')" alt="business.png" class="v-img">
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="7" :lg="7" :xl="6">
+                                <div class="v-img-ft wow bounceInRight" data-wow-delay="0.15s">
+                                    <div class="v-info">
+                                        <img v-lazy="require('@/assets/img/hk/i-about09.png')" alt="business.png" class="v-img">
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="7" :lg="7" :xl="6">
+                                <div class="v-img-ft wow bounceInRight" data-wow-delay="0.5s">
+                                    <div class="v-info">
+                                        <img v-lazy="require('@/assets/img/hk/i-about10.png')" alt="business.png" class="v-img">
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+            </div>
+            <div class="v-contact-box" id="contact">
+                <div class="v-container">
+                    <h2 class="v-h2-max" :style="{backgroundImage: 'url(' + contactBg + ')'}">
+                        <span>联系我们</span>
+                    </h2>
+                    <div class="v-item-center">
                         <Row type="flex" justify="center" class="code-row-bg">
-                            <Col :xs="24" :md="20" :lg="20" :xl="20">
-                                <div class="v-item-box">
-                                    <p class="v-text">{{$t('homePage_050')}}</p>
+                            <Col :xs="24" :md="24" :lg="24" :xl="24">
+                                <div class="v-text-box effect">
                                     <div class="v-img-box">
-                                        <div class="v-img-list" v-for="item in copteFooterData" :key="item.id">
-                                            <img :src="item.url" alt="icon.png" class="v-img">
+                                        <img src="@/assets/img/hk/i-contact01.png" alt="business.png" class="v-img">
+                                    </div>
+                                    <h2 class="v-h2">选择蓝鲸，拒绝走弯路</h2>
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                    <h2 class="v-h2 wow bounceInUp" data-wow-delay="0.1s">恭迎上门洽谈</h2>
+                    <div class="v-item-center">
+                        <Row type="flex" justify="space-between" class="code-row-bg">
+                            <Col :xs="24" :md="6" :lg="6" :xl="6">
+                                <div class="v-text-list wow bounceInUp" data-wow-delay="0.1s">
+                                    <div class="v-text-info">
+                                        <div class="v-text-left">
+                                            <p>黄总监</p>
+                                            <p>138 2748 8184</p>
+                                            <p>恭迎上门洽谈</p>
+                                        </div>
+                                        <div class="v-text-right">
+                                            <div class="v-img-box">
+                                                <img src="@/assets/img/hk/icon-wx01.png" alt="business.png" class="v-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="6" :lg="6" :xl="6">
+                                <div class="v-text-list wow bounceInUp" data-wow-delay="0.13s">
+                                    <div class="v-text-info">
+                                        <div class="v-text-left">
+                                            <p>黄总监</p>
+                                            <p>138 2748 8184</p>
+                                            <p>恭迎上门洽谈</p>
+                                        </div>
+                                        <div class="v-text-right">
+                                            <div class="v-img-box">
+                                                <img src="@/assets/img/hk/icon-wx01.png" alt="business.png" class="v-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="6" :lg="6" :xl="6">
+                                <div class="v-text-list wow bounceInUp" data-wow-delay="0.17s">
+                                    <div class="v-text-info">
+                                        <div class="v-text-left">
+                                            <p>黄总监</p>
+                                            <p>138 2748 8184</p>
+                                            <p>恭迎上门洽谈</p>
+                                        </div>
+                                        <div class="v-text-right">
+                                            <div class="v-img-box">
+                                                <img src="@/assets/img/hk/icon-wx01.png" alt="business.png" class="v-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col :xs="24" :md="6" :lg="6" :xl="6">
+                                <div class="v-text-list wow bounceInUp" data-wow-delay="0.2s">
+                                    <div class="v-text-info">
+                                        <div class="v-text-left">
+                                            <p>黄总监</p>
+                                            <p>138 2748 8184</p>
+                                            <p>恭迎上门洽谈</p>
+                                        </div>
+                                        <div class="v-text-right">
+                                            <div class="v-img-box">
+                                                <img src="@/assets/img/hk/icon-wx01.png" alt="business.png" class="v-img">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -309,32 +357,11 @@
                     </div>
                 </div>
             </div>
-            <div class="v-footer-ft">
-                <div class="v-container">
-                    <Row type="flex" justify="center" class="code-row-bg" :gutter="30">
-                        <Col :xs="24" :md="20" :lg="20" :xl="20">
-                            <div class="v-icon-box">
-                                <img src="@/assets/img/hk/logo-white.png" alt="icon.png" class="v-img">
-                            </div>
-                            <div class="v-item-list">
-                                <div class="v-text">
-                                    <a href="" class="v-ahover">{{$t('naviGation_001')}}</a>
-                                </div>
-                                <div class="v-text">
-                                    <a href="" class="v-ahover">{{$t('naviGation_002')}}</a>
-                                </div>
-                                <div class="v-text">
-                                    <a href="" class="v-ahover">{{$t('naviGation_003')}}</a>
-                                </div>
-                                <div class="v-text">
-                                    <a href="" class="v-ahover">{{$t('naviGation_004')}}</a>
-                                </div>
-                            </div>
-                            <p class="v-item-time">@2020 nai-china.net</p>
-                        </Col>
-                    </Row>
-                </div>
-            </div>
+        </div>
+        <div class="v-footer-box">
+            <img src="@/assets/img/hk/logo-white.png" alt="banner.jpg" class="v-img">
+            <h3 class="v-h3">粤ICP备16121820号</h3>
+            <h3 class="v-h3">深圳蓝鲸网络信息有限公司</h3>
         </div>
     </div>
 </template>
@@ -358,117 +385,26 @@ export default {
 				},
 				{
 					name: this.$t('naviGation_002'),
-					herf: "#advantages"
+					herf: "#business"
 				},
 				{
 					name: this.$t('naviGation_003'),
-					herf: "#technical"
+					herf: "#advantage"
 				},
 				{
 					name: this.$t('naviGation_004'),
 					herf: "#about"
+				},
+				{
+					name: this.$t('naviGation_005'),
+					herf: "#contact"
 				}
             ],
             bannerTop: require('@/assets/img/hk/i-banner-top.png'),
-            imgBg: require('@/assets/img/hk/i-banner-maxbg.png'),
-            videoData: [
-                {
-                    id: 1,
-                    url: require('@/assets/img/hk/i-base.png'),
-                    title: this.$t('homePage_005'),
-                    text: this.$t('homePage_006')
-                },
-                {
-                    id: 2,
-                    url: require('@/assets/img/hk/i-base-1.png'),
-                    title: this.$t('homePage_007'),
-                    text: this.$t('homePage_008')
-                },
-                {
-                    id: 3,
-                    url: require('@/assets/img/hk/i-base-2.png'),
-                    title: this.$t('homePage_009'),
-                    text: this.$t('homePage_010')
-                }
-            ],
-            advantagesData: [
-                {
-                    id: 1,
-                    url: require('@/assets/img/hk/i-advantages-3.png'),
-                    title: this.$t('homePage_016'),
-                    text: this.$t('homePage_017')
-                },
-                {
-                    id: 2,
-                    url: require('@/assets/img/hk/i-advantages-4.png'),
-                    title: this.$t('homePage_018'),
-                    text: this.$t('homePage_019')
-                },
-                {
-                    id: 3,
-                    url: require('@/assets/img/hk/i-advantages-5.png'),
-                    title: this.$t('homePage_020'),
-                    text: this.$t('homePage_021')
-                }
-            ],
-            aboutData: [
-                {
-                    id: 1,
-                    url: require('@/assets/img/hk/i-about-3.png'),
-                    name: this.$t('homePage_039'),
-                    title: this.$t('homePage_040'),
-                    text: this.$t('homePage_041')
-                },
-                {
-                    id: 2,
-                    url: require('@/assets/img/hk/i-about-4.png'),
-                    name: this.$t('homePage_042'),
-                    title: this.$t('homePage_043'),
-                    text: this.$t('homePage_044')
-                },
-                {
-                    id: 3,
-                    url: require('@/assets/img/hk/i-about-5.png'),
-                    name: this.$t('homePage_045'),
-                    title: this.$t('homePage_046'),
-                    text: this.$t('homePage_047')
-                }
-            ],
-            imgFooterBg: require('@/assets/img/hk/i-footer-bg.png'),
-            copteFooterData: [
-                {
-                    id: 1,
-                    url: require('@/assets/img/hk/i-footer-1.png')
-                },
-                {
-                    id: 2,
-                    url: require('@/assets/img/hk/i-footer-2.png')
-                },
-                {
-                    id: 3,
-                    url: require('@/assets/img/hk/i-footer-3.png')
-                },
-                {
-                    id: 4,
-                    url: require('@/assets/img/hk/i-footer-4.png')
-                },
-                {
-                    id: 5,
-                    url: require('@/assets/img/hk/i-footer-5.png')
-                },
-                {
-                    id: 6,
-                    url: require('@/assets/img/hk/i-footer-6.png')
-                },
-                {
-                    id: 7,
-                    url: require('@/assets/img/hk/i-footer-7.png')
-                },
-                {
-                    id: 8,
-                    url: require('@/assets/img/hk/i-footer-8.png')
-                }
-            ],
+            serviceBg: require('@/assets/img/hk/i-service-bg.png'),
+            businessBg: require('@/assets/img/hk/i-service-bg02.png'),
+            advantageBg: require('@/assets/img/hk/i-service-bg03.png'),
+            contactBg: require('@/assets/img/hk/i-service-bg04.png'),
             swiperOption: {
                 slidesPerView: 3,
                 spaceBetween: 30,
@@ -493,65 +429,11 @@ export default {
                         spaceBetween: 30
                     }
                 }
-            },
-            swiperData: [
-                {
-                    id: 1,
-                    url: require('@/assets/img/hk/i-slide-1.png'),
-                    text: this.$t('homePage_051')
-                },
-                {
-                    id: 2,
-                    url: require('@/assets/img/hk/i-slide-2.png'),
-                    text: this.$t('homePage_052')
-                },
-                {
-                    id: 3,
-                    url: require('@/assets/img/hk/i-slide-3.png'),
-                    text: this.$t('homePage_053')
-                },
-                {
-                    id: 4,
-                    url: require('@/assets/img/hk/i-slide-4.png'),
-                    text: this.$t('homePage_054')
-                },
-                {
-                    id: 5,
-                    url: require('@/assets/img/hk/i-slide-5.png'),
-                    text: this.$t('homePage_055')
-                },
-                {
-                    id: 6,
-                    url: require('@/assets/img/hk/i-slide-6.png'),
-                    text: this.$t('homePage_056')
-                },
-                {
-                    id: 7,
-                    url: require('@/assets/img/hk/i-slide-7.png'),
-                    text: this.$t('homePage_057')
-                },
-                {
-                    id: 8,
-                    url: require('@/assets/img/hk/i-slide-8.png'),
-                    text: this.$t('homePage_058')
-                },
-                {
-                    id: 9,
-                    url: require('@/assets/img/hk/i-slide-7.png'),
-                    text: this.$t('homePage_059')
-                },
-                {
-                    id: 10,
-                    url: require('@/assets/img/hk/i-slide-8.png'),
-                    text: this.$t('homePage_060')
-                }
-            ],
-            imgPlanBg: require('@/assets/img/hk/i-plan-bg.png')
+            }
         }
     },
     components: {
-		'v-nav': NavBar,
-		'v-videoplayer': videoPlayer
+		'v-nav': NavBar
     },
     //监听属性 类似于data概念
     computed: {},
@@ -620,38 +502,27 @@ export default {
 /deep/.swiper-pagination-bullet-active {background: $color-body-c;}
 
 .page {
+    min-height: 1080px;
     .v-navbar {
         padding-bottom: 75px;
     }
+    .v-footer-box {
+        padding: 30px 15px;
+        text-align: center;
+        color: #fff;
+        background-color: #060e34;
+        .v-img {
+            display: inline-block;
+            max-width: 126px;
+            padding-bottom: 20px;
+        }
+        .v-h3 {
+            padding-top: 5px;
+            font-size: 16px;
+        }
+    }
     .v-mian-box {
-        .v-h3-max {
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
-        .v-icon-box {
-            margin: 15px 0 30px 0;
-            font-size: 0;
-            .v-img, .v-text {
-                display: inline-block;
-                vertical-align: middle;
-                font-size: 18px;
-                font-weight: bold;
-                line-height: 1;
-            }
-            .v-img {
-                width: 50px;
-                height: 50px;
-            }
-            .v-text {
-                padding: 10px 25px;
-                margin: 0 10px;
-                border-radius: 50px;
-                color: #fff;
-                box-shadow: 0 5px 8px rgba(0, 199, 117, .3);
-                background-color: $color-body-c;
-            }
-        }
+        min-height: 1000px;
         .v-banner-top {
             position: relative;
             .v-img-box {
@@ -660,409 +531,307 @@ export default {
                     min-height: 400px;
                 }
             }
-            .v-text-box {
+        }
+        .v-h2-max {
+            position: relative;
+            min-height: 102px;
+            padding: 40px 0;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            span {
                 position: absolute;
-                top: 22%;
-                left: 0;
-                right: 0;
-                .v-h2 {
-                    padding-bottom: 10px;
-                    font-size: 36px;
-                    color: $color-body-c;
-                }
-                .v-ahover {
-                    font-size: 0;
-                    .v-href {
-                        display: inline-block;
-                        vertical-align: middle;
-                        margin-right: 30px;
-                        margin-top: 50px;
-                        line-height: 0;
-                        border-radius: 5px;
-                        transition: all .3s linear;
-                        &:nth-child(1) {
-                            box-shadow: 0 5px 8px rgba(102, 181, 155, .4);
-                        }
-                        &:nth-child(2):hover {
-                            box-shadow: 0 5px 8px rgba(202, 200, 200, 0.4);
-                        }
-                        &:hover {
-                            transform: translateY(5px);
-                        }
-                        .v-img {
-                            width: 170px;
-                        }
-                    }
-                }
+                top: 15px;
+                left: 145px;
+                display: block;
+                font-size: 24px;
+                font-weight: bold;
+                color: $color-body-c;
             }
         }
-        .v-item-container {
-            min-height: 400px;
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-            background-position-y: 160px;
-            background-color: #fff;
-            .v-video-box {
-                padding: 50px 0;
-                .v-item-box {
-                    .v-h4 {
-                        padding: 5px 200px 15px 0;
-                        font-size: 16px;
-                        color: $color-gray-bg;
-                    }
+        .v-service-box {
+            padding: 60px 0 0;
+            .v-h3 {
+                padding: 30px 0;
+                font-size: 22px;
+                line-height: 2;
+                text-align: center;
+                p:nth-child(1) {
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: $color-body-c;
                 }
-                /deep/.video-player-box {
-                    overflow: hidden;
-                    border-radius: 15px;
-                }
-                .v-item-list {
-                    margin-top: 100px;
-                    overflow: hidden;
+            }
+            .v-icon-box {
+                padding: 30px 0;
+                font-size: 0;
+                line-height: 0;
+                text-align: center;
+                .v-img {
+                    display: inline-block;
+                    width: 15%;
+                    margin: 0 30px;
                     border-radius: 20px;
-                    box-shadow: 0 8px 10px rgba(196, 217, 237, 0.41);
-                    background-color: #fff;
+                    box-shadow: 0 4px 6px #ddd;
                     transition: all .3s linear;
                     &:hover {
                         transform: translateY(10px);
-                        .v-img {
-                            animation: scaleDraw 4s ease-in-out infinite;
-                        }
-                    }
-                    .v-img-box {
-                        position: relative;
-                        height: 168px;
-                        line-height: 0;
-                        overflow: hidden;
-                        background-color: #ddd;
-                        .v-img {
-                            @include ct();
-                            width: 100%;
-                            height: auto;
-                        }
-                    }
-                    .v-text-box {
-                        padding: 15px;
-                        .v-h3 {
-                            padding: 5px 0 15px 0;
-                            text-align: center;
-                            font-size: 18px;
-                            font-weight: bold;
-                            color: #66b59b;
-                        }
-                        .v-text {
-                            min-height: 105px;
-                            color: $color-gray-bg;
-                        }
                     }
                 }
             }
-            .v-advantages-box {
-                padding: 60px 0;
-                .v-item-list {
-                    margin-bottom: 40px;
-                    &:hover {
-                        .v-text-box .v-h3 {
-                            transform: translateX(35%);
-                            &::after {
-                                width: 50%;
-                            }
-                        }
-                    }
-                    .v-img-box {
-                        line-height: 0;
-                        .v-img {
-                            display: block;
-                            width: 60px;
-                            height: 60px;
-                        }
-                    }
-                    .v-text-box {
-                        min-height: 200px;
-                        padding: 10px 0;
-                        color: $color-gray-bg;
-                        .v-h3 {
-                            position: relative;
-                            padding: 5px 0 15px;
-                            font-size: 18px;
-                            font-weight: bold;
-                            color: #333;
-                            transition: all .8s ease-in-out;
-                            &::after {
-                                content: ' ';
-                                position: absolute;
-                                left: 0;
-                                display: block;
-                                width: 40px;
-                                height: 8px;
-                                border-bottom: 2px solid $color-body-c;
-                                transition: all .5s linear;
-                            }
-                        }
+            .v-text-list {
+                padding: 30px 0 60px;
+                .v-img {
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 28px;
+                    margin-right: 20px;
+                }
+                .v-text {
+                    padding: 15px 0;
+                    font-size: 22px;
+                    line-height: 1;
+                    span {
+                        display: inline-block;
+                        font-size: 26px;
+                        font-weight: bold;
+                        color: $color-body-c;
                     }
                 }
             }
-            .v-consensus-box {
+            .v-text-ft {
                 padding: 60px 0;
-                .v-img-lf, .v-img-box {
-                    display: block;
-                    line-height: 0;
-                    overflow: hidden;
-                }
-                .v-img-lf {
-                    .v-img {
-                        height: auto;
-                    }
-                }
-                .v-item-box {
-                    padding-top: 15px;
-                    .v-img-box {
-                        width: 70px;
-                        height: 70px;
-                    }
-                    .v-text-box {
-                        .v-h3 {
-                            padding: 15px 0;
-                            font-size: 28px;
-                            color: #155038;
-                        }
-                        .v-text  {
-                            padding-top: 20px;
-                            font-size: 16px;
-                            color: $color-gray-bg;
-                        }
+                text-align: center;
+                color: #fff;
+                background-color: #060e34;
+                .v-h2-ft {
+                    padding: 10px 15px;
+                    font-size: 26px;
+                    font-weight: bold;
+                    span {
+                        display: inline-block;
+                        font-size: 28px;
                     }
                 }
             }
         }
-        .v-technical-box {
-            position: relative;
-            padding: 80px 0;
-            background-color: #ecfbf6;
-            .v-item-box {
-                .v-h4 {
-                    padding-bottom: 30px;
-                    color: #155038;
+        .v-business-box {
+            padding: 60px 0 0;
+            .v-h3 {
+                padding: 30px 0;
+                font-size: 22px;
+                line-height: 1.75;
+                text-align: center;
+                p:nth-child(1) {
+                    padding-bottom: 40px;
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: $color-body-c;
+                }
+                &:nth-child(2) {
+                    padding-bottom: 40px;
+                    font-size: 28px;
+                    font-weight: bold;
                 }
             }
-            .v-technical-abs {
-                position: relative;
-                .v-technical-list {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    left: 0;
+            .v-business-list {
+                padding: 30px;
+                .v-item {
                     padding: 30px;
-                    font-size: 0;
-                    border-radius: 30px;
-                    box-shadow: 0 10px 15px rgba(0, 199, 117, .4);
-                    background: $color-body-c;
-                    .v-item {
-                        position: relative;
+                    text-align: center;
+                    box-shadow: 0 -4px 14px rgba(238, 238, 238, 0.8);
+                    background-color: #f5f9fc;
+                    .v-img {
                         display: inline-block;
-                        width: 50%;
-                        height: 174px;
+                        width: 60px;
                         box-sizing: border-box;
-                        padding: 20px;
-                        vertical-align: middle;
-                        font-size: 14px;
-                        text-align: center;
-                        color: #fff;
-                        &:nth-child(1), &:last-child {
-                            position: relative;
-                            &::before {
-                                content: ' ';
-                                position: absolute;
-                                left: 0;
-                                right: 0;
-                                display: block;
-                                height: 3px;
-                            }
-                            &::after {
-                                content: ' ';
-                                position: absolute;
-                                bottom: 0;
-                                top: 0;
-                                display: block;
-                                width: 3px;
-                            }
-                        }
-                        &:nth-child(1) {
-                            &::before {
-                                bottom: 0;
-                                border-bottom: 1px solid #fff;
-                            }
-                            &::after {
-                                right: 0;
-                                border-right: 1px solid #fff;
-                            }
-                        }
-                        &:last-child {
-                            &::before {
-                                top: -1px;
-                                border-top: 1px solid #fff;
-                            }
-                            &::after {
-                                left: -1px;
-                                border-left: 1px solid #fff;
-                            }
-                        }
-                        .v-img {
-                            display: block;
-                            width: 50px;
-                            height: 50px;
-                            margin: 10px auto;
-                        }
-                        .v-text {
-                            vertical-align: middle;
-                        }
+                        padding-bottom: 10px;
                     }
+                    p {
+                        padding-top: 30px;
+                        font-size: 18px;
+                    }
+                }
+            }
+            .v-text-ft {
+                padding: 60px 0 30px;
+                background-color: #060e34;
+                .v-img {height: auto;}
+            }
+            /deep/.code-row-bg {padding: 30px 0 60px;}
+        }
+        .v-advantage-box {
+            padding: 60px 0;
+            .v-img-box {
+                padding: 30px 0;
+                .v-img {height: auto;}
+            }
+            .v-h2-max {margin: 60px 0;}
+            .v-title {
+                padding: 10px 0 50px;
+                font-size: 32px;
+                font-weight: bold;
+                text-align: center;
+                &:last-child {
+                    padding: 50px 0 10px;
+                }
+            }
+            .v-advantage-list {
+                padding: 30px;
+                transition: all .3s linear;
+                .v-img {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    line-height: 0;
+                }
+                p {
+                    padding-top: 15px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    text-align: center;
+                    color: $color-body-c;
+                }
+                &:hover {
+                    box-shadow: 0 4px 10px #eee;
+                    transform: translateY(10px);
+                }
+            }
+            .v-text-list {
+                padding: 40px 30px 0;
+                .v-h3 {
+                    z-index: 9;
+                    position: relative;
+                    padding: 10px 0;
+                    font-size: 24px;
+                    font-weight: bold;
+                    &::before {
+                        content: ' ';
+                        z-index: -1;
+                        position: absolute;
+                        left: 0;
+                        bottom: 8px;
+                        width: 35px;
+                        height: 15px;
+                        background-color: $color-body-c;
+                    }
+                }
+                p {
+                    font-size: 18px;
                 }
             }
         }
         .v-about-box {
-            padding: 150px 0;
-            .v-item-box {
+            padding: 60px 0;
+            .v-img {height: auto;}
+            .v-item-center {
+                padding: 60px 0 30px;
+                font-size: 0;
+                .v-img-right {
+                    display: inline-block;
+                    width: 50%;
+                    box-sizing: border-box;
+                    vertical-align: middle;
+                    padding: 5px;
+                    font-size: 14px;
+                    &:nth-child(1) {
+                        .v-info {
+                            min-height: 273px;
+                            padding: 20px;
+                            color: #fff;
+                            background-color: $color-body-c;
+                        }
+                    }
+                    .v-h3 {
+                        padding-bottom: 30px;
+                        font-size: 18px;
+                    }
+                }
+            }
+            .v-img-left {
+                padding: 15px 5px;
+                line-height: 0;
+            }
+            .v-img-ft {
                 position: relative;
-                margin: 20px 0;
-                &:hover {
-                    animation: upAnimation 1s ease-in infinite normal;
-                    cursor: pointer;
-                }
-                .v-img-box {
-                    height: 240px;
-                    line-height: 0;
-                }
-                .v-h2 {
-                    position: absolute;
-                    top: 105px;
-                    left: 25px;
-                    display: block;
-                    line-height: 1.25;
-                    font-size: 40px;
-                    font-weight: bold;
-                    color: #fff;
-                }
-                .v-text-box {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    padding: 60px 120px 0 15px;
-                    font-size: 12px;
-                    color: #fff;
-                    .v-title {
-                        padding-bottom: 5px;
-                        font-size: 16px;
-                        font-weight: bold;
-                    }
-                }
-            }
-        }
-        .v-plan-box {
-            padding: 100px 0 60px;
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-            background-position: center top;
-            .v-swiper {
-                padding: 50px 0;
-                .v-img {
-                    height: auto;
-                }
-                .v-img-ft {
-                    display: block;
-                    width: 45px;
-                    margin: 40px auto 0;
-                }
-            }
-        }
-    }
-    .v-footer-box {
-        min-height: 800px;
-        background: #222734;
-        .v-footer-top {
-            position: relative;
-            height: 560px;
-            box-sizing: border-box;
-            padding-top: 50px;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-position: center top;
-            background-size: cover;
-            background-color: #00C775;
-            .v-title {
-                display: block;
-                width: 230px;
-                padding: 10px;
-                margin: 50px auto;
-                font-size: 18px;
-                text-align: center;
-                font-weight: bold;
-                border-radius: 50px;
-                color: $color-body-c;
-                background-color: #fff;
-            }
-            .v-cooperate-box {
-                z-index: 1;
-                position: absolute;
-                top: 260px;
-                left: 0;
-                right: 0;
-                .v-item-box {
-                    padding: 50px;
-                    border-radius: 15px;
-                    background-color: #fff;
-                    .v-text {
-                        padding: 30px 70px 0;
-                        font-size: 16px;
-                        color: $color-gray-bg;
-                    }
-                    .v-img-box {
-                        font-size: 0;
-                        .v-img-list {
-                            display: inline-block;
-                            width: 25%;
-                            box-sizing: border-box;
-                            padding: 0 15px;
-                            margin-top: 40px;
-                            vertical-align: middle;
-                            background-color: #fff;
-                            .v-img {
-                                box-shadow: 0 0 20px rgba(221, 221, 221, 0.3);
-                            }
+                padding: 20px 5px 0;
+                .v-img {transition: all .3s linear;}
+                .v-info {
+                    max-height: 356px;
+                    overflow: hidden;
+                    &:hover {
+                        .v-img {
+                            transform: scale(1.1);
                         }
                     }
                 }
-            }
-        }
-        .v-footer-ft {
-            padding: 160px 0 50px;
-            font-size: 0;
-            .v-icon-box, .v-item-list {
-                display: inline-block;
-                vertical-align: middle;
-                padding: 30px 0;
-            }
-            .v-item-list {
-                margin-left: 80px;
                 .v-text {
-                    display: inline-block;
-                    vertical-align: middle;
-                    padding: 0 40px;
-                    font-size: 14px;
-                    border-right: 1px solid #707070;
-                    &:last-child {border: none;}
-                    .v-ahover {
-                        color: #fff !important;
+                    min-height: 142px;
+                    padding: 20px;
+                    font-size: 24px;
+                    color: #fff;
+                    background-color: $color-body-c;
+                    p:last-child {
+                        font-size: 14px;
                     }
                 }
             }
-            .v-item-time {
-                display: block;
-                padding-top: 30px;
-                font-size: 14px;
+        }
+        .v-contact-box {
+            padding: 60px 0;
+            .v-item-center {
+                padding: 80px 0 30px;
+            }
+            .v-text-box {
+                padding: 40px 15px;
                 text-align: center;
-                border-top: 1px solid #707070;
                 color: #fff;
+                background-color: #060e34;
+                .v-img-box {
+                    display: inline-block;
+                    max-width: 800px;
+                }
+                .v-img {height: auto;}
+            }
+            .v-h2 {
+                padding-top: 30px;
+                font-size: 32px;
+                font-weight: bold;
+                text-align: center;
+            }
+            .effect:before, .effect:after {bottom: 40px;}
+            .v-text-list {
+                padding: 15px 20px;
+                .v-text-info {
+                    position: relative;
+                    padding: 15px;
+                    border-radius: 15px;
+                    box-shadow: 0 6px 14px #eee;
+                    background-color: #fff;
+                    transition: all .3s linear;
+                    &:hover {transform: translateY(10px);}
+                    .v-text-left {
+                        p:nth-child(1) {
+                            padding-bottom: 5px;
+                            font-size: 18px;
+                            font-weight: bold;
+                            color:$color-body-c;
+                        }
+                        p:last-child {
+                            display: inline-block;
+                            padding: 5px 15px;
+                            margin-top: 25px;
+                            font-size: 12px;
+                            border-radius: 50px;
+                            color: #fff;
+                            background-color: #FFAA23;
+                        }
+                    }
+                    .v-text-right {
+                        @include tb;
+                        right: 15px;
+                    }
+                }
             }
         }
     }
@@ -1070,95 +839,20 @@ export default {
 
 // 小于1024
 @media only screen and (max-width: 1024px) {
-.page {
-    .v-mian-box {
-        .v-banner-top {
-            .v-img-box {
-                .v-img {
-                    width: auto;
-                    object-fit: cover;
-                }
-            }
-            .v-text-box {
-                .v-ahover {
-                    .v-href {
-                        margin-right: 40px;
-                        margin-top: 30px;
+    .page {
+        .v-mian-box {
+            .v-banner-top {
+                .v-img-box {
+                    .v-img {
+                        width: auto;
+                        object-fit: cover;
                     }
-                }
-            }
-        }
-        .v-item-container {
-            .v-video-box {
-                .v-item-box {
-                    .v-h4 {
-                        padding-right: 20px;
-                    }
-                }
-            }
-        }
-        .v-technical-box {
-            .v-technical-abs {
-                position: relative;
-                .v-technical-list {
-                    position: inherit;
-                    top: inherit;
-                    right: inherit;
-                    left: inherit;
-                    padding: 30px 15px;
-                }
-            }
-        }
-        .v-about-box {
-            padding: 30px 0;
-            .effect:after, .effect:before {left: 12px;}
-            .v-item-box {
-                .v-text-box .v-title {
-                    font-size: 14px;
                 }
             }
         }
     }
-    .v-footer-box {
-        .v-footer-top {
-            height: 460px;
-            .v-cooperate-box {
-                .v-item-box {
-                    padding: 20px;
-                    .v-text {
-                        padding: 30px;
-                    }
-                }
-            }
-        }
-        .v-footer-ft {
-            padding-top: 200px;
-            .v-icon-box, .v-item-list {
-                display: block;
-                padding: 15px 0 30px;
-            }
-            .v-icon-box {
-                width: 298px;
-            }
-            .v-item-list {
-                margin-left: 0;
-                .v-text {padding: 0 15px;}
-            }
-        }
-    }
-}
 }
 @media only screen and (max-width: 414px) {
-    /deep/.swiper-container {
-        // height: 240px;
-        .swiper-slide {
-            transform: scale(1);
-            .v-text {
-                width: 260px;
-                font-size: 12px;
-            }
-        }
-    }
     .page {
         .v-mian-box {
             .v-banner-top {
@@ -1167,46 +861,43 @@ export default {
                     .v-h2 {font-size: 18px;}
                 }
             }
-            .v-item-container {
-                .v-video-box {
-                    .v-item-box {
-                        .v-h4 {
-                            padding-right: 0;
-                        }
-                    }
-                    .v-item-list {
-                        margin-top: 30px;
-                    }
-                }
-                .v-advantages-box {
-                    padding: 20px 0;
-                    .v-item-list {
-                        margin-bottom: 15px;
-                        .v-text-box {
-                            min-height: auto;
-                        }
-                    }
-                }
-                .v-consensus-box {
-                    padding: 20px 0;
-                    .v-img-lf {
-                        margin: 15px 0;
-                    }
+            .v-h2-max {
+                background-size: contain;
+                span {
+                    left: 45px;
                 }
             }
-            .v-technical-box {
-                padding: 20px 0;
+            .v-service-box {
+                padding: 40px 0 0;
+                .v-icon-box {
+                    .v-img {
+                        margin: 0 10px;
+                        border-radius: 10px;
+                    }
+                }
+                .v-text-list {
+                    .v-img {
+                        width: 20px;
+                        margin-right: 5px;
+                    }
+                    .v-text {
+                        padding: 10px 0;
+                        font-size: 16px;
+                        span {
+                            font-size: 18px;
+                        }
+                    }
+                }
             }
             .v-about-box {
-                .effect:after, .effect:before {bottom: 2px;left: 14px;}
-            }
-            .v-plan-box {
-                padding: 50px 0;
-                .v-swiper {
-                    padding: 30px 0;
+                .v-item-center {
+                    .v-img-right {
+                        &:nth-child(1), &:nth-child(2) {
+                            width: 100%;
+                        }
+                    }
                 }
             }
-            
         }
     }
 }
@@ -1215,13 +906,7 @@ export default {
         .v-mian-box {
             .v-about-box {
                 .effect:after, .effect:before {bottom: 25px;}
-                .v-item-box {
-                    .v-h2 {
-                        font-size: 32px;
-                    }
-                }
             }
-            
         }
     }
 }

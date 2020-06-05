@@ -1,5 +1,7 @@
 # 文档
 
+[在线制作ico图标](http://www.bitbug.net/) | [在线熊猫压缩](https://tinypng.com/)
+
 ## 前端优化
 
 [Animate css动画](http://www.jq22.com/yanshi819) | [掘金-‘正则’等工具函数](https://juejin.im/post/5e6cf42bf265da57397e3694) | [集合-快速处理数组](https://juejin.im/post/5ec90f72e51d45785225a2c8)
