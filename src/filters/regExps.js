@@ -1,8 +1,8 @@
 /**
  * https://www.cnblogs.com/bert227/p/10260424.html
  * https://www.cnblogs.com/baiyang2292/p/11166650.html
- * ( num * value ).toFixed(4); -四舍五入
- * parseFloat(this.otcList.sell_lave_count); -转换为数值
+ * -( num * value ).toFixed(4); -四舍五入
+ * -parseFloat(this.otcList.sell_lave_count); -转换为数值
  * 
  * 特殊字符 -!regExpZF.test(num)
  *
@@ -12,13 +12,13 @@ export const regExpZF = /[`~!#$%^&*()_\-+=<>?:"{}|,\/;'\\[\]·~！#￥%……&*�
 /**
  * 邮箱格式
  */
-export const regex = /\@/g;
-export const reEmail = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+export const regEmail = /\@/g;
+export const regEmailFormat = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 
 /**
  * 手机格式
  */
-export const myreg = /^0?(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
+export const regIphone = /^0?(13[0-9]|14[5-9]|15[012356789]|166|17[0-8]|18[0-9]|19[8-9])[0-9]{8}$/;
 
 /**
  * 纯数字
@@ -54,9 +54,5 @@ export const pPattern = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&
 
 /**
  *  console.log("==" + pPattern.test("iFat3#"));
- *
- *  https://www.cnblogs.com/bert227/p/10260424.html
- *  ( num * value ).toFixed(4); -四舍五入
- *  parseFloat(this.otcList.sell_lave_count); -转换为数值
  *
  **/
