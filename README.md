@@ -2,7 +2,7 @@
 
 [在线制作ico图标](http://www.bitbug.net/) | [在线熊猫压缩](https://tinypng.com/)
 
-## 前端优化
+## /前端优化
 
 [Animate css动画](http://www.jq22.com/yanshi819) | [掘金-‘正则’等工具函数](https://juejin.im/post/5e6cf42bf265da57397e3694) | [集合-快速处理数组](https://juejin.im/post/5ec90f72e51d45785225a2c8)
 
@@ -50,7 +50,7 @@ CDN 的全称是 Content Delivery Network，即**内容分发网络**。CDN 是�
 
 ---
 
-## Swiper 轮播
+## /Swiper 轮播
 
 [Swiper 地址](https://www.swiper.com.cn/) | [breakpoints API](https://www.swiper.com.cn/api/parameters/289.html)
 
