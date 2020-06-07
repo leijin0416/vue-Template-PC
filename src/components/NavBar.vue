@@ -109,7 +109,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import { sessionData } from '@/filters/local';
 	
 export default {
@@ -138,9 +137,9 @@ export default {
 	},
 	//页面初始化
 	created(){
-		let that = this
-		that.onIPhone()
-		that.onHomeLocale()
+		let _that = this;
+		_that.onIPhone();
+		_that.onHomeLocale();
 	},
 	watch: {
 		"orIPhone": {
@@ -150,7 +149,6 @@ export default {
 				} else {
 					let _that = this;
 					_that.orIPhone = newer;
-					//this.getList(); // methods中定义好的获取数据列表的方法
 					//alert(newer)
 				}
 			},
@@ -167,23 +165,33 @@ export default {
 			let _that = this;
 			_that.valueDrawer = true;
 		},
+		/**
+		 * 	判断当前屏幕
+		 */
 		onIPhone() {
 			let _that = this;
-			//location.reload();
+			// location.reload();
 			if(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
 				_that.orIPhone = false;
 				console.log('手机');
-				//window.location.href = 'https://www.baidu.com'
+				// _that.$router.push({path:'iphone'})
+				// window.location.href = 'https://www.baidu.com'
 			} else {
 				_that.orIPhone = true;
 				console.log('PC');
-				//window.location.href = 'https://www.sohu.com'
+				// window.location.href = 'https://www.sohu.com'
 			}
 		},
+		/**
+		 * 	设置缓存的语言
+		 */
 		onLocaleClick (val) {
 			sessionData('set', 'localeCut', val);
 			location.reload();
 		},
+		/**
+		 * 	读取缓存的语言
+		 */
 		onHomeLocale() {
 			let that = this;
 			let name = sessionData('get', 'localeCut');

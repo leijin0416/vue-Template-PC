@@ -1,7 +1,7 @@
 <template>
-<div class="amap-demo">
-    <div class="amap-page-container" style="">
-        <el-amap 
+    <div class="amap-demo">
+        <div class="amap-page-container" style="">
+            <el-amap 
                 vid="amapDemo" 
                 :plugin="plugin"
                 :zoom="zoom" 
@@ -12,15 +12,16 @@
                 <el-amap-marker v-for="(marker, index) in markers" :position="marker.position" :events="marker.events" :visible="marker.visible" :draggable="marker.draggable" :vid="index"></el-amap-marker> 
                 <!-- 按钮模块窗口 -->
                 <el-amap-info-window :position="window.position" :visible="window.visible" :content="window.content"></el-amap-info-window>
-        </el-amap>
+            </el-amap>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
+    // 提示框
     const exampleComponents = {
-      props: ['p'],
-      template: `<div>深圳市宝安国际机场</div>`
+        props: ['p'],
+        template: `<div>深圳市宝安国际机场</div>`
     }
     module.exports = {
         name: 'amap-page',
