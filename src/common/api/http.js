@@ -1,13 +1,26 @@
 import axios from "axios";
 import CryptoJS from './cryptoJS';
-import { removeStore, getStore } from '@/common/localUtil';
 import { Notice } from 'iview';
+import { sessionData } from '@/filters/local';
 // 格式化返回数据
 import { getRealJsonData } from './json';
 
+
+/**
+ * 提示函数
+ * 禁止点击蒙层、显示一秒后关闭 vant.Toast('提示');
+ */
+const notice = msg => {
+    Notice.error({
+        message: msg,
+        duration: 3000,
+        forbidClick: true
+    });
+}
+
 axios.defaults = {
     baseURL: '',
-    timeout: 5000,
+    timeout: 3000,
     withCredentials: true
 }
 
@@ -17,7 +30,7 @@ axios.defaults = {
  *     config.data.hash = md5((new Date()).valueOf() + config.data.func);
  */
 axios.interceptors.request.use( config => {
-    const token = getStore('hasSessionToken');
+    const token = sessionData('get', 'getSessionToken');
 
     token && (config.headers.token = token);
     config.data = {
@@ -39,14 +52,9 @@ axios.interceptors.response.use( response => {
     response.data = getRealJsonData(CryptoJS.Decrypt(response.data.data));
     // console.log(response.data.code);
     if (response.data.code === 600) {
-        removeStore('hasSessionToken');
-        removeStore('navbarName');
+        sessionData('clean', 'getSessionToken');
 
-        Notice.error({
-            title: '系统提示',
-            desc: '登录失效，请退出后重新登录',
-            duration: 5
-        });
+        notice('小主~ 登录失效，请重新登录');
     }
     
     return response;
@@ -57,52 +65,30 @@ axios.interceptors.response.use( response => {
     if (error && error.response) {
         switch (status) {
             case 200:
-                Toast({
-                    duration: 3000,
-                    message: '请求出错'
-                });
                 break;
             case 400:
-                Toast({
-                    duration: 3000,
-                    message: '请求出错'
-                });
+                notice('小主~ 我们请求出错');
                 break;
             case 401:
-                Toast({
-                    duration: 3000,
-                    message: '授权失败，请重新登录'
-                });
+                notice('小主~ 授权失败，请重新登录');
                 setTimeout(() => {
-                    removeStore('hasSessionToken');
+                    sessionData('clean', 'getSessionToken');
                     window.location.reload();
                 }, 1000)
                 break;
             case 403:
-                Toast({
-                    duration: 3000,
-                    message: '拒绝访问'
-                });
+                notice('小主~ 拒绝访问');
                 break;
             case 404:
-                Toast({
-                    duration: 3000,
-                    message: '请求错误，未找到该资源'
-                });
+                notice('小主~ 请求错误，未找到该资源');
                 break;
             case 500:
-                Toast({
-                    duration: 3000,
-                    message: '服务端错误'
-                });
+                notice('小主~ 服务端错误');
                 break;
         }
         return status >= 200 && status < 300;
     } else {
-        Toast({
-            duration: 3000,
-            message: '小主网络开小差啦，稍后再试'
-        });
+        notice('小主~ 网络开小差啦，稍后再试');
     }
     return Promise.reject(error.response);
 })

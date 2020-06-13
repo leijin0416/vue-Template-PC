@@ -1,21 +1,21 @@
-//引入axios
-import axios from 'axios'
+// 引入axios
+import axios from 'axios';
 
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = '';
+
 /**
  * 提示函数
  * 禁止点击蒙层、显示一秒后关闭 vant.Toast('提示');
  */
-const tip = msg => {
-    vant.Toast({
+const notice = msg => {
+    Notice.error({
         message: msg,
         duration: 3000,
         forbidClick: true
-
     });
 }
 
-//请求拦截器
+// 请求拦截器
 axios.interceptors.request.use(config => {
 
     return config
@@ -23,7 +23,7 @@ axios.interceptors.request.use(config => {
     return Promise.reject(error)
 })
 
-//响应拦截器即异常处理
+// 响应拦截器即异常处理
 axios.interceptors.response.use(response => {
 
     return response
@@ -34,28 +34,20 @@ axios.interceptors.response.use(response => {
     if (error && error.response) {
         switch (status) {
             case 400:
-                tip('小主~ 我们请求出错');
+                notice('小主~ 我们请求出错');
                 break;
             case 401:
                 // 401: 未登录状态，跳转登录页
-                tip('系统提示：您未登录');
-                setTimeout(() => {
-                    removeStore('hasSessionToken');
-                    window.location.reload();
-                }, 1000);
+                notice('系统提示：您未登录');
                 break;
             case 403:
-                tip('登录过期，请重新登录');
-                setTimeout(() => {
-                    removeStore('hasSessionToken');
-                    window.location.reload();
-                }, 1000);
+                notice('登录过期，请重新登录');
                 break;
             case 404:
-                tip('系统提示：请求资源未找到');
+                notice('系统提示：请求资源未找到');
                 break;
             case 500:
-                tip('系统提示：服务端出错');
+                notice('系统提示：服务端出错');
                 break;
         }
         return status >= 200 && status < 300;

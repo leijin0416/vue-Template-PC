@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import { constantRouterMaps } from './routersMaps.js';
-import { getStore } from '@/common/localUtil';
+import { constantRouterMaps } from './routersMaps';
+import { sessionData } from '@/filters/local';
 
 Vue.use(Router);
 
@@ -27,8 +27,8 @@ const router = createRouter();
  *  做些什么，通常权限控制就在这里做哦
  */
 router.beforeEach((to, from, next) => {
-    let token = getStore('hasSessionToken');
-    if (token == null) {
+    const token = sessionData('get', 'getSessionToken');
+    if (token == '') {
         next();
     } else {
         next();

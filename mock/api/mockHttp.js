@@ -40,17 +40,9 @@ axios.interceptors.response.use(response => {
             case 401:
                 // 401: 未登录状态，跳转登录页
                 tip('系统提示：您未登录')
-                setTimeout(() => {
-                    removeStore('hasSessionToken');
-                    window.location.reload();
-                }, 1000)
                 return
             case 403:
                 tip('登录过期，请重新登录')
-                setTimeout(() => {
-                    removeStore('hasSessionToken');
-                    window.location.reload();
-                }, 1000)
                 break
             case 404:
                 tip('系统提示：请求资源未找到')
