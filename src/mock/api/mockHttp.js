@@ -9,9 +9,9 @@ axios.defaults.baseURL = '';
  */
 const notice = msg => {
     Notice.error({
-        message: msg,
-        duration: 3000,
-        forbidClick: true
+        title: '系统提示',
+        desc: msg,
+        duration: 3000
     });
 }
 

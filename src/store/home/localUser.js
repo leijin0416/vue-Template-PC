@@ -1,4 +1,4 @@
-import { setStore } from '@/common/localUtil';
+import { sessionData } from '@/filters/local';
 
 export default {
 	namespaced: true,
@@ -20,8 +20,8 @@ export default {
 	mutations: {
 		//用户id
 		handleUserSession: (state, getSessionToken) => {
-            state.getSessionToken = getSessionToken;
-			setStore('getSessionToken', getSessionToken);
+			state.getSessionToken = getSessionToken;
+			sessionData('set', 'setTabBarActive', getSessionToken);
         }
 	}
 };
