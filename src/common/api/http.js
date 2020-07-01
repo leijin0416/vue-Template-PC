@@ -53,7 +53,6 @@ axios.interceptors.response.use( response => {
     // console.log(response.data.code);
     if (response.data.code === 600) {
         sessionData('clean', 'getSessionToken');
-
         notice('小主~ 登录失效，请重新登录');
     }
     
@@ -71,10 +70,6 @@ axios.interceptors.response.use( response => {
                 break;
             case 401:
                 notice('小主~ 授权失败，请重新登录');
-                setTimeout(() => {
-                    sessionData('clean', 'getSessionToken');
-                    window.location.reload();
-                }, 1000)
                 break;
             case 403:
                 notice('小主~ 拒绝访问');
