@@ -368,10 +368,11 @@
 
 <script>
 import { WOW } from 'wowjs';
-import { setStore, getStore } from '@/common/localUtil';
 import NavBar from "@/components/NavBar";
 import videoPlayer from "@/components/videoPlayer/videoPlayer";
 import vueAmap from "@/components/vueAmap/vueAmap";
+
+import { sessionData } from '@/filters/storage';
 
 export default {
     data() {
@@ -445,10 +446,10 @@ export default {
             let _that=this;
         },
 		onHomeLocale() {
-			let _that = this
-			let name = getStore('localeCut')
+			let _that = this;
+			let name = sessionData('get', 'localeCut');
 			if (name) {
-				_that.valLocale = name
+				_that.valLocale = name;
 			}
 			// console.log(name);
 		}

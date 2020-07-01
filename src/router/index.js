@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import { constantRouterMaps } from './routersMaps';
-import { sessionData } from '@/filters/local';
+import { sessionData } from '@/filters/storage';
 
 Vue.use(Router);
 

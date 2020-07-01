@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import { sessionData } from '@/filters/local';
+import { sessionData } from '@/filters/storage';
 	
 export default {
 	name: "navs",
