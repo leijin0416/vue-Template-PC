@@ -10,26 +10,26 @@ const localData = function (method, name, obj) {
     * localStorage.removeItem(key):删除指定key本地存储的值
     * */ 
     switch (method) {
-    case 'get':
-        if (localStorage.getItem(name + '_obj')) {
-            return JSON.parse(localStorage.getItem(name + '_obj'));
-        } else if (localStorage.getItem(name + '_str')) {
-            return localStorage.getItem(name + '_str');
-        } else {
-            return null
-        }
-    case 'set':
-        localData('clean', name);
-        if (typeof obj == 'object') {
-            localStorage.setItem(name + '_obj', JSON.stringify(obj));
-        } else {
-            localStorage.setItem(name + '_str', obj);
-        }
-        return true;
-    case 'clean':
-        localStorage.removeItem(name + '_obj');
-        localStorage.removeItem(name + '_str');
-        return true;
+        case 'get':
+            if (localStorage.getItem(name + '_obj')) {
+                return JSON.parse(localStorage.getItem(name + '_obj'));
+            } else if (localStorage.getItem(name + '_str')) {
+                return localStorage.getItem(name + '_str');
+            } else {
+                return null;
+            }
+        case 'set':
+            localData('clean', name);
+            if (typeof obj == 'object') {
+                localStorage.setItem(name + '_obj', JSON.stringify(obj));
+            } else {
+                localStorage.setItem(name + '_str', obj);
+            }
+            return true;
+        case 'clean':
+            window.localStorage.removeItem(name + '_obj');
+            window.localStorage.removeItem(name + '_str');
+            return true;
     }
 };
 
@@ -42,26 +42,26 @@ const sessionData = function (method, name, obj) {
     * obj:存入的内容，可以是任意类型
     * */
     switch (method) {
-    case 'get':
-        if (sessionStorage.getItem(name + '_obj')) {
-            return JSON.parse(sessionStorage.getItem(name + '_obj'));
-        } else if (sessionStorage.getItem(name + '_str')) {
-            return sessionStorage.getItem(name + '_str');
-        } else {
-            return null
-        }
-    case 'set':
-        sessionData('clean', name);
-        if (typeof obj == 'object') {
-            sessionStorage.setItem(name + '_obj', JSON.stringify(obj));
-        } else {
-            sessionStorage.setItem(name + '_str', obj);
-        }
-        return true;
-    case 'clean':
-        sessionStorage.removeItem(name + '_obj');
-        sessionStorage.removeItem(name + '_str');
-        return true;
+        case 'get':
+            if (sessionStorage.getItem(name + '_obj')) {
+                return JSON.parse(sessionStorage.getItem(name + '_obj'));
+            } else if (sessionStorage.getItem(name + '_str')) {
+                return sessionStorage.getItem(name + '_str');
+            } else {
+                return null;
+            }
+        case 'set':
+            sessionData('clean', name);
+            if (typeof obj == 'object') {
+                sessionStorage.setItem(name + '_obj', JSON.stringify(obj));
+            } else {
+                sessionStorage.setItem(name + '_str', obj);
+            }
+            return true;
+        case 'clean':
+            window.sessionStorage.removeItem(name + '_obj');
+            window.sessionStorage.removeItem(name + '_str');
+            return true;
     }
 };
 
