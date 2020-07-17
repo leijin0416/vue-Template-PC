@@ -26,7 +26,6 @@ $font-size-mini: 1.167rem;  //14
 
 //字体色
 $color-body-c: #3182fa;
-
 $color-important: #333333;
 $color-common: #606060;
 $color-desc: #909090;
@@ -55,7 +54,6 @@ $color-blue-bg: #4a8eea;
 
 //容器
 .container-wd {width: $width-lg;margin: 0 auto;}
-
 @media only screen and (max-width: 1024px) {
 	//小屏容器
 	.container-wd {
