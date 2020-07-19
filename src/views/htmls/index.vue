@@ -369,8 +369,8 @@
 <script>
 import { WOW } from 'wowjs';
 import NavBar from "@/components/NavBar";
-import videoPlayer from "@/components/videoPlayer/videoPlayer";
-import vueAmap from "@/components/vueAmap/vueAmap";
+import videoPlayer from "@/components/videoPlayer/index";
+import vueAmap from "@/components/vueAmap/index";
 
 import { sessionData } from '@/filters/storage';
 
