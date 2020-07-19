@@ -6,8 +6,8 @@
 
 ```js
 
-> del /f/s/q xxxxx > nul
-> rmdir /f/s xxxxx
+> del /f/s/q node_modules > nul
+> rmdir /s/q node_modules
 
 ```
 
