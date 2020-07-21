@@ -4,6 +4,8 @@
 
 [TS 项目](https://github.com/FSFED/ts-vue) | [1 面试](https://juejin.im/post/5ec9f2dff265da76e25c99cb) | [2 面试题](https://juejin.im/post/5ecf1da15188254316147991#heading-28) | [3 面试+分析题](https://juejin.im/post/5ede4c556fb9a047a6446a8e#comment) | [4 面试+分析题](https://juejin.im/post/5ee1e42ef265da770d3dcc2c#comment)
 
+[Vue项目上线做的基本优化 -全](https://juejin.im/post/5f0f1a045188252e415f642c) | [对于插槽的理解-文在最后面](https://mp.weixin.qq.com/s/IQa8rcncm7nwEUeRjh-XuA)
+
 ```js
 
 > del /f/s/q node_modules > nul
