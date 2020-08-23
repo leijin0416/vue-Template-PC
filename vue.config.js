@@ -15,8 +15,8 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 function resolve(dir) { return path.join(__dirname, dir) }
 
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
-const isDev = process.env.NODE_ENV;  //当前的环境
 const isProduction = process.env.NODE_ENV !== 'development';
+const isDev = process.env.NODE_ENV;            // 当前的环境
 
 /**
  *  打包时切换成 false
@@ -50,7 +50,7 @@ const cdn = {
 
 const isDevCS = {
     '/api': {
-        target: 'http://114.55.165.42:6100',
+        target: 'http://192.55.165.42:6100',
         changeOrigin: true,
         wx: true,
         pathRewrite: {
