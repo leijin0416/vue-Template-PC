@@ -8,16 +8,13 @@ import filters from './filters';
 import VueWechatTitle from 'vue-wechat-title';           // title
 import VueLazyLoad from 'vue-lazyload';                 // 图片懒加载
 import myCharts from "@/components/echartsTable/myCharts";   // 挂载图表
-
 import VideoPlayer from 'vue-video-player';
-import VueAwesomeSwiper from 'vue-awesome-swiper';     // 轮播图
 
 import "./style/reset.scss";
 import "./style/common.scss";
 
-// import 'swiper/css/swiper.css';
-import "./style/animation.scss";
 import 'iview/dist/styles/iview.css';
+import "./style/animation.scss";
 require('vue-video-player/src/custom-theme.css');
 
 Vue.use(VueWechatTitle);
@@ -29,21 +26,17 @@ Vue.use(VueLazyLoad, {
     error: require('@/assets/error.jpg'),           // 报错需要的图片
     loading: require('@/assets/loadingTimg.png')	// 替换需要的图片
 });
-
 Vue.use(VideoPlayer);
-Vue.use(VueAwesomeSwiper);
-
 Vue.config.productionTip = false;
 
 // 全局过滤器
 Object.keys(filters).forEach(filterName => {
     Vue.filter(filterName, filters[filterName])
 })
-
 /* eslint-disable no-new */
 new Vue({
     router,
     store,
     i18n,
     render: h => h(App)
-}).$mount('#app');
+}).$mount('#app')
