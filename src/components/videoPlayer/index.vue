@@ -1,13 +1,15 @@
 <template>
-    <video-player  
-        class="video-player-box"
-        ref="videoPlayer"
-        :options="playerOptions"
-        :playsinline="true"
-        customEventName="customstatechangedeventname"
-        @play="onPlayerPlay($event)"
-        @pause="onPlayerPause($event)">
-    </video-player>
+    <div>
+        <video-player  
+            class="video-player-box"
+            ref="videoPlayer"
+            :options="playerOptions"
+            :playsinline="true"
+            customEventName="customstatechangedeventname"
+            @play="onPlayerPlay($event)"
+            @pause="onPlayerPause($event)">
+        </video-player>
+    </div>
 </template>
 
 <script>

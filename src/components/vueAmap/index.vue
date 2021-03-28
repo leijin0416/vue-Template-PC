@@ -81,10 +81,8 @@
                 }
             };
         },
-        methods: {
-
-        }
-    };
+        methods: {},
+    }
 </script>
 
 <style lang="scss" scoped>

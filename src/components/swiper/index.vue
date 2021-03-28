@@ -1,16 +1,16 @@
 <template>
-<div class="swiper-container" :class="swipeid">
-	<div class="swiper-wrapper">
-		<!-- 存放内容,<slot> 元素可以用一个特殊的属性 name 来配置如何分发内容 -->
-		<slot name="swiper-no"></slot>
+	<div class="swiper-container" :class="swipeid">
+		<div class="swiper-wrapper">
+			<!-- 存放内容,<slot> 元素可以用一个特殊的属性 name 来配置如何分发内容 -->
+			<slot name="swiper-no"></slot>
+		</div>
+		<!-- 分页器 -->
+		<div :class="{'swiper-pagination':pagination}"></div>
+		
+		<!-- Add Arrows -->
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
 	</div>
-	<!-- 分页器 -->
-	<div :class="{'swiper-pagination':pagination}"></div>
-	
-    <!-- Add Arrows -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-</div>
 </template>
 
 <script>
