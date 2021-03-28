@@ -4,10 +4,6 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 
-const os = require('os');
-const HappyPack = require("happypack");
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
-
 // 分析打包时间
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -28,23 +24,24 @@ const cdn = {
         'vuex': 'Vuex',
         'vue-router': 'VueRouter',
         'axios': 'axios',
+        'vue-i18n': 'VueI18n',
+        'ant-design-vue': 'AntDesignVue',
         'animate': 'animate',
         'video-js': 'VideoJs',
-        'vue-i18n': 'VueI18n',
-        'iview': 'Iview'
     },
     css: [
-        'http://lib.baomitu.com/animate.css/3.7.0/animate.min.css',
-        'http://lib.baomitu.com/video.js/7.7.5/video-js.min.css'
+        "https://cdn.bootcdn.net/ajax/libs/ant-design-vue/1.7.4/antd.min.css",
+        "https://cdn.bootcdn.net/ajax/libs/video.js/7.7.5/video-js.min.css"
     ],
     js: [
-        'http://lib.baomitu.com/vue/2.5.7/vue.min.js',
-        'http://lib.baomitu.com/vue-router/3.0.1/vue-router.min.js',
-        'http://lib.baomitu.com/vuex/3.0.1/vuex.min.js',
-        'http://lib.baomitu.com/axios/0.18.0/axios.min.js',
-        'http://lib.baomitu.com/video.js/7.7.5/video.min.js',
-        'http://lib.baomitu.com/vue-i18n/8.3.2/vue-i18n.min.js',
-        'http://lib.baomitu.com/iview/3.5.4/iview.js'
+        "https://cdn.bootcdn.net/ajax/libs/vue/2.6.8/vue.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/vue-router/3.4.3/vue-router.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/vuex/3.5.1/vuex.min.js",
+        "https://lib.baomitu.com/axios/0.18.0/axios.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/vue-i18n/8.9.0/vue-i18n.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/ant-design-vue/1.7.4/antd.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/video.js/7.7.5/video.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"
     ]
 }
 
@@ -93,15 +90,6 @@ module.exports = {
         if (isDev === 'production') {
             config.plugins.delete('prefetch');
             config.plugins.delete('preload');
-
-            // ============happypack start============
-            const jsRule = config.module.rule('js');
-            jsRule.uses.clear();
-            //把对.js 的文件处理交给id为 babel 的 HappyPack 的实例执行
-            jsRule.use('happypack/loader?id=babel', 'thread-loader')
-                .loader('happypack/loader?id=babel')
-                .end();
-            // ============happypack end==============
         }
 
     },
@@ -137,12 +125,6 @@ module.exports = {
                     },
                     test: /.js$/g,
                     sourceMap: false
-                }),
-                new HappyPack({
-                    id: 'babel',
-                    loaders: ['babel-loader?cacheDirectory=true'],
-                    threadPool: happyThreadPool,
-                    verbose: true
                 }),
                 // 体积压缩提示
                 new BundleAnalyzerPlugin(),
