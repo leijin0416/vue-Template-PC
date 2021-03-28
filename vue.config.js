@@ -34,17 +34,17 @@ const cdn = {
         'iview': 'Iview'
     },
     css: [
-        'https://lib.baomitu.com/animate.css/3.7.0/animate.min.css',
-        'https://lib.baomitu.com/video.js/7.7.5/video-js.min.css'
+        'http://lib.baomitu.com/animate.css/3.7.0/animate.min.css',
+        'http://lib.baomitu.com/video.js/7.7.5/video-js.min.css'
     ],
     js: [
-        'https://lib.baomitu.com/vue/2.5.7/vue.min.js',
-        'https://lib.baomitu.com/vue-router/3.0.1/vue-router.min.js',
-        'https://lib.baomitu.com/vuex/3.0.1/vuex.min.js',
-        'https://lib.baomitu.com/axios/0.18.0/axios.min.js',
-        'https://lib.baomitu.com/video.js/7.7.5/video.min.js',
-        'https://lib.baomitu.com/vue-i18n/8.3.2/vue-i18n.min.js',
-        'https://lib.baomitu.com/iview/3.5.4/iview.js'
+        'http://lib.baomitu.com/vue/2.5.7/vue.min.js',
+        'http://lib.baomitu.com/vue-router/3.0.1/vue-router.min.js',
+        'http://lib.baomitu.com/vuex/3.0.1/vuex.min.js',
+        'http://lib.baomitu.com/axios/0.18.0/axios.min.js',
+        'http://lib.baomitu.com/video.js/7.7.5/video.min.js',
+        'http://lib.baomitu.com/vue-i18n/8.3.2/vue-i18n.min.js',
+        'http://lib.baomitu.com/iview/3.5.4/iview.js'
     ]
 }
 

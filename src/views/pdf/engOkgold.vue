@@ -1,6 +1,5 @@
 <template>
 	<iframe ref="iframe" id="bdIframe" :src="bdTokenUrl" frameborder="0" scrolling="no" width = "100%" ></iframe>
-	
 </template>
 
 <script>
@@ -35,5 +34,4 @@ export default {
 }
 </script>
 
-<style lang="" scoped>
-</style>
+<style lang="scss" scoped></style>
