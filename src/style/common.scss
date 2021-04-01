@@ -10,7 +10,9 @@
  *   <input type="text" onkeyup="value=value.replace(/[^\d]/g,'') " maxlength="10">
  *
  **/
-body, html { font-size: 14px !important; }
+body, html {
+    font-size: 14px !important; 
+}
 
 a, button, input { outline:none; border:0;resize:none; }
 input { outline:none; border:0; }
@@ -22,16 +24,6 @@ input[type="number"] { -moz-appearance: textfield !important; }
 a:hover {color: transparent;text-decoration: none;}
 img {vertical-align: top;}
 
-//按钮
-.ivu-btn {
-    color: #fff;
-    background-color: $color-body-c !important;
-    border-color: $color-body-c !important;
-    &:hover {
-        color: #c8d1ff;
-    }
-}
-.page .v-container { width: 1240px; margin: 0 auto;}
 // 弹性布局
 .weui-flex {
     @include flex(row, nowrap);
@@ -49,35 +41,6 @@ img {vertical-align: top;}
 }
 .flex-alg {align-items: center;}
 .flex-alg-sf {align-self: center;}
-/*
- *  全局过渡动画
- */
-.v-enter {
-    display: block !important;
-    animation: showPanel .6s ease-in-out 1 forwards;
-}
-@keyframes showPanel{
-    from{
-        opacity: 0;
-        transform: translateX(280px);
-    }
-    to{
-        opacity: 1;
-        transform: translateX(0px);
-    }
-}
-.slide-fade-enter-active {
-    transition: all .3s ease-in-out;
-}
-.slide-fade-leave-active {
-    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active for below version 2.1.8 */ {
-    transform: translateX(380px);
-    opacity: 0;
-}
-//------------ END ------------
 
 // 主体色
 .color-body-c {color: $color-body-c;}
@@ -118,6 +81,7 @@ img {vertical-align: top;}
     background: linear-gradient(to right,  #2a7aff 0%,#f7618b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a7aff', endColorstr='#f7618b',GradientType=1 ); /* IE6-9 */
 }
+
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
     width: 2px;
@@ -136,13 +100,7 @@ img {vertical-align: top;}
     // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: $color-body-c;
 }
-//小于1024
-@media only screen and (max-width: 1040px) {
-	.page .v-container {
-        width: auto;
-        margin: 0 15px;
-    }
-}
+
 @media only screen and (max-width: 480px) {
 	/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 	::-webkit-scrollbar {

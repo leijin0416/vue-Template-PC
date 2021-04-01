@@ -1,8 +1,7 @@
 <template>
-	<div id="app" class="g-content-box">
+	<div id="app">
 		<Layout>
 			<router-view v-wechat-title="$route.meta.title" />
-    		<BackTop></BackTop>
 		</Layout>
 	</div>
 </template>

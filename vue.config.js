@@ -25,12 +25,12 @@ const cdn = {
         'vue-router': 'VueRouter',
         'axios': 'axios',
         'vue-i18n': 'VueI18n',
-        'ant-design-vue': 'AntDesignVue',
+        'element-ui': 'Element',
         'animate': 'animate',
         'video-js': 'VideoJs',
     },
     css: [
-        "https://cdn.bootcdn.net/ajax/libs/ant-design-vue/1.7.4/antd.min.css",
+        "https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.0/theme-chalk/index.css",
         "https://cdn.bootcdn.net/ajax/libs/video.js/7.7.5/video-js.min.css"
     ],
     js: [
@@ -39,7 +39,7 @@ const cdn = {
         "https://cdn.bootcdn.net/ajax/libs/vuex/3.5.1/vuex.min.js",
         "https://lib.baomitu.com/axios/0.18.0/axios.min.js",
         "https://cdn.bootcdn.net/ajax/libs/vue-i18n/8.9.0/vue-i18n.min.js",
-        "https://cdn.bootcdn.net/ajax/libs/ant-design-vue/1.7.4/antd.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.0/index.js",
         "https://cdn.bootcdn.net/ajax/libs/video.js/7.7.5/video.min.js",
         "https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"
     ]

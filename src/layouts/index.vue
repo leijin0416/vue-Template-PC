@@ -1,13 +1,13 @@
 <template>
 	<!-- 全局调用组件 -->
 	<div class="layout-container">
-        <slot></slot>
-    </div>
+		<slot></slot>
+	</div>
 </template>
 
 <script>
 	export default {
-        name: "Layout",
+    name: "Layout",
 		data() {
 			return {};
 		},
@@ -17,7 +17,4 @@
 </script>
 
 <style lang="scss" scoped>
-    .layout-container {
-
-    }
 </style>

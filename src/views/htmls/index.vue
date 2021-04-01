@@ -1,34 +1,11 @@
 <template>
-<div>
-  <a-row type="flex" justify="space-around" align="middle">
-    <a-col :span="4">
-      <p class="height-100">
-        col-4
-      </p>
-    </a-col>
-    <a-col :span="4">
-      <p class="height-50">
-        col-4
-      </p>
-    </a-col>
-    <a-col :span="4">
-      <p class="height-120">
-        col-4
-      </p>
-    </a-col>
-    <a-col :span="4">
-      <p class="height-80">
-        col-4
-      </p>
-    </a-col>
-  </a-row>
-  <a-icon type="caret-right" />
+<div class="container">
+ 123
 </div>
 </template>
 
 <script>
 import vue from 'vue'
-
 
 export default {
 	name: "",
