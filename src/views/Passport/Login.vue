@@ -82,8 +82,8 @@ export default {
     },
     async submitFormClick() {
 			let { data } = await apiWebUserLogin(this.ruleForm);
+      // console.log(data);
       if (data.code === 200) {
-        // console.log(data);
 			  sessionData('set', 'StateSessionToken', data.data.token);
         this.$message({
           message: '登录成功，正在跳转...',
@@ -91,6 +91,14 @@ export default {
           onClose: () => {
             this.disabledType = false;
             this.$router.push({path: '/'});
+          }
+        });
+      } else {
+        this.$message({
+          message: data.message,
+          type: 'error',
+          onClose: () => {
+            this.disabledType = false;
           }
         });
       }
