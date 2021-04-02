@@ -3,7 +3,7 @@ import * as types from '@/store/mutation-types.js';
 
 export default {
 	changeUserInfo({commit}, info) {
-        let userInfo = `this is ${info}`;
+    let userInfo = `this is ${info}`;
 		commit(types.SET_USER_INFO, userInfo);
-    },
+  },
 }

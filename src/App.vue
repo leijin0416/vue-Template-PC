@@ -1,5 +1,6 @@
 <template>
 	<div id="app">
+		<HeaderNavBar  v-if="$route.meta.displayNavBar" />
 		<Layout>
 			<router-view v-wechat-title="$route.meta.title" />
 		</Layout>
@@ -7,12 +8,14 @@
 </template>
 
 <script>
-import Layout from "@/layouts"
+import Layout from "@/layouts";
+import HeaderNavBar from "@/layouts/HeaderNavBar";
 
 export default {
 	name: "App",
 	components: {
 		Layout,
+		HeaderNavBar,
 	},
 	data() {
 		return {
@@ -24,4 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#app {
+	background-color: #f1f1f1;
+}
 </style>

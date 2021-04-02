@@ -31,6 +31,8 @@
 
 <script>
 import md5 from 'js-md5';
+import { mapActions, mapState, mapMutations } from 'vuex';
+import { apiWebUserLogin } from "@/api/index";
 import { sessionData } from '@/filters/storage';
 
 export default {
@@ -42,7 +44,6 @@ export default {
 	props: {},
 	data() {
 		return {
-			bdTokenUrl: 'http://www.ethexc.io/pdf/whitepaper_en.pdf',
       disabledType: false,
       ruleForm: {
         userName: '',
@@ -58,25 +59,42 @@ export default {
       }
 		}
 	},
+  computed:{
+    ...mapState({}),
+  },
 	// 页面初始化
-	mounted(){
-
-	},
+	mounted(){},
 	// 监听click方法
 	methods: {
+    ...mapMutations("localUser", ["ActionsDispatch"]),
     submitForm(formName) {
       let ref = this.$refs[formName]; // 类型断言的用，定义一个变量等价ref
+      this.disabledType = true;
       ref.validate((valid) => {
         if (valid) {
           this.submitFormClick();
         } else {
+          this.disabledType = false;
           console.log('error submit!!');
           return false;
         }
       });
     },
-    submitFormClick() {
-
+    async submitFormClick() {
+			let { data } = await apiWebUserLogin(this.ruleForm);
+      if (data.code === 200) {
+        // console.log(data);
+			  sessionData('set', 'StateSessionToken', data.data.token);
+        this.$message({
+          message: '登录成功，正在跳转...',
+          type: 'success',
+          onClose: () => {
+            this.disabledType = false;
+            this.$router.push({path: '/'});
+          }
+        });
+      }
+      // console.log(data);
     }
 	},
 }
@@ -86,7 +104,6 @@ export default {
 .container {
   height: 100vh;
   background: url("../../assets/img/i_banner_bg.jpg") center center / cover no-repeat;
-  background-color: #f1f1f1;
   .v-article-box {
     padding: 30px 30px 20px;
     margin-top: 200px;

@@ -1,7 +1,6 @@
 const webpack = require("webpack");
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 
 // 分析打包时间
@@ -45,13 +44,22 @@ const cdn = {
     ]
 }
 
+let baseUrl = "";   // 这里是一个默认的url，可以没有
+switch (isDev) {
+    case 'development':
+        baseUrl = "http://192.168.1.101:10091"  // 这里是本地的请求url
+        break
+    case 'production':
+        baseUrl = "http://103.100.210.42:10091"   // 生产环境url
+        break
+}
 const isDevCS = {
-    '/api': {
-        target: 'http://192.55.165.42:6100',
+    '/admin': {
+        target: baseUrl,
         changeOrigin: true,
         wx: true,
         pathRewrite: {
-            "^/api": "/"
+            "^/admin": "/"
         }
     }
 }
@@ -100,6 +108,8 @@ module.exports = {
         // 生产环境打包分析体积
         if (isProduction || devNeedCdn) config.externals = cdn.externals;
         if (isDev === 'production') {
+            config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true;
+            config.optimization.minimizer[0].options.terserOptions.compress.pure_funcs = ['console.log'];
             config.plugins.push(
                 // 压缩代码
                 new CompressionPlugin({
@@ -109,22 +119,6 @@ module.exports = {
                     threshold: 10240,
                     minRatio: 0.8,
                     deleteOriginalAssets: false
-                }),
-                new ParallelUglifyPlugin({
-                    uglifyJS: {
-                        output: {
-                            beautify: false,
-                            comments: false
-                        },
-                        warnings: false,
-                        compress: {
-                            reduce_vars: true,
-                            drop_debugger: true,
-                            drop_console: true
-                        }
-                    },
-                    test: /.js$/g,
-                    sourceMap: false
                 }),
                 // 体积压缩提示
                 new BundleAnalyzerPlugin(),
