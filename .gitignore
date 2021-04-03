@@ -2,6 +2,7 @@
 node_modules
 /备份
 /dist
+vue.config.js
 
 # local env files
 .env.local
