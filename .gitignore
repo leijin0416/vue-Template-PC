@@ -1,8 +1,7 @@
 .DS_Store
-node_modules
-/备份
-/dist
-vue.config.js
+node_modules/
+备份/
+dist/
 
 # local env files
 .env.local
@@ -22,4 +21,6 @@ yarn-error.log*
 *.sln
 *.sw*
 
+vue.config.js
+package-lock.json
 yarn.lock
