@@ -21,6 +21,5 @@ yarn-error.log*
 *.sln
 *.sw*
 
-vue.config.js
 package-lock.json
 yarn.lock
