@@ -50,12 +50,12 @@ switch (isDev) {
         baseUrl = "http://192.168.1.101:10091"  // 这里是本地的请求url
         break
     case 'production':
-        baseUrl = "http://103.100.210.42:10091"   // 生产环境url
+        baseUrl = "http://xxx.100.210.42:10091"   // 生产环境url
         break
 }
 const isDevCS = {
     '/admin': {
-        target: "http://103.100.210.42:10091",
+        target: baseUrl,
         changeOrigin: true,
         wx: true,
         pathRewrite: {

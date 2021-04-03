@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <el-row type="flex" class="row-bg" justify="center">
-      <el-col :span="6">
+      <el-col :xs="24" :lg="7" :xl="6">
         <article class="v-article-box">
           <h2 class="v-h2"><span>登录</span></h2>
           <div class="v-form">

@@ -1,7 +1,7 @@
 <template>
 <Header class="v-header">
   <el-row type="flex" class="row-bg" justify="center">
-    <el-col :span="13">
+    <el-col :xs="24" :lg="22" :xl="13">
       <div class="v-nav-header">
         <div class="v-img">
           <img src="@/assets/img/logo.png" alt="">
