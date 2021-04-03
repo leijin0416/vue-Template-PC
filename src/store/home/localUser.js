@@ -10,7 +10,7 @@ export default {
     getSessionToken: '',
 		getFindCountry: [],
 		getUserContractFindCountry: [],
-		getUserList: [],
+		getUserInfoTableList: [],
 		getUserFindOrganizationList: [],
 	},
 
@@ -21,7 +21,7 @@ export default {
     getSessionToken: (state) => state.getSessionToken,
     getFindCountry: (state) => state.getFindCountry,
     getUserContractFindCountry: (state) => state.getUserContractFindCountry,
-    getUserList: (state) => state.getUserList,
+    getUserInfoTableList: (state) => state.getUserInfoTableList,
     getUserFindOrganizationList: (state) => state.getUserFindOrganizationList,
 	},
 
@@ -41,12 +41,12 @@ export default {
 		},
 		async ActionsUserLists(context, addValue) {
 			let {data} = await apiWebUserList(addValue);
-			console.log(data);
-			// context.commit('CommitUserLists', data.data);
+			// console.log(data);
+			context.commit('CommitUserList', data.data);
 		},
 		async ActionsUserFindOrganizationList(context, addValue) {
 			let {data} = await apiWebUserFindOrganizationList(addValue);
-			console.log(data);
+			// console.log(data);
 			context.commit('CommitUserFindOrganizationList', data.data);
 		},
 	},
@@ -62,7 +62,7 @@ export default {
     },
 		// 用户列表
 		CommitUserList(state, addValue) {
-			state.getUserList = addValue;
+			state.getUserInfoTableList = addValue;
     },
 		// 国家列表
 		CommitUserFindCountry(state, addValue) {

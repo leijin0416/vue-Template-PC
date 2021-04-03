@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <el-row type="flex" class="row-bg" justify="center">
-      <el-col :xs="24" :lg="22" :xl="13">
+      <el-col :xs="24" :md="20" :lg="20" :xl="13">
         <article class="v-article-box">
 				  <h2 class="v-h2">用户列表</h2>
           <div>
@@ -92,25 +92,28 @@ export default {
 		}
 	},
   computed:{
-    ...mapState({}),
+    ...mapState("localUser", ["getUserInfoTableList", ])
+  },
+  watch: {
+    "getUserInfoTableList": {
+      handler(newValue, oldValue) {
+        let list = newValue.list;
+        this.tableData = list;
+        this.totalCount = newValue.total;
+        console.log(newValue);
+      },
+      immediate: true
+    },
   },
   created() {
     this.ActionsUserLists(this.param)
   },
 	// 页面初始化
 	mounted(){
-    this.onActionsUserList(this.param)
   },
 	// 监听click方法
 	methods: {
-    ...mapMutations("localUser", ["ActionsUserLists"]),
-    async onActionsUserList(addValue) {
-			let {data} = await apiWebUserList(addValue);
-      let list = data.data.list;
-      this.tableData = list;
-      this.totalCount = data.data.total;
-			// console.log(data);
-    },
+    ...mapActions("localUser", ["ActionsUserLists"]),
     // 复选框
     handleSelectionChange(val) {},
     // 分页
