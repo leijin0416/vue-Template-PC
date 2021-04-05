@@ -27,16 +27,17 @@ const cdn = {
         'element-ui': 'Element',
         'animate': 'animate',
         'video-js': 'VideoJs',
+        'scrollReveal': 'ScrollReveal',
     },
     css: [
         "https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.0/theme-chalk/index.css",
         "https://cdn.bootcdn.net/ajax/libs/video.js/7.7.5/video-js.min.css"
     ],
     js: [
-        "https://cdn.bootcdn.net/ajax/libs/vue/2.6.8/vue.min.js",
-        "https://cdn.bootcdn.net/ajax/libs/vue-router/3.4.3/vue-router.min.js",
-        "https://cdn.bootcdn.net/ajax/libs/vuex/3.5.1/vuex.min.js",
-        "https://lib.baomitu.com/axios/0.18.0/axios.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/vue/2.6.6/vue.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/vuex/3.2.0/vuex.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/axios/0.18.0/axios.min.js",
         "https://cdn.bootcdn.net/ajax/libs/vue-i18n/8.9.0/vue-i18n.min.js",
         "https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.0/index.js",
         "https://cdn.bootcdn.net/ajax/libs/video.js/7.7.5/video.min.js",
@@ -81,7 +82,7 @@ module.exports = {
         if (isDev === 'production') {
             // 移除 prefetch 插件,解决组件懒加载失效的问题
             config.plugins.delete('prefetch');
-            // config.plugins.delete('preload');
+            config.plugins.delete('preload');
         }
 
         // ============注入cdn start============

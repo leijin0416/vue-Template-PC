@@ -1,27 +1,14 @@
 import axios from "axios";
+import store from '../../store';
 import CryptoJS from './cryptoJS';
-import { Message } from 'element-ui';
+import { getRealJsonData } from './json';// 格式化返回数据
 import { sessionData } from '@/filters/storage';
-// 格式化返回数据
-import { getRealJsonData } from './json';
-
-
-/**
- * 提示函数
- * 禁止点击蒙层、显示一秒后关闭 vant.Toast('提示');
- */
-const notice = (msg) => {
-  Message({
-    type: 'error',
-    message: msg,
-    duration: 3000
-  });
-}
 
 axios.defaults = {
   baseURL: '',
-  timeout: 3000,
-  withCredentials: true
+  timeout: 6000,
+  // 是否跨站点访问控制请求
+  withCredentials: true,
 }
 
 /**
@@ -33,8 +20,7 @@ axios.defaults = {
       data: CryptoJS.Encrypt(JSON.stringify(config.data))
     }
  */
-axios.interceptors.request.use(
-  config => {
+axios.interceptors.request.use( config => {
   const token = sessionData('get', 'StateSessionToken');
 
   token && (config.headers.Authorization = token);
@@ -54,15 +40,11 @@ axios.interceptors.request.use(
  * 
  *  response.data = getRealJsonData(CryptoJS.Decrypt(response.data.data));
  */
-axios.interceptors.response.use(
-  response => {
+axios.interceptors.response.use( response => {
   // console.log(response);
   if (response.data.code === 401120) {
+    store.dispatch('changeErrorMessage', '您的登录信息已失效，请重新登录');
     sessionData('clean', 'StateSessionToken');
-    Message.error({
-      message: '您的登录信息已失效，请重新登录',
-      duration: 3000
-    });
     setTimeout(() => {
       window.location.reload();
     }, 3000);
@@ -71,14 +53,14 @@ axios.interceptors.response.use(
   
 }, error => {
   // 拦截http状态码
-  const status = error.response.status;
-  // console.log(status);
   if (error && error.response) {
     const RESPONSE_CODE = {
-      400: '请求参数错误',
+      400: '错误请求',
+      401: '未授权，请重新登录',
       403: '拒绝访问',
-      404: '请求超时',
-      500: '服务器内部错误',
+      404: '请求错误,未找到该资源',
+      408: '请求超时',
+      500: '服务器端出错',
       501: '服务未实现',
       502: '网关错误',
       503: '服务不可用',
@@ -86,18 +68,23 @@ axios.interceptors.response.use(
       505: 'HTTP版本不受支持',
     };
     error.message = RESPONSE_CODE[error.response.status] || '服务器开小差！！';
-    Message.error({
-      message: error.message,
-      duration: 3000,
-      onClose: () => {}
-    });
+    // 处理 axios 报错
+    store.dispatch('changeErrorMessage', error.message);
+
+  } else {
+    console.log('连接到服务器失败')
   }
   return Promise.reject(error.response);
 })
 
 
 export default {
-  //get请求
+  /**
+   * get
+   * @param [url] 地址
+   * @param [param] 数据
+   * @returns Promise
+   */
   get(url, param) {
     return new Promise( (resolve, reject) => {
       axios({
@@ -113,10 +100,7 @@ export default {
       })
     })
   },
-  //post请求
   post(url, param) {
-    // console.log(url);
-    // console.log(param);
     return new Promise( (resolve, reject) => {
       axios({
         method: 'post',

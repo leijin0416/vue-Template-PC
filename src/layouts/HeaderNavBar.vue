@@ -73,6 +73,11 @@ export default {
               title:'用户列表',
               path:'/user/list',
             },
+            {
+              id: '2-3',
+              title:'推荐图',
+              path:'/user/recommend',
+            },
           ]
         },
       ]

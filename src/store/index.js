@@ -1,28 +1,26 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import mutations from './mutations'
-import actions from './actions'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import mutations from './mutations';
+import actions from './actions';
 
-import home from './home'
+import common from './Common';
 
 Vue.use(Vuex);
 
 let modules = {
-  ...home,
+  ...common,
 };
 
 export default new Vuex.Store({
   state: {
-    groups: [1],
-    datalist: [],
+    errorMessage: '1',
   },
   modules,
   actions,    // 根级别的 action
   mutations,  // 根级别的 mutations
-  // 根级别的 getters
-  getters: {
-    getGroups(state) {
-      return state.groups
+  getters: {  // 根级别的 getters
+    getErrorMessage(state) {
+      return state.errorMessage
     }
   }
 })

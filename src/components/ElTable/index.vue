@@ -46,25 +46,20 @@
 
 <script>
 import { mapActions, mapState, mapMutations } from 'vuex';
-import { apiWebUserLogin } from "@/api/index";
-import { sessionData } from '@/filters/storage';
 
 export default {
-	name: "",
-	// 组件
-	components: {
-	},
-	// 接收父组件传参
+	name: "Table",
+	components: {},
 	props: {
-    tableData: {
+    tableData: {  // 数据源
       type: Object,
       required: true
     },
-    tableColumnData: {
+    tableColumnData: {  // 表头
       type: Object,
       required: true
     },
-    totalCount: {
+    totalCount: {   // 分页总数
       type: Number,
       required: true
     },
@@ -84,10 +79,11 @@ export default {
       console.log(val);
     },
     handleSelectionChange(data) {
-      this.$emit('handleSelectionChange',data);
+      this.$emit('handleSelectionChange', data);
     },
+    // 分页
     handleCurrentChange(data) {
-      this.$emit('handleCurrentChange',data);
+      this.$emit('handleCurrentChange', data);
     }
 	},
 }

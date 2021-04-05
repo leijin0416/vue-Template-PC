@@ -100,20 +100,20 @@ export default {
         let list = newValue.list;
         this.tableData = list;
         this.totalCount = newValue.total;
-        console.log(newValue);
+        // console.log(newValue);
       },
       immediate: true
     },
   },
   created() {
-    this.ActionsUserLists(this.param)
+    this.ActionsUserInfoTableList(this.param)
   },
 	// 页面初始化
 	mounted(){
   },
 	// 监听click方法
 	methods: {
-    ...mapActions("localUser", ["ActionsUserLists"]),
+    ...mapActions("localUser", ["ActionsUserInfoTableList"]),
     // 复选框
     handleSelectionChange(val) {},
     // 分页

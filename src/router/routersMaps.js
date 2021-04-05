@@ -39,6 +39,12 @@ export const constantRouterMaps = [
     meta: { title: '用户列表', displayNavBar: true }
   },
   {
+    path: '/user/recommend',
+    name: 'userRecommend',
+    component: getComponentMin('User', 'recommend'),
+    meta: { title: '用户列表', displayNavBar: true }
+  },
+  {
     path: '*',
     redirect: '/'
   }

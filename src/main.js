@@ -11,7 +11,7 @@ import ECharts from "@/components/EchartsAll/ECharts";     // 挂载图表
 
 import "./style/reset.scss";
 import "./style/common.scss";
-import '@/icons'
+import '@/icons';  // SVG
 
 Vue.use(VueWechatTitle);
 Vue.use(VueLazyLoad, {
@@ -22,6 +22,7 @@ Vue.use(VueLazyLoad, {
   loading: require('@/assets/loadingTimg.png')	// 替换需要的图片
 });
 Vue.use(ECharts);
+
 
 Vue.config.productionTip = false;
 // 全局过滤器

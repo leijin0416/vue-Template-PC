@@ -141,6 +141,82 @@ export function randomMath() {
   return arr;
 }
 
+//写cookies
+export function setCookie(name, value) {
+	var Days = 30;
+	var exp = new Date();
+	exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+	document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+}
+
+export function getCookie(name) {
+	var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+	if (arr = document.cookie.match(reg))
+		return unescape(arr[2]);
+	else
+		return null;
+}
+
+export function delCookie(name) {
+	var exp = new Date();
+	exp.setTime(exp.getTime() - 1);
+	var cval = getCookie(name);
+	if (cval != null)
+		document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+}
+
+/**
+ * 判断是否是手机端
+ * @return {boolean} true为是，false为否
+ */
+export function isMobile() {
+	const userAgentInfo = navigator.userAgent;
+	const Agents = ["Android", "iPhone",
+		"SymbianOS", "Windows Phone",
+		"iPad", "iPod"];
+	let flag = true;
+	for (let v = 0; v < Agents.length; v++) {
+		if (userAgentInfo.indexOf(Agents[v]) > 0) {
+			flag = false;
+			break;
+		}
+	}
+	return !flag;
+}
+
+/**
+ * scrollReveal 动画
+ * 
+ * @param {*} duration  动画的时长
+ * @param {*} origin    动画开始的位置，'bottom', 'left', 'top', 'right'
+ * @param {*} reset     回滚的时候是否再次触发动画
+ * @param {*} mobile    在移动端是否使用动画
+ * @param {*} distance 
+ * @returns 
+ */
+export function scrollRevealEffect(duration, origin, reset, mobile, distance) {
+  let item = {
+    // 动画的时长
+    duration: duration,
+    // 延迟时间
+    delay: 0,
+    // 动画开始的位置
+    origin: origin,
+    // 回滚的时候是否再次触发动画
+    reset: reset,
+    // 在移动端是否使用动画
+    mobile: mobile,
+    // 滚动的距离，单位可以用%，rem等
+    distance: distance,
+    // 其他可用的动画效果
+    opacity: 0.001,
+    easing: 'linear',
+    scale: 1,
+  };
+  return item
+}
+
+
 export default {
   timeFilter,
   formatPhone,

@@ -1,9 +1,10 @@
 import * as types from '@/store/mutation-types.js';
-// import {userInfo} from "@/api/common";
 
 export default {
-	changeUserInfo({commit}, info) {
-    let userInfo = `this is ${info}`;
-		commit(types.SET_USER_INFO, userInfo);
+  // 处理 axios 错误
+	changeErrorMessage({commit}, info) {
+    let errorMessage = info;
+		commit(types.SET_Error_Message, errorMessage);
+    // console.log(info);
   },
 }

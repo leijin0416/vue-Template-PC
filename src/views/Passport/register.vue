@@ -58,10 +58,10 @@
             <el-input v-model="ruleForm.confirmPassword" placeholder="请输入确认登录密码" show-password ></el-input>
           </el-form-item>
           <el-form-item label="安全密码" prop="securityPassword">
-            <el-input v-model="ruleForm.securityPassword" placeholder="请输入登录密码" show-password ></el-input>
+            <el-input v-model="ruleForm.securityPassword" placeholder="请输入安全密码" show-password ></el-input>
           </el-form-item>
           <el-form-item label="确认安全密码" prop="confirmSecurityPassword">
-            <el-input v-model="ruleForm.confirmSecurityPassword" placeholder="请输入确认登录密码" show-password ></el-input>
+            <el-input v-model="ruleForm.confirmSecurityPassword" placeholder="请输入确认安全密码" show-password ></el-input>
           </el-form-item>
           <el-form-item label="电邮" prop="email">
             <el-input v-model="ruleForm.email" placeholder="请输入电邮"></el-input>
@@ -275,14 +275,14 @@ export default {
   watch: {
     'getFindCountry': {
       handler(newValue, oldValue) {
-        this.optionsCountry = newValue;
+        this.optionsCountry = newValue;    // 国家/区号
         // console.log(newValue);
       },
       immediate: true
     },
     'getUserContractFindCountry': {
       handler(newValue, oldValue) {
-        this.optionsMatching = newValue;
+        this.optionsMatching = newValue;   // 配套
         // console.log(newValue);
       },
       immediate: true
@@ -327,6 +327,7 @@ export default {
         }
       });
     },
+    // 按钮  -注册
     async submitFormClick() {
       let params = this.ruleForm;
 			let {data} = await apiWebUserRegister(params);
@@ -339,7 +340,15 @@ export default {
 					duration: 2000,
           onClose: ()=> {this.resetForm()}
 				});
-			}
+			} else {
+        this.$message({
+          message: data.message,
+          type: 'error',
+          onClose: () => {
+            this.disabledType = false;
+          }
+        });
+      }
     }
 	},
 }

@@ -8,6 +8,7 @@ export default {
 	 */
   state: {
     getSessionToken: '',
+    getUserInfoSession: {},
 		getFindCountry: [],
 		getUserContractFindCountry: [],
 		getUserInfoTableList: [],
@@ -19,6 +20,7 @@ export default {
 	 */
   getters: {
     getSessionToken: (state) => state.getSessionToken,
+    getUserInfoSession: (state) => state.getUserInfoSession,
     getFindCountry: (state) => state.getFindCountry,
     getUserContractFindCountry: (state) => state.getUserContractFindCountry,
     getUserInfoTableList: (state) => state.getUserInfoTableList,
@@ -29,6 +31,9 @@ export default {
 	 *  3、自定义触发mutations里函数的方法，context与store 实例具有相同方法和属性，list 为要变化的形参
 	 */
 	actions: {
+		ActionsUserInfoSession(context, addValue) {
+			context.commit('CommitUserInfoSession', addValue);
+		},
 		async ActionsUserFindCountry(context, addValue) {
 			let {data} = await apiWebUserFindCountry();
 			// console.log(data);
@@ -39,14 +44,14 @@ export default {
 			// console.log(data);
 			context.commit('CommitUserContractFindCountry', data.data);
 		},
-		async ActionsUserLists(context, addValue) {
+		async ActionsUserInfoTableList(context, addValue) {
 			let {data} = await apiWebUserList(addValue);
 			// console.log(data);
-			context.commit('CommitUserList', data.data);
+			context.commit('ActionsUserInfoTableList', data.data);
 		},
 		async ActionsUserFindOrganizationList(context, addValue) {
 			let {data} = await apiWebUserFindOrganizationList(addValue);
-			// console.log(data);
+			console.log(data);
 			context.commit('CommitUserFindOrganizationList', data.data);
 		},
 	},
@@ -60,8 +65,13 @@ export default {
 			state.getSessionToken = addValue;
 			sessionData('set', 'StateSessionToken', addValue);
     },
+		// 用户详细信息
+		CommitUserInfoSession(state, addValue) {
+			state.getUserInfoSession = addValue;
+			sessionData('set', 'StateUserInfoSession', addValue);
+    },
 		// 用户列表
-		CommitUserList(state, addValue) {
+		ActionsUserInfoTableList(state, addValue) {
 			state.getUserInfoTableList = addValue;
     },
 		// 国家列表
