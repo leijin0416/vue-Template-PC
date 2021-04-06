@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<HeaderNavBar  v-if="$route.meta.displayNavBar" />
+		<HeaderNavBar v-if="$route.meta.displayNavBar" />
 		<Layout>
 			<router-view v-wechat-title="$route.meta.title" />
 		</Layout>
