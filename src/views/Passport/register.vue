@@ -222,7 +222,6 @@ export default {
             message: '不能含有空格',
             trigger: 'blur'
           },
-          // { validator: validatePassword, trigger: 'blur' }
         ],
         confirmPassword: [
           { required: true, message: '确认登录密码不能为空', trigger: 'blur' },
@@ -242,7 +241,6 @@ export default {
             message: '不能含有空格',
             trigger: 'blur'
           },
-          { validator: validateSecurityPassword, trigger: 'blur' }
         ],
         confirmSecurityPassword: [
           { required: true, message: '确认安全密码不能为空', trigger: 'blur' },
