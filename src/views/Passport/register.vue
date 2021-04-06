@@ -301,6 +301,7 @@ export default {
       const ref = _that.$refs[formName]; // 类型断言的用，定义一个变量等价ref
       ref.resetFields();
     },
+    // 查询安置人
     async onParentUserNameBlur() {
       let params = {
         parentUserName: this.ruleForm.parentUserName
@@ -318,6 +319,7 @@ export default {
     },
     submitForm(formName) {
       let ref = this.$refs[formName]; // 类型断言的用，定义一个变量等价ref
+      this.disabledType = true;
       ref.validate((valid) => {
         if (valid) {
           this.submitFormClick();
@@ -338,7 +340,10 @@ export default {
 					type: "success",
 					message: '注册成功',
 					duration: 2000,
-          onClose: ()=> {this.resetForm()}
+          onClose: ()=> {
+            this.resetForm('ruleForm');
+            this.disabledType = false;
+          }
 				});
 			} else {
         this.$message({
