@@ -19,7 +19,7 @@
                 <el-input v-model="ruleForm.password" placeholder="请输入密码" prefix-icon="el-icon-mobile-phone" show-password ></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm')" :loading="loadingType" :disabled="disabledType">登录</el-button>
+                <el-button type="primary" @click="submitForm('ruleForm')" :loading="loadingType" >登录</el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -73,16 +73,15 @@ export default {
   },
 	// 监听click方法
 	methods: {
-    ...mapActions("localUser", ["ActionsUserInfoSession"]),
+    ...mapActions("localUser", ["ActionsUserInfoSession", "ActionsUserAssetsSession"]),
     submitForm(formName) {
       let ref = this.$refs[formName]; // 类型断言的用，定义一个变量等价ref
-      this.disabledType = true;
       this.loadingType = true;
       ref.validate((valid) => {
         if (valid) {
           this.submitFormClick();
         } else {
-          this.disabledType = false;
+          this.loadingType = false;
           console.log('error submit!!');
           return false;
         }
@@ -93,13 +92,13 @@ export default {
 			let { data } = await apiWebUserLogin(this.ruleForm);
       // console.log(data);
       if (data.code === 200) {
+        this.ActionsUserAssetsSession(data.data);
         this.ActionsUserInfoSession(data.data.user);
 			  sessionData('set', 'StateSessionToken', data.data.token);
         this.$message({
           message: '登录成功，正在跳转...',
           type: 'success',
           onClose: () => {
-            this.disabledType = false;
             this.loadingType = false;
             this.$router.push({path: '/'});
           }
@@ -109,12 +108,10 @@ export default {
           message: data.message,
           type: 'error',
           onClose: () => {
-            this.disabledType = false;
             this.loadingType = false;
           }
         });
       }
-      // console.log(data);
     }
 	},
 }

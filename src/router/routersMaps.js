@@ -42,7 +42,49 @@ export const constantRouterMaps = [
     path: '/user/recommend',
     name: 'userRecommend',
     component: getComponentMin('User', 'recommend'),
-    meta: { title: '用户列表', displayNavBar: true }
+    meta: { title: '推广图', displayNavBar: true }
+  },
+  {
+    path: '/user/exchange',
+    name: 'userExchange',
+    component: getComponentMin('User', 'exchange'),
+    meta: { title: '兑换钱包', displayNavBar: true }
+  },
+  {
+    path: '/user/password',
+    name: 'userPassword',
+    component: getComponentMin('Passport', 'password'),
+    meta: { title: '用户档案', displayNavBar: true }
+  },
+  {
+    path: '/record/history',
+    name: 'recordHistory',
+    component: getComponentMin('Record', 'historyList'),
+    meta: { title: '历史记录', displayNavBar: true }
+  },
+  {
+    path: '/record/bonus',
+    name: 'recordBonus',
+    component: getComponentMin('Record', 'bonusList'),
+    meta: { title: '级差奖金记录', displayNavBar: true }
+  },
+  {
+    path: '/record/straight',
+    name: 'recordStraight',
+    component: getComponentMin('Record', 'straightList'),
+    meta: { title: '直推奖记录', displayNavBar: true }
+  },
+  {
+    path: '/switch/mutual',
+    name: 'switchMutual',
+    component: getComponentMin('Switch', 'mutual'),
+    meta: { title: '转账', displayNavBar: true }
+  },
+  {
+    path: '/switch/wallet',
+    name: 'switchWallet',
+    component: getComponentMin('Switch', 'wallet'),
+    meta: { title: '转账', displayNavBar: true }
   },
   {
     path: '*',

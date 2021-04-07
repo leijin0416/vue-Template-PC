@@ -3,7 +3,7 @@
     <el-row type="flex" class="row-bg" justify="center">
       <el-col :xs="24" :md="20" :lg="20" :xl="13">
         <article class="v-article-box">
-				  <h2 class="v-h2">用户列表</h2>
+				  <h2 class="v-h2">历史记录</h2>
           <div class="v-table-mian">
             <!-- 表格 -->
             <ElTable :tableData="tableData"
@@ -12,13 +12,8 @@
               @handleSelectionChange="handleSelectionChange"
               @handleCurrentChange="handleCurrentChange">
               <!-- 内容部分-操作 -->
-              <el-table-column slot="slotPosition" label="安置位置" width="120" align="center">
-                <template slot-scope="scope">
-                  <el-tag size="mini">{{scope.row.position === 1 ? "左侧" : "右侧"}}</el-tag>
-                </template>
-              </el-table-column>
 
-              <el-table-column slot="createTime" label="注册时间" width="180" align="center">
+              <el-table-column slot="createTime" label="时间" width="180" align="center">
                 <template slot-scope="scope">
                   {{scope.row.createTime | timeFilter}}
                 </template>
@@ -33,9 +28,6 @@
 
 <script>
 import { mapActions, mapState, mapMutations } from 'vuex';
-import { apiWebUserList } from "@/api/index";
-import { sessionData } from '@/filters/storage';
-
 import ElTable from "@/components/ElTable/index.vue";
 
 export default {
@@ -58,30 +50,27 @@ export default {
           type: 'selection',
         },
         {
+          slot: 'createTime'
+        },
+        {
           prop: 'userId',
-          label: '用户ID',
-          width: '200',
+          label: '描述',
+          width: 'auto',
         },
         {
           prop: 'userName',
-          label: '用户名',
+          label: '数目',
+          width: '200px',
+        },
+        {
+          prop: 'fullName',
+          label: '余额',
           width: 'auto',
         },
         {
           prop: 'inviteCode',
-          label: '用户邀请码',
-          width: 'auto',
-        },
-        {
-          prop: 'parentName',
-          label: '安置人',
-          width: 'auto',
-        },
-        {
-          slot: "slotPosition"
-        },
-        {
-          slot: 'createTime'
+          label: '进/出',
+          width: '150',
         },
       ],
       tableData: [],
@@ -111,16 +100,13 @@ export default {
 	methods: {
     ...mapActions("localUser", ["ActionsUserInfoTableList"]),
     // 复选框
-    handleSelectionChange(val) {
-      console.log(val);
-    },
+    handleSelectionChange(val) {},
     // 分页
     handleCurrentChange(val) {
       const _that = this;
       _that.$nextTick(() => {
         _that.param.page = val
       })
-      _that.ActionsUserInfoTableList(_that.param);
     },
 	},
 }

@@ -1,10 +1,9 @@
-const webpack = require("webpack");
+const webpack = require('webpack');
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
 const CompressionPlugin = require("compression-webpack-plugin");
 
-// 分析打包时间
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");  // 分析打包时间
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 function resolve(dir) { return path.join(__dirname, dir) }
@@ -34,7 +33,7 @@ const cdn = {
         "https://cdn.bootcdn.net/ajax/libs/video.js/7.7.5/video-js.min.css"
     ],
     js: [
-        "https://cdn.bootcdn.net/ajax/libs/vue/2.6.6/vue.min.js",
+        "https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js",
         "https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js",
         "https://cdn.bootcdn.net/ajax/libs/vuex/3.2.0/vuex.min.js",
         "https://cdn.bootcdn.net/ajax/libs/axios/0.18.0/axios.min.js",

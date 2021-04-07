@@ -11,8 +11,14 @@
         :check-strictly="true"
         show-checkbox
         @check-change="checkChange"
-        node-key="id"
-      ></el-tree>
+        node-key="userId"
+      >
+        <span class="custom-tree-node" slot-scope="{ node, data }">
+          <span>
+            <i class="el-icon-user"></i> {{ node.label }}
+          </span>              
+        </span>
+      </el-tree>
     </div>
     <!-- 可屏蔽 load、lazy，设置 :data -->
     <div class="v-tree-box" v-else>
@@ -24,7 +30,7 @@
         :check-strictly="true"
         show-checkbox
         @check-change="checkChange"
-        node-key="id"
+        node-key="userId"
       >
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span>
@@ -38,6 +44,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import { sessionData } from '@/filters/storage';
 
 export default {
   name: "treelazy",
@@ -51,21 +58,25 @@ export default {
     const data = [
       {
         id: 1,
-        name: "一级 1",
+        userName: "一级 1",
         icon: "el-icon-folder-opened",
+        leaf: false,
         children: [
           {
             id: 4,
-            name: "二级 1-1",
+            userName: "二级 1-1",
             icon: "el-icon-folder-opened",
+            leaf: false,
             children: [
               {
                 id: 9,
-                name: "三级 1-1-1"
+                userName: "三级 1-1-1",
+                leaf: true,
               },
               {
                 id: 10,
-                name: "三级 1-1-2"
+                userName: "三级 1-1-2",
+                leaf: true,
               }
             ]
           }
@@ -73,40 +84,47 @@ export default {
       },
       {
         id: 2,
-        name: "一级 2",
+        userName: "一级 2",
         icon: "el-icon-folder-opened",
+        leaf: false,
         children: [
           {
             id: 5,
-            name: "二级 2-1"
+            userName: "二级 2-1",
+            leaf: true,
           },
           {
             id: 6,
-            name: "二级 2-2"
+            userName: "二级 2-2",
+            leaf: true,
           }
         ]
       },
       {
         id: 3,
-        name: "一级 3",
+        userName: "一级 3",
         icon: "el-icon-folder-opened",
+        leaf: false,
         children: [
           {
             id: 7,
-            name: "二级 3-1"
+            userName: "二级 3-1",
+            leaf: true,
           },
           {
             id: 8,
-            name: "二级 3-2"
+            userName: "二级 3-2",
+            leaf: true,
           }
         ]
       }
     ];
     return {
-      treeData: JSON.parse(JSON.stringify(data)),
+      treeChildrenData: [],
+      treeData: [],
       defaultProps: {
         children: "children",
-        label: "name",
+        label: "userName",
         isLeaf: "leaf",
         // disabled: "hasChild",  //还可以使用disabled控制节点是否能被选择
       },
@@ -116,52 +134,79 @@ export default {
       },
     };
   },
+  computed:{
+    ...mapState("localUser", ["getUserGoOrganizationList", "getUserFindOrganizationList"])
+  },
+  watch: {
+    "getUserGoOrganizationList": {
+      handler(newValue, oldValue) {
+        // console.log(newValue);
+      },
+      immediate: true
+    },
+    "getUserFindOrganizationList": {  // 查下级
+      handler(newValue, oldValue) {
+        // console.log(newValue);
+        if(newValue.length > 0) {
+          this.$nextTick(function() {
+            this.treeChildrenData = newValue;
+          })
+        } else {
+          this.$message({
+            message: "未查到该用户的下级，请稍后再试",
+            type: 'info',
+            onClose: () => {}
+          });
+          this.treeChildrenData = [];
+        }
+      },
+      deep: true
+    },
+  },
+  created() {
+    // this.treeData = [];
+    let {userName, userId} = sessionData('get', 'StateUserInfoSession', '');   // 父级节点（根）
+    let item = {
+      userName: userName,
+      userId: userId,
+      icon: "el-icon-user",
+      children: []
+    }
+    this.treeData.push(item);
+  },
   methods: {
     ...mapActions("localUser", ["ActionsUserFindOrganizationList"]),
     // 树组件动态加载子树数据事件
     loadNode(node, resolve) {
+      // console.log(node);
       if (node.level === 0) {
         // 这里适合去做数据请求，获取到树状图数据
         // node.level === 0 是初始化树状图最开始就展示的数据
-        let res = this.treeData
-        resolve(res);
-      } else {
-        // 这里适合去做数据请求，获取到树状图数据 （为实现loading效果，添加了定时器）
         setTimeout(() => {
-          // 每次请求的数据应该根据node.data.id 去请求（看项目后端需要什么参数，我的是点击节点的id，去获取这个节点下面的子节点数据）
-          let res2 = [
-            {
-              id: 10,
-              name: "上海分公司",
-              leaf: true,
-            },
-            {
-              id: 12,
-              name: "成都分公司",
-              leaf: true,
-            },
-            {
-              id: 11,
-              name: "武汉分公司",
-              // leaf 这个参数可以根据请求接口，返回的数据信息，去判断这个节点是否还包含子节点，从而控制是否有右箭头
-              leaf: true,
-            },
-          ];
-          resolve(res2);
-        }, 500);
+          let res = this.treeData;
+          resolve(res);
+        }, 2000);
+      } else {
+          // 这里适合去做数据请求，获取到树状图数据 （为实现loading效果，添加了定时器）
+          this.ActionsUserFindOrganizationList({userId: node.data.userId})
+          setTimeout(() => {
+            let res = this.treeChildrenData;
+            resolve(res);
+          }, 3000);
       }
     },
     // 设置复选框为单选的  
     checkChange(data, checked) {
+      // console.log(data);
       // 获取当前选择的id在数组中的索引
-      const indexs = this.selectOrg.orgsid.indexOf(data.id);
+      const indexs = this.selectOrg.orgsid.indexOf(data.userId);
       // 如果不存在数组中，并且数组中已经有一个id并且checked为true的时候，代表不能再次选择。
       if (indexs < 0 && this.selectOrg.orgsid.length === 1 && checked) {
         // 设置已选择的节点为false 很重要
         this.$nextTick(function() {
           this.$refs.tree.setChecked(this.selectOrg.orgJsn, false); //设置之前选中的为未选中
           this.selectOrg.orgsid = []; //清空
-          this.selectOrg.orgsid.push(data.id); //存唯一的node-key中唯一的标致 id
+          this.selectOrg.orgsid.push(data.userId); //存唯一的node-key中唯一的标致 id
           this.selectOrg.orgJsn = data; //存当前节点的json
         })
 
@@ -171,7 +216,7 @@ export default {
         this.$nextTick(function() {
           this.selectOrg.orgJsn = data;
           this.selectOrg.orgsid = [];
-          this.selectOrg.orgsid.push(data.id);
+          this.selectOrg.orgsid.push(data.userId);
         })
         
       } else if (
@@ -183,6 +228,11 @@ export default {
         this.selectOrg.orgsid = [];
       }
     },
+  },
+  destroyed() {
+    this.treeData = [];
+    this.treeChildrenData = [];
+    // console.log(this.treeData);
   },
 };
 </script>

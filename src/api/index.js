@@ -21,3 +21,11 @@ export const apiWebUserCheckParent = params => Request.post('/admin/api/midoto-u
 export const apiWebUserList = params => Request.post('/admin/api/midoto-user/user/list', params)
 // 组织图列表
 export const apiWebUserFindOrganizationList = params => Request.post('/admin/api/midoto-user/findOrganization', params)
+// 默认组织图列表
+export const apiWebUserGoOrganizationList = params => Request.post('/admin/api/midoto-user/goOrganization', params)
+
+
+// 修改安全密码
+export const apiWebUserUpdateSecurityPassword = params => Request.post('/admin/api/midoto-user/update/SecurityPassword', params)
+// 修改登录密码
+export const apiWebUserUpdateLoginPassword = params => Request.post('/admin/api/midoto-user/update/loginPassword', params)

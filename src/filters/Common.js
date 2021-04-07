@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
  * @param {timestamp} value
  */
 const timeFilter = (value) => {
-  value = value.toString();
+  value = value + "";
   if (value) {
     if (value.length === 13) {
       return dayjs(Number(value)).format("YYYY-MM-DD HH:mm:ss");

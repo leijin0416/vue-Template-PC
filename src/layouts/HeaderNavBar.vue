@@ -75,7 +75,7 @@ export default {
             },
             {
               id: '2-3',
-              title:'推荐图',
+              title:'推广图',
               path:'/user/recommend',
             },
           ]

@@ -47,7 +47,7 @@
                 </el-select>
               </el-col>
               <el-col :span="18">
-                <el-input v-model="ruleForm.phone" placeholder="请输入手机号码"></el-input>
+                <el-input type="number" v-model="ruleForm.phone" placeholder="请输入手机号码"></el-input>
               </el-col>
             </el-row>
           </el-form-item>
@@ -77,7 +77,7 @@
             </el-select>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')" :disabled="disabledType" class="v-btn-box">注册</el-button>
+            <el-button type="primary" @click="submitForm('ruleForm')" :loading="loadingType" class="v-btn-box">注册</el-button>
           </el-form-item>
         </el-form>
       </article>
@@ -122,20 +122,25 @@ export default {
       }
     }
     var validateComfirmPwd = (rule, value, callback) => {
-      if (this.ruleForm.loginPassword !== value) {
+      if (this.ruleForm.loginPassword == "") {
+        callback(new Error('请输入登录密码！'))
+      } else if (this.ruleForm.loginPassword !== value) {
         callback(new Error('确认登录密码与登录密码不一致！'))
       } else {
         callback()
       }
     }
     var validateSecurityComfirmPwd = (rule, value, callback) => {
-      if (this.ruleForm.securityPassword !== value) {
+      if (this.ruleForm.securityPassword == "") {
+        callback(new Error('请输入安全密码！'))
+      } else if (this.ruleForm.securityPassword !== value) {
         callback(new Error('确认安全密码与安全密码不一致！'))
       } else {
         callback()
       }
     }
 		return {
+      loadingType: false,
       disabledType: false,
       optionsPlace: [
         {
@@ -222,6 +227,7 @@ export default {
             message: '不能含有空格',
             trigger: 'blur'
           },
+          { validator: validatePassword, trigger: 'blur' }
         ],
         confirmPassword: [
           { required: true, message: '确认登录密码不能为空', trigger: 'blur' },
@@ -241,6 +247,7 @@ export default {
             message: '不能含有空格',
             trigger: 'blur'
           },
+          { validator: validateSecurityPassword, trigger: 'blur' }
         ],
         confirmSecurityPassword: [
           { required: true, message: '确认安全密码不能为空', trigger: 'blur' },
@@ -299,7 +306,7 @@ export default {
       const ref = _that.$refs[formName]; // 类型断言的用，定义一个变量等价ref
       ref.resetFields();
     },
-    // 查询安置人
+    // 检测安置人
     async onParentUserNameBlur() {
       let params = {
         parentUserName: this.ruleForm.parentUserName
@@ -317,11 +324,12 @@ export default {
     },
     submitForm(formName) {
       let ref = this.$refs[formName]; // 类型断言的用，定义一个变量等价ref
-      this.disabledType = true;
+      this.loadingType = true;
       ref.validate((valid) => {
         if (valid) {
           this.submitFormClick();
         } else {
+          this.loadingType = false;
           console.log('error submit!!');
           return false;
         }
@@ -337,10 +345,11 @@ export default {
 				this.$message({
 					type: "success",
 					message: '注册成功',
-					duration: 2000,
+					duration: 3000,
           onClose: ()=> {
             this.resetForm('ruleForm');
-            this.disabledType = false;
+            this.ruleForm.countryId = '';
+            this.loadingType = false;
           }
 				});
 			} else {
@@ -348,7 +357,7 @@ export default {
           message: data.message,
           type: 'error',
           onClose: () => {
-            this.disabledType = false;
+            this.loadingType = false;
           }
         });
       }

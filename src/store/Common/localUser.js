@@ -1,5 +1,5 @@
 import { sessionData } from '@/filters/storage';
-import { apiWebUserFindCountry, apiWebUserContractFindCountry, apiWebUserList, apiWebUserFindOrganizationList } from "@/api/index";
+import { apiWebUserFindCountry, apiWebUserContractFindCountry, apiWebUserList, apiWebUserFindOrganizationList, apiWebUserGoOrganizationList } from "@/api/index";
 
 export default {
 	namespaced: true,
@@ -13,6 +13,8 @@ export default {
 		getUserContractFindCountry: [],
 		getUserInfoTableList: [],
 		getUserFindOrganizationList: [],
+		getUserGoOrganizationList: {},
+		getUserAssetsSession: {},
 	},
 
 	/**
@@ -25,6 +27,8 @@ export default {
     getUserContractFindCountry: (state) => state.getUserContractFindCountry,
     getUserInfoTableList: (state) => state.getUserInfoTableList,
     getUserFindOrganizationList: (state) => state.getUserFindOrganizationList,
+		getUserGoOrganizationList: (state) => state.getUserGoOrganizationList,
+		getUserAssetsSession: (state) => state.getUserAssetsSession,
 	},
 
 	/**
@@ -34,9 +38,11 @@ export default {
 		ActionsUserInfoSession(context, addValue) {
 			context.commit('CommitUserInfoSession', addValue);
 		},
+		ActionsUserAssetsSession(context, addValue) {
+			context.commit('CommitUserAssetsSession', addValue);
+		},
 		async ActionsUserFindCountry(context, addValue) {
 			let {data} = await apiWebUserFindCountry();
-			// console.log(data);
 			context.commit('CommitUserFindCountry', data.data);
 		},
 		async ActionsUserContractFindCountry(context, addValue) {
@@ -51,8 +57,13 @@ export default {
 		},
 		async ActionsUserFindOrganizationList(context, addValue) {
 			let {data} = await apiWebUserFindOrganizationList(addValue);
-			console.log(data);
+			// console.log(data);
 			context.commit('CommitUserFindOrganizationList', data.data);
+		},
+		async ActionsUserGoOrganizationList(context, addValue) {
+			let {data} = await apiWebUserGoOrganizationList(addValue);
+			// console.log(data);
+			context.commit('CommitUserGoOrganizationList', data.data);
 		},
 	},
 
@@ -64,6 +75,11 @@ export default {
 		CommitUserSession(state, addValue) {
 			state.getSessionToken = addValue;
 			sessionData('set', 'StateSessionToken', addValue);
+    },
+		// 用户钱包信息
+		CommitUserAssetsSession(state, addValue) {
+			state.getUserAssetsSession = addValue;
+			sessionData('set', 'StateUserAssetsSession', addValue);
     },
 		// 用户详细信息
 		CommitUserInfoSession(state, addValue) {
@@ -85,6 +101,10 @@ export default {
 		// 组织图列表
 		CommitUserFindOrganizationList(state, addValue) {
 			state.getUserFindOrganizationList = addValue;
+    },
+		// 默认组织图列表
+		CommitUserGoOrganizationList(state, addValue) {
+			state.getUserGoOrganizationList = addValue;
     },
 	}
 };
